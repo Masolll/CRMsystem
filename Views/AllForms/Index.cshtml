@@ -1,0 +1,16 @@
+@using crm.Models
+@model IEnumerable<Form>
+
+<ul>
+    <h1>Все формы записи клиентов</h1>
+    <h3>Всего @Model.Count()</h3>
+    @foreach(Form e in Model)
+    {
+        <p>- - - - - - - - - - -</p>
+        <li>ID заявки @e.id</li>
+        <p>Клиент: @e.name</p> 
+        <p>Мастер: @e.master</p>
+        <p>Стоимость услуги: @e.price</p>
+        <p>- - - - - - - - - - -</p>
+    }
+</ul>
