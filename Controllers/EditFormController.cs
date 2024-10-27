@@ -1,5 +1,6 @@
 using crm.StaticData;
 using Microsoft.AspNetCore.Mvc;
+using crm.StaticData;
 
 namespace crm.Controllers;
 

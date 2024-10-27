@@ -6,6 +6,13 @@ namespace crm.Controllers;
 
 public class FormController : Controller
 {
+    private ApplicationContext db;
+
+    public FormController(ApplicationContext context)
+    {
+        db = context;
+    }
+
     [HttpGet]
     public IActionResult Index()
     {
