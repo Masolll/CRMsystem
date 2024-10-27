@@ -6,23 +6,46 @@ namespace crm.Controllers;
 
 public class FormController : Controller
 {
-    private ApplicationContext db;
+    private readonly ApplicationContext dbContext;
 
-    public FormController(ApplicationContext context)
+    public FormController(ApplicationContext dbContext)
     {
-        db = context;
-    }
-
-    [HttpGet]
-    public IActionResult Index()
-    {
-        return View();
+        this.dbContext = dbContext;
     }
 
     [HttpPost]
-    public string Index(string name, string master, int price)
+    public IActionResult Create(string name, string master, int price)
     {
-        FormRepository.AllForms.Add(new Form(name, master, price));
-        return "Ваша форма успешно отправлена";
+        dbContext.Forms.Add(new Form(name, master, price));
+        dbContext.SaveChanges();
+        return Ok("Форма отправлена!");
+    }
+
+    [HttpPut]
+    public IActionResult Update(Guid id, string name, string master, int price)
+    {
+        var targetForm = dbContext.Forms.Find(id);
+        if(targetForm is null) 
+        {
+            return NotFound("Такого пользователя нет");
+        }
+        targetForm.Name = name;
+        targetForm.Master = master;
+        targetForm.Price = price;
+        dbContext.SaveChanges();
+        return Ok("Данные обновлены!");
+    }
+
+    [HttpDelete]
+    public IActionResult Delete(Guid id)
+    {
+        var removeItem = dbContext.Forms.Find(id);
+        if (removeItem is null)
+        {
+            return NotFound("Такого пользователя нет");
+        }
+        dbContext.Forms.Remove(removeItem);
+        dbContext.SaveChanges();
+        return Ok("Заявка удалена");
     }
 }

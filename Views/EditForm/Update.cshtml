@@ -1,9 +1,0 @@
-@model int
-@using crm.StaticData
-
-<form method='post'>
-    <p><input name='newName' value=@FormRepository.AllForms.Where(e => e.id == Model).First().name /></p>
-    <p><input name='newMaster' value=@FormRepository.AllForms.Where(e => e.id == Model).First().master /></p>
-    <p><input name='newPrice' value=@FormRepository.AllForms.Where(e => e.id == Model).First().price /></p>
-    <input type='submit' value='Отправить форму' />
-</form>
