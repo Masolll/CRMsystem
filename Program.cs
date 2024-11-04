@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using crm.Models; 
+using crm.Data; 
 
 var builder = WebApplication.CreateBuilder(args);
 
