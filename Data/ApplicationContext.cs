@@ -8,8 +8,10 @@ public class ApplicationContext : DbContext
     public DbSet<Record> Records { get; set; } = null!;
     public DbSet<Master> Masters { get; set; } = null!;
 
-    public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+    public ApplicationContext() => Database.EnsureCreated();
+    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        Database.EnsureCreated();   // создаем базу данных при первом обращении
+        optionsBuilder.UseSqlServer("Server=DESKTOP-5K5VL0B;Database=CRM;Trusted_Connection=True;TrustServerCertificate=True;");
     }
 }

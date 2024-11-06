@@ -14,9 +14,9 @@ public class MasterController : Controller
     }
 
     [HttpPost]
-    public IActionResult Index(string masterName, string masterInfo, string masterContacts, string masterEmail, string masterPassword)
+    public IActionResult Index(string masterEmail, string masterPassword)
     {
-        dbContext.Masters.Add(new Master(masterName,  masterInfo,  masterContacts,  masterEmail, masterPassword));
+        dbContext.Masters.Add(new Master(masterEmail, masterPassword));
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }
