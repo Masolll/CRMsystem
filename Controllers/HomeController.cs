@@ -18,6 +18,12 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
+    public string Index([FromBody] int age)
+    {
+        return $"Вы передали значение {age}";
+    }
+
     public IActionResult Privacy()
     {
         return View();

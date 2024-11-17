@@ -8,7 +8,6 @@ public class Master
     public string? MasterContacts { get; set; }
     public string MasterEmail { get; set; }
     public string MasterPassword { get; set; }
-    public string? MasterSomeProperty2 { get; set; }
 
     public Master()
     {
