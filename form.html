@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href='./css/style-form.css'>
+    <link rel="stylesheet" href='./css/style-header-footer.css'>
+    <title>Lunara — Форма записи</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="#" class="navigation-link">Возможности</a>
+                    <a href="#" class="navigation-link">Контакты</a>
+                    <a href="#" class="navigation-link">Запись</a>
+                </nav>
+            </div>
+            <div class="login-container">
+                <a href="login-admin.html" class="login">
+                    <img src="https://via.placeholder.com/50" alt="Войти">
+                    <p>Войти</p>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="sign">
+            <div class="sign-container">
+                <h1 class="sign-title">Запись</h1>
+                <form class="sign-form">
+                    <label for="sign-name">Наименование записи:</label>
+                    <select id="sign-name" name="sign-name" required>
+                        <option value="" disabled selected>Выберите запись</option>
+                        <option value="record1">Запись 1 — 100 р.</option>
+                        <option value="record2">Запись 2 — 200 р.</option>
+                        <option value="record3">Запись 3 — 300 р.</option>
+                    </select>
+
+                    <label for="employee">Сотрудник:</label>
+                    <select id="employee" name="employee" required>
+                        <option value="" disabled selected>Выберите сотрудника</option>
+                        <option value="employee1">Сотрудник 1</option>
+                        <option value="employee2">Сотрудник 2</option>
+                        <option value="employee3">Сотрудник 3</option>
+                    </select>
+
+                    <label for="date-time">Дата и время:</label>
+                    <input type="datetime-local" id="date-time" name="date-time" required>
+                    
+                    <label for="surname">Фамилия:</label>
+                    <input type="text" id="surname" name="surname" placeholder="Иванов" required>
+
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" placeholder="Иван" required>
+
+                    <label for="patronymic">Отчество:</label>
+                    <input type="text" id="patronymic" name="patronymic" placeholder="Иванович">
+
+                    <label for="email">Почта:</label>
+                    <input type="email" id="email" name="email" placeholder="example@company.com" required>
+
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="1-222-333-44-55" required>
+
+                    <label for="comment">Комментарий:</label>
+                    <textarea id="comment" name="comment" rows="6" placeholder="Введите ваш комментарий"></textarea>
+
+                    <button type="submit" class="submit-button">Записаться</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="footer-navigation-container">
+                <div class="footer-section">
+                    <p class="footer-heading">Компания</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">О нас</a></li>
+                        <li><a href="#" class="footer-link">Отзывы</a></li>
+                        <li><a href="#" class="footer-link">База знаний</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Возможности</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Онлайн-запись</a></li>
+                        <li><a href="#" class="footer-link">Уведомления</a></li>
+                        <li><a href="#" class="footer-link">Аналитика</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Правовая информация</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Пользовательское соглашение</a></li>
+                        <li><a href="#" class="footer-link">Конфиденциальность</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

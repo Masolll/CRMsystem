@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href='./css/style-admin-account.css'>
+    <link rel="stylesheet" href='./css/style-header-footer.css'>
+    <link rel="stylesheet" href='./css/admin-record.css'>
+    <title>Lunara — CRM Система для записи клиентов</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="#" class="navigation-link">Возможности</a>
+                    <a href="#" class="navigation-link">Контакты</a>
+                    <a href="#" class="navigation-link">Запись</a>
+                </nav>
+            </div>
+            <div class="login-container">
+                <a href="login-admin.html" class="login">
+                    <img src="https://via.placeholder.com/50" alt="Войти">
+                    <p>Войти</p>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <h1>Название организации</h1>
+            <div class="profile">
+                <div class="avatar">
+                    <img src="https://via.placeholder.com/50" alt="Аватар">
+                </div>
+                <div class="profile-info">
+                    <p>Фамилия</p>
+                    <p>Имя</p>
+                    <p>Отчество</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="field">
+                    <label for="user-id">Логин:</label>
+                    <input type="text" id="user-id">
+                </div>
+                <div class="field">
+                    <label for="email-side">Почта:</label>
+                    <input type="email" id="email-side">
+                </div>
+            </div>
+            <nav class="menu">
+                <button class="menu-button show-employees-list">Список сотрудников</button>
+                <button class="menu-button show-record-list">Список записей</button>
+                <button class="menu-button show-add-employees-form">Добавить сотрудника</button>
+                <button class="menu-button show-record-form">Создать запись</button>
+            </nav>
+            
+        </aside>
+
+        <section class="schedule">
+            <div id="employees" class="employees">
+                <div class="list-header">
+                    <h1>Список сотрудников</h1>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Поиск сотрудников">
+                    <button class="clear-employee-search-button">Очистить</button>
+                </div>
+                
+                <div id="employeeList" class="employee-list">
+                    <!-- Сотрудники будут динамически добавляться сюда -->
+                </div>
+            </div>
+            
+            <div id="records" class="records" style="display: none;">
+                <div class="list-header">
+                    <h1>Список записей</h1>
+                </div>
+            
+                <!-- Поиск записей -->
+                <div class="search-container">
+                    <input type="text" id="searchInputRecord" placeholder="Поиск записей">
+                    <button class="clear-record-search-button">Очистить</button>
+                </div>
+            
+                <!-- Список записей -->
+                <div id="recordList" class="record-list">
+                    <!-- Записи будут динамически добавляться сюда -->
+                </div>
+            </div>
+            
+            <div id="addEmployee" class="add-employee" style="display: none;">
+                <h1 class="employee-form-title">Добавить сотрудника</h1>
+                <form class="employee-form">
+                    <label for="employee-name">ФИО:</label>
+                    <input type="text" id="employee-name" name="employee-name" required>
+
+                    <label for="position">Должность:</label>
+                    <input type="text" id="position" name="position" required>
+                    
+                    <label for="phone">Телефон:</label>
+                    <input type="text" id="phone" name="phone" placeholder="1-222-333-44-55" required>
+                    
+                    <label for="email">Почта:</label>
+                    <input type="email" id="email" name="email" placeholder="example@example.com" required>
+
+                    <label for="employee-id">ID:</label>
+                    <input type="text" id="employee-id" name="employee-id" required>
+                    
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                    
+                    <label for="confirm-password">Подтверждение пароля:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+
+                    <button type="button" class="password-visibility">Показать/Скрыть пароль</button>
+
+                    <button type="submit" class="submit-button">Добавить</button>
+                </form>
+            </div>
+
+            <div id="addRecord" class="add-record" style="display: none;">
+                <h1 class="record-form-title">Поле записи</h1>
+                <form class="record-form">
+                    <label for="record-name">Название записи:</label>
+                    <input type="text" id="record-name" name="record-name" required>
+
+                    <label for="price">Стоимость:</label>
+                    <input type="text" id="price" name="price" placeholder="1000" required>
+
+                    <label for="employee">Сотрудник:</label>
+                    <select id="employee" name="employee" multiple required></select>
+
+                    <label for="address">Адрес:</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <label for="description">Описание:</label>
+                    <textarea id="description" name="description" rows="6" placeholder="Ведите описание записи"></textarea>
+
+                    <button type="submit" class="submit-button">Создать запись</button>
+                </form>
+            </div>
+
+            <div id="editEmployee" class="edit-employee" style="display: none;">
+                <h1 class="edit-employee-form-title">Редактирование сотрудника</h1>
+                <form class="edit-employee-form">
+                    <label for="edit-employee-name">ФИО:</label>
+                    <input type="text" id="edit-employee-name" name="edit-employee-name" required>
+
+                    <label for="edit-position">Должность:</label>
+                    <input type="text" id="edit-position" name="edit-position" required>
+                    
+                    <label for="edit-phone">Телефон:</label>
+                    <input type="text" id="edit-phone" name="edit-phone" placeholder="1-222-333-44-55" required>
+                    
+                    <label for="edit-email">Почта:</label>
+                    <input type="email" id="edit-email" name="edit-email" placeholder="example@example.com" required>
+
+                    <label for="edit-employee-id">ID:</label>
+                    <input type="text" id="edit-employee-id" name="edit-employee-id" required>
+                    
+                    <label for="edit-password">Пароль:</label>
+                    <input type="password" id="edit-password" name="edit-password" required>
+                    
+                    <label for="edit-confirm-password">Подтверждение пароля:</label>
+                    <input type="password" id="edit-confirm-password" name="edit-confirm-password" required>
+
+                    <button type="button" class="edit-password-visibility">Показать/Скрыть пароль</button>
+
+                    <button type="submit" class="edit-submit-button">Сохранить изменения</button>
+                    <input id="edit-employee-id-hidden" style="display: none;">
+                </form>
+            </div>
+
+            <div id="editRecord" class="edit-record" style="display: none;">
+                <h1 class="edit-record-form-title">Редактирование записи</h1>
+                <form class="edit-record-form">
+                    <label for="edit-record-name">Название записи:</label>
+                    <input type="text" id="edit-record-name" name="edit-record-name" required>
+            
+                    <label for="edit-price">Стоимость:</label>
+                    <input type="text" id="edit-price" name="edit-price" placeholder="1000" required>
+            
+                    <label for="edit-employee">Сотрудники:</label>
+                    <select id="edit-employee" name="edit-employee" multiple required>
+                        <!-- Сотрудники будут добавляться динамически через JavaScript -->
+                    </select>
+            
+                    <label for="edit-address">Адрес:</label>
+                    <input type="text" id="edit-address" name="edit-address" required>
+            
+                    <label for="edit-description">Описание:</label>
+                    <textarea id="edit-description" name="edit-description" rows="6" placeholder="Введите описание записи"></textarea>
+            
+                    <button type="submit" class="edit-submit-button">Сохранить изменения</button>
+                    <input id="edit-record-id-hidden" style="display: none;">
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="footer-navigation-container">
+                <div class="footer-section">
+                    <p class="footer-heading">Компания</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">О нас</a></li>
+                        <li><a href="#" class="footer-link">Отзывы</a></li>
+                        <li><a href="#" class="footer-link">База знаний</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Возможности</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Онлайн-запись</a></li>
+                        <li><a href="#" class="footer-link">Уведомления</a></li>
+                        <li><a href="#" class="footer-link">Аналитика</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Правовая информация</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Пользовательское соглашение</a></li>
+                        <li><a href="#" class="footer-link">Конфиденциальность</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <template id="employee-template">
+        <div class="employee-item">
+            <p class="full-name">ФИО сотрудника</p>
+            <div class="job-title">
+                <p>Должность</p>
+            </div>
+            <p class="employee-id">ID</p>
+            <div class="status-icons">
+                <button class="employee-profile">Профиль</button>
+                <button class="copy-data">✔</button>
+                <button class="employee-edit">Редактировать</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="record-template">
+        <div class="record-item">
+            <p class="full-name">Название записи - Стоимость</p>
+            <div class="record-employees">
+                <p><strong>Сотрудники:</strong></p>
+            </div>
+            <p class="record-description">Описание</p>
+            <p class="record-adress">Адрес</p>
+            <div class="status-icons">
+                <button class="record-edit">Редактировать</button>
+            </div>
+        </div>
+    </template>
+
+    <script type="module" src="./js/main-admin-account.js"></script>
+</body>
+</html>

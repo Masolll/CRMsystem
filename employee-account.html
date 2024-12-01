@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href='./css/style-employee-account.css'>
+    <link rel="stylesheet" href='./css/style-header-footer.css'>
+    <title>Lunara — CRM Система для записи клиентов</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="#" class="navigation-link">Возможности</a>
+                    <a href="#" class="navigation-link">Контакты</a>
+                    <a href="#" class="navigation-link">Запись</a>
+                </nav>
+            </div>
+            <div class="login-container">
+                <a href="login-admin.html" class="login">
+                    <img src="https://via.placeholder.com/50" alt="Войти">
+                    <p>Войти</p>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">
+                    <img src="https://via.placeholder.com/50" alt="Аватар">
+                </div>
+                <div class="profile-info">
+                    <p>Фамилия</p>
+                    <p>Имя</p>
+                    <p>Отчество</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="field">
+                    <label for="user-id">ID:</label>
+                    <input type="text" id="user-id" placeholder="Введите ID">
+                </div>
+                <div class="field">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" placeholder="х-ххх-ххх-хх-хх">
+                </div>
+                <div class="field">
+                    <label for="email">Почта:</label>
+                    <input type="email" id="email" placeholder="Введите почту">
+                </div>
+            </div>
+            <div class="calendar">
+                <div class="month-switcher">
+                    <button id="prevMonth">&lt;</button>
+                    <span id="monthYear"></span>
+                    <button id="nextMonth">&gt;</button>
+                </div>
+                <div id="calendarDays" class="calendar-days"></div>
+                
+                <button id="todayButton" class="today-button">Сегодняшняя дата</button>
+            </div>
+            
+        </aside>
+
+        <section class="schedule">
+            <div class="date-header">
+                <h1>05.11.24</h1>
+            </div>
+            <div class="time-slots">
+                <div class="slot">
+                    <span class="time">08:00–09:00</span>
+                    <p class="title">Название записи</p>
+                    <div class="client-info">
+                        <p>Иванов Иван Иванович</p>
+                        <p>+1-222-333-44-55</p>
+                        <p>example@example.com</p>
+                    </div>
+                    <p class="comment">Комментарий клиента...Комментарий клиента...Комментарий клиента...</p>
+                    <div class="status-icons">
+                        <button class="check">✔</button>
+                        <button class="cancel">✖</button>
+                    </div>
+                </div>
+
+                <div class="slot">
+                    <span class="time">09:00–10:00</span>
+                    <p class="title">Название записи</p>
+                    <div class="client-info">
+                        <p>Иванов Иван Иванович</p>
+                        <p>+1-222-333-44-55</p>
+                        <p>example@example.com</p>
+                    </div>
+                    <p class="comment">Комментарий клиента...Комментарий клиента...Комментарий клиента...</p>
+                    <div class="status-icons">
+                        <button class="check">✔</button>
+                        <button class="cancel">✖</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="footer-navigation-container">
+                <div class="footer-section">
+                    <p class="footer-heading">Компания</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">О нас</a></li>
+                        <li><a href="#" class="footer-link">Отзывы</a></li>
+                        <li><a href="#" class="footer-link">База знаний</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Возможности</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Онлайн-запись</a></li>
+                        <li><a href="#" class="footer-link">Уведомления</a></li>
+                        <li><a href="#" class="footer-link">Аналитика</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Правовая информация</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Пользовательское соглашение</a></li>
+                        <li><a href="#" class="footer-link">Конфиденциальность</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="./js/calendar.js"></script>
+</body>
+</html>

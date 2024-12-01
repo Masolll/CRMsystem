@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href='./css/style-registration.css'>
+    <link rel="stylesheet" href='./css/style-header-footer.css'>
+    <title>Lunara — Регистрация</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="#" class="navigation-link">Возможности</a>
+                    <a href="#" class="navigation-link">Контакты</a>
+                    <a href="#" class="navigation-link">Запись</a>
+                </nav>
+            </div>
+            <div class="login-container">
+                <a href="login-admin.html" class="login">
+                    <img src="https://via.placeholder.com/50" alt="Войти">
+                    <p>Войти</p>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="registration">
+            <div class="registration-container">
+                <h1 class="registration-title">Регистрация организации</h1>
+                <form class="registration-form">
+                    <label for="org-name">Название организации:</label>
+                    <input type="text" id="org-name" name="org-name" required>
+
+                    <label for="inn">ИНН:</label>
+                    <input type="text" id="inn" name="inn" placeholder="0123456789" required>
+
+                    <label for="surname">Фамилия:</label>
+                    <input type="text" id="surname" name="surname" placeholder="Иванов" required>
+
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" placeholder="Иван" required>
+
+                    <label for="patronymic">Отчество:</label>
+                    <input type="text" id="patronymic" name="patronymic" placeholder="Иванович" required>
+
+                    <label for="email">Почта организации:</label>
+                    <input type="email" id="email" name="email" placeholder="example@company.com" required>
+
+                    <label for="phone">Телефон организации:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="1-222-333-44-55" required>
+
+                    <label for="login">Логин:</label>
+                    <input type="text" id="login" name="login" required>
+
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="confirm-password">Подтверждение пароля:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+
+                    <button type="submit" class="submit-button">Зарегистрироваться</button>
+
+                    <div class="form-links">
+                        <a href="login-employee.html" class="form-link">Войти как сотрудник</a>
+                        <a href="login-admin.html" class="form-link">Войти как администратор</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="footer-navigation-container">
+                <div class="footer-section">
+                    <p class="footer-heading">Компания</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">О нас</a></li>
+                        <li><a href="#" class="footer-link">Отзывы</a></li>
+                        <li><a href="#" class="footer-link">База знаний</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Возможности</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Онлайн-запись</a></li>
+                        <li><a href="#" class="footer-link">Уведомления</a></li>
+                        <li><a href="#" class="footer-link">Аналитика</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Правовая информация</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Пользовательское соглашение</a></li>
+                        <li><a href="#" class="footer-link">Конфиденциальность</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

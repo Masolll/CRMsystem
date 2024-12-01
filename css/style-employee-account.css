@@ -1,0 +1,242 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #000000;
+    background: url('../img/background.png') no-repeat center center fixed;
+    background-color: #ADADAD;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+
+/* Sidebar */
+main {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    background: #D9D9D9;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar img {
+    width: 100px;
+    border-radius: 10%;
+    margin-right: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.profile-info p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.field label {
+    width: 25%;
+}
+
+.field input {
+    flex-grow: 1;
+    padding: 5px 10px;
+    border: 1px solid #ADADAD;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.field input:focus {
+    border-color: #b79ac7;
+    box-shadow: 0 0 5px rgba(183, 154, 199, 0.5);
+}
+
+.month-switcher {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.month-switcher span {
+    font-size: 18px;
+}
+
+.month-switcher button {
+    background: #b79ac7;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.month-switcher button:hover {
+    background: #9a7bb6;
+}
+
+.calendar-days {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.calendar-days .day {
+    text-align: center;
+    padding: 5px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.calendar-days .day.inactive {
+    background-color: #ddd;
+    color: #aaa;
+}
+
+.calendar-days .day:hover {
+    background-color: #b79ac7;
+    color: white;
+}
+
+.calendar-days .day.selected {
+    background-color: #9a7bb6;
+    color: #FFFFFF;
+}
+
+.today-button {
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #b79ac7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    display: block;
+    margin: 20px auto 0 auto;
+}
+
+.today-button:hover {
+    background: #9a7bb6;
+}
+
+
+
+
+/* Schedule */
+.schedule {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.date-header {
+    display: flex;
+    justify-content: center;
+}
+
+.date-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.time-slots {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: 2px solid #b79ac7;
+    border-radius: 10px;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+}
+
+.slot .time {
+    flex: 1;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+.slot .title {
+    flex: 2;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+}
+
+.slot .client-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color: #666;
+}
+
+.slot .client-info p {
+    margin: 0;
+}
+
+.slot .comment {
+    flex: 2;
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+    margin-right: 20px;
+    text-align: left;
+}
+
+.slot .status-icons {
+    flex: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.status-icons button {
+    background: #b79ac7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.status-icons button:hover {
+    background: #9a7bb6;
+}
