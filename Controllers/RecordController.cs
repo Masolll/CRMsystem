@@ -6,9 +6,9 @@ namespace crm.Controllers;
 
 public class RecordController : Controller
 {
-    private readonly ApplicationContext dbContext;
+    private readonly ApplicationDbContext dbContext;
 
-    public RecordController(ApplicationContext dbContext)
+    public RecordController(ApplicationDbContext dbContext)
     {
         this.dbContext = dbContext;
     }

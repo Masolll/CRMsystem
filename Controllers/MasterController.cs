@@ -6,17 +6,17 @@ namespace crm.Controllers;
 
 public class MasterController : Controller
 {
-    private readonly ApplicationContext dbContext;
+    private readonly ApplicationDbContext dbContext;
 
-    public MasterController(ApplicationContext dbContext)
+    public MasterController(ApplicationDbContext dbContext)
     {
         this.dbContext = dbContext;
     }
 
     [HttpPost]
-    public IActionResult Index(string masterEmail, string masterPassword)
+    public IActionResult Index(string masterLogin, string masterPassword)
     {
-        dbContext.Masters.Add(new Master(masterEmail, masterPassword));
+        dbContext.Masters.Add(new Master(masterLogin, masterPassword));
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }

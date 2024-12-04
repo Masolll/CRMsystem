@@ -3,12 +3,12 @@ using crm.Models;
 
 namespace crm.Data;
 
-public class ApplicationContext : DbContext
+public class ApplicationDbContext : DbContext
 {
     public DbSet<Record> Records { get; set; } = null!;
     public DbSet<Master> Masters { get; set; } = null!;
 
-    public ApplicationContext() => Database.EnsureCreated();
+    public ApplicationDbContext() => Database.EnsureCreated();
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
