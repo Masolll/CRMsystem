@@ -4,12 +4,20 @@
 
 <div class="text-center">
     <h1 class="display-4">CRM System</h1>
-    <p>Фантазеры team</p>
-    <form method='post'>
+    <p>Войти как сотрудник:</p>
+    <form method='post' action="/master/login">
         <p>Введите логин мастера:</p>
         <input name="MasterLogin">
         <p>Введите пароль мастера</p>
         <input name="MasterPassword">
+        <input type="submit" value="Войти">
+    </form>
+    <p>Войти как администратор:</p>
+    <form method='post' action="/admin/login">
+        <p>Введите логин админа:</p>
+        <input name="AdminLogin">
+        <p>Введите пароль админа</p>
+        <input name="AdminPassword">
         <input type="submit" value="Войти">
     </form>
 </div>

@@ -26,24 +26,6 @@ public class HomeController : Controller
         return View();
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Index(string masterLogin, string masterPassword)
-    {
-        var searchMaster = dbContext.Masters.FirstOrDefault(e => e.MasterLogin == masterLogin);
-        if(searchMaster == null || searchMaster.MasterPassword != masterPassword)
-        {
-            return BadRequest("Неверный логин или пароль");
-        }
-
-        var claims = new List<Claim> { new Claim(ClaimTypes.Name, masterLogin) };
-        // создаем объект ClaimsIdentity
-        ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");
-        // установка аутентификационных куки
-        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-
-        return RedirectToAction("index", "account", new { masterLogin });
-    }
-
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

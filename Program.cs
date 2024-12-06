@@ -7,7 +7,12 @@ using crm.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication("Cookies")
-    .AddCookie(options => options.LoginPath = "/"); //loginPath это конечная точка на которую будет перебрасывать неаунтифицированных пользователей
+    .AddCookie(options => 
+    {
+        options.LoginPath = "/";    //путь для неаутифицированных пользователей
+        options.AccessDeniedPath = "/"; //путь для аунтифицированных пользователей у которых нет прав
+        
+    }); //loginPath это конечная точка на которую будет перебрасывать неаунтифицированных пользователей
 builder.Services.AddAuthorization();
 
 // добавляем контекст ApplicationContext в качестве сервиса в приложение
