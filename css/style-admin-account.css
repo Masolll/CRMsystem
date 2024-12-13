@@ -293,37 +293,34 @@ main {
 
 
 
-
+/* Password */
 .password-visibility,
 .edit-password-visibility {
-    background-color: #f0f0f0; /* Светлый фон */
-    border: 1px solid #ccc; /* Легкая рамка */
-    border-radius: 5px; /* Скругленные углы */
-    padding: 8px 12px; /* Внутренний отступ */
-    font-size: 14px; /* Размер шрифта */
-    color: #333; /* Цвет текста */
-    cursor: pointer; /* Указатель мыши */
-    transition: all 0.3s ease; /* Анимация при наведении */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Эффект при наведении */
 .password-visibility:hover,
 .edit-password-visibility:hover {
-    background-color: #e0e0e0; /* Более темный фон */
-    border-color: #999; /* Более темная рамка */
-    color: #000; /* Более контрастный текст */
+    background-color: #e0e0e0;
+    border-color: #999;
+    color: #000;
 }
 
-/* Активное состояние */
 .password-visibility:active,
 .edit-password-visibility:active {
-    background-color: #d0d0d0; /* Темнее при нажатии */
-    transform: scale(0.98); /* Легкий эффект "нажатия" */
+    background-color: #d0d0d0;
+    transform: scale(0.98);
 }
 
-/* Фокус */
 .password-visibility:focus,
 .edit-password-visibility:focus {
-    outline: none; /* Убираем стандартное выделение */
-    box-shadow: 0 0 4px #007BFF; /* Подсветка */
+    outline: none;
+    box-shadow: 0 0 4px #007BFF;
 }

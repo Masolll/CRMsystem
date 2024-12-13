@@ -36,7 +36,7 @@ body {
 .confirmation-title {
     color: #000000;
     font-size: 32px;
-    margin: 10px 0 20px;
+    margin: 10px 0 40px;
 }
 
 .description-container {
@@ -50,6 +50,13 @@ body {
     width: 100px;
     margin-right: 30px;
     border-radius: 10px;
+}
+
+.description-container h3 {
+    margin: 0;
+    color: #000000;
+    max-width: 450px;
+    text-align: left;
 }
 
 .description-container p {
@@ -66,6 +73,19 @@ body {
     text-align: left;
     color: #000000;
     margin-top: 20px;
+}
+
+.employee-info {
+    display: flex;
+    gap: 20px;
+}
+
+.employee-info .field:first-child {
+    flex: 2;
+}
+
+.employee-info .field:last-child {
+    flex: 1;
 }
 
 .field {
@@ -95,8 +115,9 @@ body {
     margin-top: 30px;
 }
 
-.edit-link,
-.submit-button {
+.edit-form-button,
+.submit-button,
+.confirm-button {
     padding: 10px;
     margin-top: 20px;
     font-size: 18px;
@@ -109,15 +130,52 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
-.edit-link {
+.edit-form-button {
     background-color: #7e747a;
     border: 3px solid #524b50;
 }
 
-.edit-link:hover {
+.edit-form-button:hover {
     background-color: #968c92;
 }
 
-.submit-button:hover {
+.submit-button:hover,
+.confirm-button:hover {
     background-color: #5a3e50;
+}
+
+
+
+/* Success message */
+.success-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    background-color: #4E3746;
+    color: white;
+    border-radius: 10px;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.success-button {
+    padding: 10px 20px;
+    background-color: #7e747a;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.success-button:hover {
+    background-color: #968c92;
+}
+
+.no-scroll {
+    overflow: hidden;
 }

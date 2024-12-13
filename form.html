@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href='./css/datetime-selector.css'>
     <link rel="stylesheet" href='./css/style-form.css'>
+    <link rel="stylesheet" href='./css/style-confirmation.css'>
     <link rel="stylesheet" href='./css/style-header-footer.css'>
     <title>Lunara — Форма записи</title>
 </head>
@@ -39,23 +41,37 @@
                 <h1 class="sign-title">Запись</h1>
                 <form class="sign-form">
                     <label for="sign-name">Наименование записи:</label>
-                    <select id="sign-name" name="sign-name" required>
-                        <option value="" disabled selected>Выберите запись</option>
-                        <option value="record1">Запись 1 — 100 р.</option>
-                        <option value="record2">Запись 2 — 200 р.</option>
-                        <option value="record3">Запись 3 — 300 р.</option>
-                    </select>
+                    <input type="text" id="sign-name" name="sign-name" disabled required>
 
                     <label for="employee">Сотрудник:</label>
                     <select id="employee" name="employee" required>
                         <option value="" disabled selected>Выберите сотрудника</option>
-                        <option value="employee1">Сотрудник 1</option>
-                        <option value="employee2">Сотрудник 2</option>
-                        <option value="employee3">Сотрудник 3</option>
                     </select>
 
-                    <label for="date-time">Дата и время:</label>
-                    <input type="datetime-local" id="date-time" name="date-time" required>
+                    <div class="date-time-picker-container">
+                        <div class="calendar-section">
+                            <label for="custom-date">Выберите дату:</label>
+                            <div class="calendar-container">
+                                <div class="month-switcher">
+                                    <button type="button" id="prevMonth">&lt;</button>
+                                    <span id="monthYear"></span>
+                                    <button type="button" id="nextMonth">&gt;</button>
+                                </div>
+                                <div id="calendarDays" class="calendar-days"></div>
+                                <button type="button" id="todayButton" class="today-button">Сегодняшняя дата</button>
+                            </div>
+                            <input type="hidden" id="selectedDate" name="selectedDate">
+                        </div>
+                        <div class="time-picker-section">
+                            <label for="custom-time">Выберите время:</label>
+                            <div class="custom-time-picker">
+                                <input type="text" id="custom-time" name="custom-time" placeholder="Выберите время" autocomplete="off" required>
+                                <div class="time-dropdown">
+                                    <div class="time-column"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <label for="surname">Фамилия:</label>
                     <input type="text" id="surname" name="surname" placeholder="Иванов" required>
@@ -77,6 +93,50 @@
 
                     <button type="submit" class="submit-button">Записаться</button>
                 </form>
+            </div>
+
+            <div class="confirmation-container" style="display: none;">
+                <h1 class="confirmation-title">Название записи</h1>
+                <div class="description-container">
+                    <img src="https://via.placeholder.com/50" alt="Фото сотрудника">
+                    <div>
+                        <h3>Описание</h3>
+                        <p>Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...</p>
+                    </div>
+                </div>
+                <div class="confirmation-content">
+                    <div class="employee-info">
+                        <div class="field">
+                            <label for="employee-name-confirmation">Сотрудник:</label>
+                            <span id="employee-name-confirmation">Иванов Иван Иванович</span>
+                        </div>
+                        <div class="field">
+                            <label for="date-time-confirmation">Дата и время:</label>
+                            <span id="date-time-confirmation">12.12.2024 15:30</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="address-confirmation">Адрес:</label>
+                        <span id="address-confirmation">г. Екатеринбург, д. такой-то...</span>
+                    </div>
+                    <div class="field">
+                        <label for="phone-confirmation">Контактный телефон:</label>
+                        <span id="phone-confirmation">x-xxx-xxx-xx-xx</span>
+                    </div>
+                    <div class="field">
+                        <label for="comment-confirmation">Комментарий:</label>
+                        <span id="comment-confirmation">Комментарий клиента</span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <a class="edit-form-button">Изменить</a>
+                    <button class="confirm-button">Подтвердить</button>
+                </div>
+            </div>
+
+            <div class="success-message" style="display: none;">
+                <h2>Запись успешно подтверждена!</h2>
+                <button class="success-button" id="go-home-button">Круто!</button>
             </div>
         </section>
     </main>
@@ -115,5 +175,7 @@
             </div>
         </div>
     </footer>
+
+    <script type="module" src="./js/main-customer-form.js"></script>
 </body>
 </html>

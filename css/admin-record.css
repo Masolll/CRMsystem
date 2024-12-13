@@ -3,9 +3,9 @@
 .add-employee,
 .edit-employee {
     position: relative;
-    top: 50%; /* Смещаем форму на 50% от верхней границы */
-    left: 50%; /* Смещаем форму на 50% от левой границы */
-    transform: translate(-50%, -50%); /* Сдвигаем форму на половину её ширины и высоты, чтобы она была в центре */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 40px;

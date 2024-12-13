@@ -37,17 +37,19 @@
         <section class="login-section">
             <div class="login-box">
                 <h1 class="login-title">Вход</h1>
-                <form class="login-form">
+                <form class="login-form-employee">
                     <label for="id" class="form-label">ID</label>
                     <input type="text" id="id" class="form-input" placeholder="123456">
+
                     <label for="password" class="form-label">Пароль</label>
                     <input type="password" id="password" class="form-input">
+
                     <button type="submit" class="form-button">Войти как сотрудник</button>
-                    <div class="form-links">
-                        <a href="registration.html" class="form-link">Создать аккаунт организации</a>
-                        <a href="login-admin.html" class="form-link">Войти как администратор</a>
-                    </div>
                 </form>
+                <div class="links">
+                    <a href="registration.html" class="registration-link">Создать аккаунт организации</a>
+                    <a href="login-admin.html" class="login-admin-link">Войти как администратор</a>
+                </div>
             </div>
         </section>
     </main>
@@ -86,5 +88,7 @@
             </div>
         </div>
     </footer>
+    
+    <script type="module" src="./js/login-form-employee.js"></script>
 </body>
 </html>

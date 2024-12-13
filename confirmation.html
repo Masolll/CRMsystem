@@ -39,16 +39,21 @@
                 <h1 class="confirmation-title">Название записи</h1>
                 <div class="description-container">
                     <img src="https://via.placeholder.com/50" alt="Фото сотрудника">
-                    <p>Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...</p>
+                    <div>
+                        <h3>Описание</h3>
+                        <p>Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...</p>
+                    </div>
                 </div>
                 <div class="confirmation-content">
-                    <div class="field">
-                        <label for="sign-name">Сотрудник:</label>
-                        <span id="sign-name">Иванов Иван Иванович</span>
-                    </div>
-                    <div class="field">
-                        <label for="employee">Дата и время:</label>
-                        <span id="employee">12.12.2024 15:30</span>
+                    <div class="employee-flex">
+                        <div class="field">
+                            <label for="sign-name">Сотрудник:</label>
+                            <span id="sign-name">Иванов Иван Иванович</span>
+                        </div>
+                        <div class="field">
+                            <label for="employee">Дата и время:</label>
+                            <span id="employee">12.12.2024 15:30</span>
+                        </div>
                     </div>
                     <div class="field">
                         <label for="address">Адрес:</label>
@@ -64,7 +69,7 @@
                     </div>
                 </div>
                 <div class="actions">
-                    <a href="form.html" class="edit-link">Изменить</a>
+                    <a class="edit-link">Изменить</a>
                     <button class="submit-button">Подтвердить</button>
                 </div>
             </div>
@@ -105,5 +110,8 @@
             </div>
         </div>
     </footer>
+
+    
+    <script type="module" src="./js/form-sub.js"></script>
 </body>
 </html>

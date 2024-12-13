@@ -25,6 +25,13 @@ const renderRecordList = (recordArray) => {
 
         recordItem.querySelector('.record-edit').addEventListener('click', () => openEditRecordForm(record.id));
 
+        recordItem.querySelector('.record-url').addEventListener('click', () => {
+            const recordUrl = `${window.location.origin}/form.html?id=${record.id}`;
+            navigator.clipboard.writeText(recordUrl)
+                .then(() => alert(`Ссылка скопирована: ${recordUrl}`))
+                .catch(err => alert(`Ошибка при копировании ссылки: ${err}`));
+        });
+
         recordListContainer.appendChild(recordItem);
     });
 }
