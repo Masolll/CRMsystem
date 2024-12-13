@@ -13,8 +13,13 @@ public class ApplicationDbContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        //подключение для ssms
         // optionsBuilder.UseSqlServer("Server=DESKTOP-5K5VL0B;Database=CRM;Trusted_Connection=True;TrustServerCertificate=True;");
-        optionsBuilder.UseMySql("server=localhost;user=root;password=mysql123;database=crm;", 
+        //для mySql на ноуте
+        // optionsBuilder.UseMySql("server=localhost;user=root;password=mysql123;database=crm;", 
+        //     new MySqlServerVersion(new Version(8, 0, 40)));
+        //для vds
+        optionsBuilder.UseMySql("server=localhost;user=root;password=firstvds123;database=crm;", 
             new MySqlServerVersion(new Version(8, 0, 40)));
     }
 }
