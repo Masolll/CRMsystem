@@ -5,19 +5,19 @@
 <div class="text-center">
     <h1 class="display-4">CRM System</h1>
     <p>Войти как сотрудник:</p>
-    <form method='post' action="/master/login">
+    <form method='post' action="/employee/login">
         <p>Введите логин мастера:</p>
-        <input name="MasterLogin">
+        <input name="login">
         <p>Введите пароль мастера</p>
-        <input name="MasterPassword">
+        <input name="password">
         <input type="submit" value="Войти">
     </form>
     <p>Войти как администратор:</p>
     <form method='post' action="/admin/login">
         <p>Введите логин админа:</p>
-        <input name="AdminLogin">
+        <input name="login">
         <p>Введите пароль админа</p>
-        <input name="AdminPassword">
+        <input name="password">
         <input type="submit" value="Войти">
     </form>
 </div>

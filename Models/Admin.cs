@@ -2,18 +2,18 @@ namespace crm.Models;
 
 public class Admin
 {
-    public Guid AdminId { get; private set; }
-    public string AdminLogin { get; set; }
-    public string AdminPassword { get; set; }
+    public Guid Id { get; private set; }
+    public string Login { get; set; }
+    public string Password { get; set; }
 
     public Admin()
     {
-        AdminId = Guid.NewGuid();
+        Id = Guid.NewGuid();
     }
     public Admin(string login, string password)
     {
-        AdminLogin = login;
-        AdminPassword = password;
-        AdminId = Guid.NewGuid();
+        Login = login;
+        Password = password;
+        Id = Guid.NewGuid();
     }
 }

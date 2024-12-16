@@ -3,22 +3,28 @@ namespace crm.Models;
 
 public class Record
 {
-    public Guid RecordId { get; private set; }//asp net core требует обязателно сеттер для полей бд, поэтому без него никак
-    public Guid MasterId { get; set; }
-    public string RecordName { get; set; }
-    public DateTime RecordDateTime { get; set; }
-    public string ClientName { get; set; }
+    public Guid Id { get; private set; }//asp net core требует обязателно сеттер для свойств бд, поэтому без него никак
+    public string Name { get; set; }
+    public int Price { get; set; }
+    
+    public string[] EmployeesLogins { get; set; }
+    
+    public string Address { get; set; }
+    public string Description { get; set; }
+    
+    
 
     public Record()
     {
-        RecordId = Guid.NewGuid();
+        Id = Guid.NewGuid();
     }
-    public Record(Guid masterId, string recordName, DateTime recordDateTime,  string clientName)
+    public Record(string name, int price, string[] employeesLogins, string address, string description)
     {
-        RecordId = Guid.NewGuid();
-        RecordName = recordName;
-        RecordDateTime = recordDateTime;
-        MasterId = masterId;
-        ClientName = clientName;
+        Id = Guid.NewGuid();
+        Name = name;
+        Price = price;
+        EmployeesLogins = employeesLogins;
+        Address = address;
+        Description = description;
     }
 }

@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using crm.Data;
 using crm.Models;
+using System.Text.Json;
+using System.Text.Unicode;
+using System.Text.Encodings.Web;
 
 namespace crm.Controllers;
 
@@ -13,42 +16,49 @@ public class RecordController : Controller
         this.dbContext = dbContext;
     }
 
-    [HttpPost]
-    public IActionResult Index(Guid masterId, string recordName, int year, int month, int day, int hour, int minuts, int seconds, string clientName)
+    [HttpGet]
+    public string DbInfo()
     {
-        dbContext.Records.Add(new Record(masterId, recordName, new DateTime(year, month, day, hour, minuts, seconds),  clientName));
+        //options нужно для изменения кодировки unicode(для понимания кириллицы), в данном случае диапазон равен всем знакам unicode
+        var options = new JsonSerializerOptions
+        {
+            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+            WriteIndented = true
+        };
+        return JsonSerializer.Serialize(dbContext.Records.ToArray(), options);
+    }
+
+    [HttpPost]
+    public IActionResult Create(string name, int price, string[] employeesLogins, string address, string description)
+    {
+        dbContext.Records.Add(new Record(name, price, employeesLogins, address, description));
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }
 
     [HttpPut]
-    public IActionResult Index(Guid recordId, Guid masterId, string recordName, int year, int month, int day, int hour, int minuts, int seconds, string clientName)
+    public IActionResult Update(Guid id, string name, int price, string[] employeesLogins, string address, string description)
     {
-        var updateRecord = dbContext.Records.ToList().Where(e => e.RecordId == recordId).FirstOrDefault();
+        var updateRecord = dbContext.Records.ToList().Where(e => e.Id == id).FirstOrDefault();
         if (updateRecord == null)
-            return NotFound("Такой заявки нет");
-        else
-        {
-            updateRecord.MasterId = masterId;
-            updateRecord.RecordName = recordName;
-            updateRecord.RecordDateTime = new DateTime(year, month, day, hour, minuts, seconds);
-            updateRecord.ClientName = clientName;
-            dbContext.SaveChanges();
-            return Ok("Заявка успешно обновлена");
-        }
+            return NotFound("Такой записи не найдено(");
+        updateRecord.Name = name;
+        updateRecord.Price = price;
+        updateRecord.EmployeesLogins = employeesLogins;
+        updateRecord.Address = address;
+        updateRecord.Description = description;
+        dbContext.SaveChanges();
+        return Ok("Заявка успешно обновлена");
     }
 
     [HttpDelete]
-    public IActionResult Index(Guid recordId)
+    public IActionResult Delete(Guid id)
     {
-        var removeRecord = dbContext.Records.ToList().Where(e => e.RecordId == recordId).FirstOrDefault();
+        var removeRecord = dbContext.Records.ToList().Where(e => e.Id == id).FirstOrDefault();
         if (removeRecord == null)
             return NotFound("Такой заявки нет");
-        else
-        {
-            dbContext.Records.Remove(removeRecord);
-            dbContext.SaveChanges();
-            return Ok("Заявка успешно удалена");
-        }
+        dbContext.Records.Remove(removeRecord);
+        dbContext.SaveChanges();
+        return Ok("Заявка успешно удалена");
     }
 }
