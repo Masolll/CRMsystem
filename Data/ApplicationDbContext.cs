@@ -15,10 +15,7 @@ public class ApplicationDbContext : DbContext
     {
         //подключение для ssms
         // optionsBuilder.UseSqlServer("Server=DESKTOP-5K5VL0B;Database=CRM;Trusted_Connection=True;TrustServerCertificate=True;");
-        //для mySql на ноуте
-        // optionsBuilder.UseMySql("server=localhost;user=root;password=mysql123;database=crm;", 
-        //     new MySqlServerVersion(new Version(8, 0, 40)));
-        //для vds
+        //для vds и ноута
         optionsBuilder.UseMySql("server=localhost;user=root;password=firstvds123;database=crm;", 
             new MySqlServerVersion(new Version(8, 0, 40)));
     }

@@ -1,4 +1,6 @@
 
+using crm.Models.CreateModels;
+
 namespace crm.Models;
 
 public class Record
@@ -12,19 +14,18 @@ public class Record
     public string Address { get; set; }
     public string Description { get; set; }
     
-    
-
     public Record()
     {
         Id = Guid.NewGuid();
     }
-    public Record(string name, int price, string[] employeesLogins, string address, string description)
+    
+    public Record(RecordCreateModel record)
     {
         Id = Guid.NewGuid();
-        Name = name;
-        Price = price;
-        EmployeesLogins = employeesLogins;
-        Address = address;
-        Description = description;
+        Name = record.Name;
+        Price = record.Price;
+        EmployeesLogins = record.EmployeesLogins;
+        Address = record.Address;
+        Description = record.Description;
     }
 }

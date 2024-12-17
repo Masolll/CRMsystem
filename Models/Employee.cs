@@ -1,3 +1,7 @@
+
+
+using crm.Models.CreateModels;
+
 namespace crm.Models;
 
 public class Employee
@@ -16,10 +20,15 @@ public class Employee
         Id = Guid.NewGuid();
     }
 
-    public Employee(string login, string password)
+    public Employee(EmployeeCreateModel employee)
     {
         Id = Guid.NewGuid();
-        Login = login;
-        Password = password;
+        Login = employee.Login;
+        Name = employee.Name;
+        Position = employee.Position;
+        Info = employee.Info;
+        Phone = employee.Phone;
+        Email = employee.Email;
+        Password = employee.Password;
     }
 }

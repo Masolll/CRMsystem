@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
+using crm.Models.CreateModels;
 
 namespace crm.Controllers;
 
@@ -41,9 +42,9 @@ public class EmployeeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(string login, string password)
+    public IActionResult Create(EmployeeCreateModel employee)
     {
-        dbContext.Employees.Add(new Employee(login, password)); //НАДО ХЭШИРОВАТЬ ПАРОЛЬ!!!
+        dbContext.Employees.Add(new Employee(employee)); //НАДО ХЭШИРОВАТЬ ПАРОЛЬ!!!
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }

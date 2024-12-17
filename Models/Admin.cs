@@ -1,8 +1,15 @@
+using crm.Models.CreateModels;
+
 namespace crm.Models;
 
 public class Admin
 {
     public Guid Id { get; private set; }
+    public string? NameCompany { get; set; }
+    public string? Inn { get; set; }
+    public string? NameAdmin { get; set; }
+    public string? Email { get; set; }
+    public string? Phone { get; set; }
     public string Login { get; set; }
     public string Password { get; set; }
 
@@ -10,10 +17,15 @@ public class Admin
     {
         Id = Guid.NewGuid();
     }
-    public Admin(string login, string password)
+    public Admin(AdminCreateModel admin)
     {
-        Login = login;
-        Password = password;
         Id = Guid.NewGuid();
+        NameCompany = admin.NameCompany;
+        Inn = admin.Inn;
+        NameAdmin = admin.NameAdmin;
+        Email = admin.Email;
+        Phone = admin.Phone;
+        Login = admin.Login;
+        Password = admin.Login;
     }
 }

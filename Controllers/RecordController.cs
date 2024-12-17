@@ -4,6 +4,7 @@ using crm.Models;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
+using crm.Models.CreateModels;
 
 namespace crm.Controllers;
 
@@ -29,9 +30,9 @@ public class RecordController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(string name, int price, string[] employeesLogins, string address, string description)
+    public IActionResult Create(RecordCreateModel record)
     {
-        dbContext.Records.Add(new Record(name, price, employeesLogins, address, description));
+        dbContext.Records.Add(new Record(record));
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }

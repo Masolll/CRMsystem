@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
+using crm.Models.CreateModels;
 
 namespace crm.Controllers;
 
@@ -40,9 +41,9 @@ public class AdminController : Controller
     }
     
     [HttpPost]
-    public IActionResult Create(string login, string password)
+    public IActionResult Create(AdminCreateModel admin)
     {
-        dbContext.Admins.Add(new Admin(login, password)); //НАДО ХЭШИРОВАТЬ ПАРОЛЬ!!!
+        dbContext.Admins.Add(new Admin(admin)); //НАДО ХЭШИРОВАТЬ ПАРОЛЬ!!!
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }
