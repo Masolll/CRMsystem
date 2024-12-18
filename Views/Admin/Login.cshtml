@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href='/css/style-index.css'>
+    <link rel="stylesheet" href='/css/style-login.css'>
     <link rel="stylesheet" href='/css/style-header-footer.css'>
-    <title>Lunara — CRM Система для записи клиентов</title>
+    <title>Lunara — Вход</title>
 </head>
 
 <body>
@@ -34,14 +34,22 @@
     </header>
 
     <main class="main">
-        <section class="hero">
-            <div class="hero-container">
-                <h1 class="hero-title">CRM система для онлайн-записи клиентов Вашего бизнеса</h1>
-                <p class="hero-text">
-                    Позвольте клиентам удобно записываться на Ваши услуги, автоматизируйте управление расписанием,<br> 
-                    ведение клиентской базы и отправку уведомлений
-                </p>
-                <button type="button" class="hero-button">Попробовать бесплатно</button>
+        <section class="login-section">
+            <div class="login-box">
+                <h1 class="login-title">Вход</h1>
+                <form class="login-form-admin" method="post" action="/admin/login">
+                    <label for="login" class="form-label">Логин</label>
+                    <input type="text" id="login" name="login" class="form-input">
+
+                    <label for="password" class="form-label">Пароль</label>
+                    <input type="password" name="password" id="password" class="form-input">
+
+                    <button type="submit" class="form-button">Войти как администратор</button>
+                </form>
+                <div class="links">
+                    <a href="registration.html" class="registration-link">Создать аккаунт организации</a>
+                    <a href="login-employee.html" class="login-employee-link">Войти как сотрудник</a>
+                </div>
             </div>
         </section>
     </main>
@@ -80,6 +88,7 @@
             </div>
         </div>
     </footer>
+
+    <script type="module" src="./js/login-form-admin.js"></script>
 </body>
 </html>
-

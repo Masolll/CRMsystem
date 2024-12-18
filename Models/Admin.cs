@@ -26,6 +26,6 @@ public class Admin
         Email = admin.Email;
         Phone = admin.Phone;
         Login = admin.Login;
-        Password = admin.Login;
+        Password = admin.Password;
     }
 }

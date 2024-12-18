@@ -29,6 +29,18 @@ public class AdminController : Controller
     }
 
     [HttpGet]
+    public IActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpGet]
+    public IActionResult Registration()
+    {
+        return View();
+    }
+
+    [HttpGet]
     public string DbInfo()
     {
         //options нужно для изменения кодировки unicode(для понимания кириллицы), в данном случае диапазон равен всем знакам unicode

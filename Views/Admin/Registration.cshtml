@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href='/css/style-index.css'>
+    <link rel="stylesheet" href='/css/style-registration.css'>
     <link rel="stylesheet" href='/css/style-header-footer.css'>
-    <title>Lunara — CRM Система для записи клиентов</title>
+    <title>Lunara — Регистрация</title>
 </head>
 
 <body>
@@ -34,14 +34,40 @@
     </header>
 
     <main class="main">
-        <section class="hero">
-            <div class="hero-container">
-                <h1 class="hero-title">CRM система для онлайн-записи клиентов Вашего бизнеса</h1>
-                <p class="hero-text">
-                    Позвольте клиентам удобно записываться на Ваши услуги, автоматизируйте управление расписанием,<br> 
-                    ведение клиентской базы и отправку уведомлений
-                </p>
-                <button type="button" class="hero-button">Попробовать бесплатно</button>
+        <section class="registration">
+            <div class="registration-container">
+                <h1 class="registration-title">Регистрация организации</h1>
+                <form class="registration-form" method="post" action="/admin/create">
+                    <label for="org-name">Название организации:</label>
+                    <input type="text" id="org-name" name="NameCompany" required>
+
+                    <label for="inn">ИНН:</label>
+                    <input type="text" id="inn" name="inn" placeholder="0123456789" required>
+
+                    <label for="surname">ФИО:</label>
+                    <input type="text" id="surname" name="NameAdmin" placeholder="Иванов" required>
+
+                    <label for="email">Почта организации:</label>
+                    <input type="email" id="email" name="Email" placeholder="example@company.com" required>
+
+                    <label for="phone">Телефон организации:</label>
+                    <input type="tel" id="phone" name="Phone" placeholder="1-222-333-44-55" required>
+
+                    <label for="login">Логин:</label>
+                    <input type="text" id="login" name="Login" required>
+
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="Password" required>
+
+                    <label for="confirm-password">Подтверждение пароля:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+
+                    <button type="submit" class="submit-button">Зарегистрироваться</button>
+                </form>
+                <div class="links">
+                    <a href="login-employee.html" class="login-employee-link">Войти как сотрудник</a>
+                    <a href="login-admin.html" class="login-employee-link">Войти как администратор</a>
+                </div>
             </div>
         </section>
     </main>
@@ -80,6 +106,7 @@
             </div>
         </div>
     </footer>
+    
+    <script type="module" src="./js/registration-form.js"></script>
 </body>
 </html>
-

@@ -1,0 +1,88 @@
+/* Header */
+.header-container {
+    background-color: #4A4A4A;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    display: block;
+    margin: 10px 10px 10px 60px;
+}
+
+.navigation {
+    display: flex;
+    gap: 60px;
+    margin-left: 50px;
+}
+
+.navigation-link,
+.login-container .login {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navigation-link:hover {
+    text-decoration: underline;
+}
+
+.login-container {
+    margin-left: auto;
+}
+
+.login {
+    display: flex;
+    gap: 10px;
+    margin: 10px 60px 10px 10px;
+    align-items: center;
+    line-height: 1;
+}
+
+.login img {
+    display: block;
+    width: 35px;
+    height: auto;
+}
+
+
+
+/* Footer */
+.footer-container {
+    background-color: #4A4A4A;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding-bottom: 80px;
+}
+
+.footer-navigation-container {
+    display: flex;
+    gap: 60px;
+    margin-left: 50px;
+}
+
+.footer-heading {
+    color: #ffffff;
+    margin: 0;
+    margin-top: 25px;
+}
+
+.footer-section ul {
+    list-style: none;
+    margin: 20px 0 0 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}

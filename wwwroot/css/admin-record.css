@@ -1,0 +1,94 @@
+.add-record,
+.edit-record,
+.add-employee,
+.edit-employee {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.record-form-title,
+.edit-record-form-title,
+.employee-form-title,
+.edit-employee-form-title {
+    color: #000000;
+    font-size: 32px;
+    margin: 10px 0 20px 0;
+}
+
+.record-form,
+.edit-record-form,
+.employee-form,
+.edit-employee-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.record-form label,
+.edit-record-form label,
+.employee-form label,
+.edit-employee-form label {
+    font-size: 16px;
+    color: #4A4A4A;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.record-form input,
+.record-form textarea,
+.record-form select,
+.edit-record-form input,
+.edit-record-form textarea,
+.edit-record-form select,
+.employee-form input,
+.employee-form textarea,
+.employee-form select,
+.edit-employee-form input,
+.edit-employee-form textarea,
+.edit-employee-form select {
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ADADAD;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.record-form textarea,
+.edit-record-form textarea,
+.employee-form textarea,
+.edit-employee-form textarea {
+    max-width: 600px;
+    min-width: 600px;
+    max-height: 270px;
+    min-height: 45px;
+}
+
+.submit-button,
+.edit-submit-button {
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #FFFFFF;
+    background-color: #4E3746;
+    border: 3px solid #2c1e27;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+
+.submit-button:hover,
+.edit-submit-button:hover {
+    background-color: #5a3e50;
+}

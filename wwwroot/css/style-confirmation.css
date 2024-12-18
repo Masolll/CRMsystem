@@ -1,0 +1,181 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #FFFFFF;
+    background: url('../img/background.png') no-repeat center center fixed;
+    background-color: #ADADAD;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+
+/* Confirmation */
+.confirmation {
+    position: relative;
+    padding: 160px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.confirmation-container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.confirmation-title {
+    color: #000000;
+    font-size: 32px;
+    margin: 10px 0 40px;
+}
+
+.description-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.description-container img {
+    display: block;
+    width: 100px;
+    margin-right: 30px;
+    border-radius: 10px;
+}
+
+.description-container h3 {
+    margin: 0;
+    color: #000000;
+    max-width: 450px;
+    text-align: left;
+}
+
+.description-container p {
+    margin: 10px 0 0;
+    color: #000000;
+    max-width: 450px;
+    text-align: left;
+}
+
+.confirmation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+    color: #000000;
+    margin-top: 20px;
+}
+
+.employee-info {
+    display: flex;
+    gap: 20px;
+}
+
+.employee-info .field:first-child {
+    flex: 2;
+}
+
+.employee-info .field:last-child {
+    flex: 1;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.field label {
+    font-size: 16px;
+    color: #4A4A4A;
+}
+
+.field span {
+    font-size: 18px;
+    color: #000000;
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ADADAD;
+    border-radius: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.edit-form-button,
+.submit-button,
+.confirm-button {
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #FFF;
+    background-color: #4E3746;
+    border: 3px solid #2c1e27;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+.edit-form-button {
+    background-color: #7e747a;
+    border: 3px solid #524b50;
+}
+
+.edit-form-button:hover {
+    background-color: #968c92;
+}
+
+.submit-button:hover,
+.confirm-button:hover {
+    background-color: #5a3e50;
+}
+
+
+
+/* Success message */
+.success-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    background-color: #4E3746;
+    color: white;
+    border-radius: 10px;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.success-button {
+    padding: 10px 20px;
+    background-color: #7e747a;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.success-button:hover {
+    background-color: #968c92;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
