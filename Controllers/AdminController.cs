@@ -4,11 +4,12 @@ using crm.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
 using crm.Models.CreateModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 
 namespace crm.Controllers;
 
@@ -35,6 +36,12 @@ public class AdminController : Controller
     }
 
     [HttpGet]
+    public IActionResult Account()
+    {
+        return View();
+    }
+
+    [HttpGet]
     public IActionResult Registration()
     {
         return View();
@@ -55,7 +62,9 @@ public class AdminController : Controller
     [HttpPost]
     public IActionResult Create(AdminCreateModel admin)
     {
-        dbContext.Admins.Add(new Admin(admin)); //НАДО ХЭШИРОВАТЬ ПАРОЛЬ!!!
+        var passwordHasher = new PasswordHasher<AdminCreateModel>();
+        admin.Password = passwordHasher.HashPassword(admin, admin.Password);
+        dbContext.Admins.Add(new Admin(admin));
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }

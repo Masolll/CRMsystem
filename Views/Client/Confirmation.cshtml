@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href='/css/style-login.css'>
+    <link rel="stylesheet" href='/css/style-confirmation.css'>
     <link rel="stylesheet" href='/css/style-header-footer.css'>
-    <title>Lunara — Вход</title>
+    <title>Lunara — Подтверждение записи</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                 </nav>
             </div>
             <div class="login-container">
-                <a href="/admin/login" class="login">password
+                <a href="/admin/login" class="login">
                     <img src="https://via.placeholder.com/50" alt="Войти">
                     <p>Войти</p>
                 </a>
@@ -34,21 +34,43 @@
     </header>
 
     <main class="main">
-        <section class="login-section">
-            <div class="login-box">
-                <h1 class="login-title">Вход</h1>
-                <form class="login-form-employee" method="Post" action="/employee/login">
-                    <label for="id" class="form-label">ID</label>
-                    <input type="text" id="id" name='login' class="form-input" placeholder="123456">
-
-                    <label for="password" class="form-label">Пароль</label>
-                    <input type="password" name="password" id="password" class="form-input">
-
-                    <button type="submit" class="form-button">Войти как сотрудник</button>
-                </form>
-                <div class="links">
-                    <a href="/admin/registration" class="registration-link">Создать аккаунт организации</a>
-                    <a href="/admin/login" class="login-admin-link">Войти как администратор</a>
+        <section class="confirmation">
+            <div class="confirmation-container">
+                <h1 class="confirmation-title">Название записи</h1>
+                <div class="description-container">
+                    <img src="https://via.placeholder.com/50" alt="Фото сотрудника">
+                    <div>
+                        <h3>Описание</h3>
+                        <p>Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...</p>
+                    </div>
+                </div>
+                <div class="confirmation-content">
+                    <div class="employee-flex">
+                        <div class="field">
+                            <label for="sign-name">Сотрудник:</label>
+                            <span id="sign-name">Иванов Иван Иванович</span>
+                        </div>
+                        <div class="field">
+                            <label for="employee">Дата и время:</label>
+                            <span id="employee">12.12.2024 15:30</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="address">Адрес:</label>
+                        <span id="address">г. Екатеринбург, д. такой-то...</span>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Контактный телефон:</label>
+                        <span id="phone">x-xxx-xxx-xx-xx</span>
+                    </div>
+                    <div class="field">
+                        <label for="comment">Комментарий:</label>
+                        <span id="comment">Комментарий клиента</span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <a class="edit-link">Изменить</a>
+                    <button class="submit-button">Подтвердить</button>
                 </div>
             </div>
         </section>
@@ -88,7 +110,8 @@
             </div>
         </div>
     </footer>
+
     
-    <script type="module" src="./js/login-form-employee.js"></script>
+    <script type="module" src="/js/form-sub.js"></script>
 </body>
 </html>

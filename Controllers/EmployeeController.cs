@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
 using crm.Models.CreateModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace crm.Controllers;
 
@@ -36,6 +37,12 @@ public class EmployeeController : Controller
     }
 
     [HttpGet]
+    public IActionResult Account()
+    {
+        return View();
+    }
+
+    [HttpGet]
     public string DbInfo()
     {
         //options нужно для изменения кодировки unicode(для понимания кириллицы), в данном случае диапазон равен всем знакам unicode
@@ -50,7 +57,9 @@ public class EmployeeController : Controller
     [HttpPost]
     public IActionResult Create(EmployeeCreateModel employee)
     {
-        dbContext.Employees.Add(new Employee(employee)); //НАДО ХЭШИРОВАТЬ ПАРОЛЬ!!!
+        var passwordHasher = new PasswordHasher<EmployeeCreateModel>();
+        employee.Password = passwordHasher.HashPassword(employee, employee.Password);
+        dbContext.Employees.Add(new Employee(employee));
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }
