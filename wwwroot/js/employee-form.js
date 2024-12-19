@@ -62,7 +62,7 @@ const handleEmployeeRegistration = () => {
 document.querySelector('.show-add-employees-form').addEventListener('click', () => showAddEmployeeForm());
 document.querySelector('.password-visibility').addEventListener('click', () => togglePasswordsVisibility());
 document.querySelector('.employee-form').addEventListener('submit', (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
     handleEmployeeRegistration();
 });
 

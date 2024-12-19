@@ -19,4 +19,5 @@ public class ApplicationDbContext : DbContext
         optionsBuilder.UseMySql("server=localhost;user=root;password=firstvds123;database=crm;", 
             new MySqlServerVersion(new Version(8, 0, 40)));
     }
+    
 }

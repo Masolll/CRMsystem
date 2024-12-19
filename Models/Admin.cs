@@ -12,6 +12,8 @@ public class Admin
     public string? Phone { get; set; }
     public string Login { get; set; }
     public string Password { get; set; }
+    
+    public List<Guid> Employees { get; set; }
 
     public Admin()
     {
@@ -27,5 +29,6 @@ public class Admin
         Phone = admin.Phone;
         Login = admin.Login;
         Password = admin.Password;
+        Employees = new List<Guid>();
     }
 }

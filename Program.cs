@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication("Cookies")
     .AddCookie(options => 
     {
-        options.LoginPath = "/";    //путь для неаутифицированных пользователей
+        options.LoginPath = "/admin/login";    //путь для неаутифицированных пользователей
         options.AccessDeniedPath = "/"; //путь для аунтифицированных пользователей у которых нет прав
         
     }); //loginPath это конечная точка на которую будет перебрасывать неаунтифицированных пользователей

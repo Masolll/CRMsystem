@@ -105,9 +105,9 @@
             
             <div id="addEmployee" class="add-employee" style="display: none;">
                 <h1 class="employee-form-title">Добавить сотрудника</h1>
-                <form class="employee-form">
+                <form class="employee-form" method="post" action="/employee/create">
                     <label for="employee-name">ФИО:</label>
-                    <input type="text" id="employee-name" name="employee-name" required>
+                    <input type="text" id="employee-name" name="name" required> @*Было name="employee-name" *@
 
                     <label for="position">Должность:</label>
                     <input type="text" id="position" name="position" required>
@@ -119,7 +119,7 @@
                     <input type="email" id="email" name="email" placeholder="example@example.com" required>
 
                     <label for="employee-id">ID:</label>
-                    <input type="text" id="employee-id" name="employee-id" required>
+                     <input type="text" id="employee-id" name="login" required> @*Было name="employee-id" *@
                     
                     <label for="password">Пароль:</label>
                     <input type="password" id="password" name="password" required>

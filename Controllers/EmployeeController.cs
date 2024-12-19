@@ -23,23 +23,39 @@ public class EmployeeController : Controller
     }
     
     [HttpGet]
-    [Authorize(Roles = "employee, admin")]
-    public IActionResult Index(string login)
-    {
-        ViewData["employeeLogin"] = login;
-        return View();
-    }
-    
-    [HttpGet]
     public IActionResult Login()
     {
         return View();
     }
 
     [HttpGet]
-    public IActionResult Account()
+    [Authorize(Roles = "employee, admin")]
+    public IActionResult Account(string employeeId)
     {
-        return View();
+        Guid employeeGuid;
+        var isTrueEmployee = Guid.TryParse(employeeId, out employeeGuid);
+        
+        if (!isTrueEmployee)
+            return Redirect($"/Employee/Login/");
+        
+        var userClaims = HttpContext.User.Claims;
+        var role = userClaims.FirstOrDefault(e => e.Type == ClaimTypes.Role).Value;
+        var clientId = userClaims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
+        if (role == "admin")//если входит админ то проверяю есть ли у него сотрудник с данным логином, если нет то отклоняю доступ
+        {
+            var admin = dbContext.Admins.FirstOrDefault(e => e.Id.ToString() == clientId);
+            
+            if (admin.Employees.Contains(employeeGuid))
+                return View();
+            
+            return Redirect("/Employee/login");
+        }
+
+        if (dbContext.Employees.FirstOrDefault(e => e.Id == employeeGuid) == null) //значит такого сотрудника вообще нет
+            return Redirect("/Employee/Login/");
+        if(clientId == employeeId) //id текущего пользователя в claim такой же как и переданный в адресе id
+            return View();
+        return Redirect($"/Employee/Login/");
     }
 
     [HttpGet]
@@ -55,11 +71,16 @@ public class EmployeeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(EmployeeCreateModel employee)
+    [Authorize(Roles = "admin")]
+    public IActionResult Create(EmployeeCreateModel employeeCreateModel)
     {
+        var adminId = HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;  //извлекаю id из контейнера claims то есть id админа который зашел в систему
+        var admin = dbContext.Admins.FirstOrDefault(e => e.Id.ToString() == adminId);  
         var passwordHasher = new PasswordHasher<EmployeeCreateModel>();
-        employee.Password = passwordHasher.HashPassword(employee, employee.Password);
-        dbContext.Employees.Add(new Employee(employee));
+        employeeCreateModel.Password = passwordHasher.HashPassword(employeeCreateModel, employeeCreateModel.Password);
+        var employee = new Employee(employeeCreateModel);
+        dbContext.Employees.Add(employee);
+        admin.Employees.Add(employee.Id);   //добавляю теущему админу нового сотрудника
         dbContext.SaveChanges();
         return Ok("все супер пупер! лес гоу!");
     }
@@ -67,14 +88,20 @@ public class EmployeeController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(string login, string password)
     {
-        var searchMaster = dbContext.Employees.FirstOrDefault(e => e.Login == login);
-        if(searchMaster == null || searchMaster.Password != password)
+        var passwordHasher = new PasswordHasher<Employee>();
+        var searchEmployee = dbContext.Employees.FirstOrDefault(e => e.Login == login);
+        if(searchEmployee == null 
+           || passwordHasher.VerifyHashedPassword(searchEmployee, searchEmployee.Password, password) != PasswordVerificationResult.Success)
         {
             return BadRequest("Неверный логин или пароль");
         }
 
         //claims это список объектов claim которые хранят информацию о пользователе. Claim хранит пары ключ-значение
-        var claims = new List<Claim> { new Claim(ClaimTypes.Name, login), new Claim(ClaimTypes.Role, "employee") };
+        var claims = new List<Claim> { 
+            new Claim(ClaimTypes.Name, login),
+            new Claim(ClaimTypes.Role, "employee"),
+            new Claim(ClaimTypes.Sid, searchEmployee.Id.ToString())
+        };
         //объект ClaimsIdentity это грубо говоря "личность". Конструктор принимает claims и тип авторизации в данном случае "cookie"
         var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
         // claimsPrincipal это объект который может хранить несколько ClaimsIdentity
@@ -82,7 +109,7 @@ public class EmployeeController : Controller
         //настройка аунтификационных кук
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
         
-        return RedirectToAction("index", "Employee", new { login = login });
+        return RedirectToAction("Account", "Employee", new { employeeId = searchEmployee.Id });
     }
 
     [HttpPost]

@@ -14,7 +14,7 @@ public class EmployeeCreateModel
     {
     }
     
-    public EmployeeCreateModel(string login, string name, string? position, string? info, string? phone, string? email, string password)
+    public EmployeeCreateModel(string login, string? name, string? position, string? info, string? phone, string? email, string password)
     {
         Login = login;
         Name = name;

@@ -20,14 +20,6 @@ public class AdminController : Controller
     {
         this.dbContext = dbContext;
     }
-    
-    [HttpGet]
-    [Authorize(Roles = "admin")]
-    public IActionResult Index(string login)
-    {
-        ViewData["adminLogin"] = login;
-        return View();
-    }
 
     [HttpGet]
     public IActionResult Login()
@@ -36,8 +28,11 @@ public class AdminController : Controller
     }
 
     [HttpGet]
-    public IActionResult Account()
+    [Authorize(Roles = "admin")]
+    public IActionResult Account(string adminId)
     {
+        if (HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value != adminId)
+            return Redirect($"/Admin/Login");
         return View();
     }
 
@@ -66,28 +61,35 @@ public class AdminController : Controller
         admin.Password = passwordHasher.HashPassword(admin, admin.Password);
         dbContext.Admins.Add(new Admin(admin));
         dbContext.SaveChanges();
-        return Ok("все супер пупер! лес гоу!");
+        return Redirect("/admin/login");
     }
 
     [HttpPost]
-    public async Task<IActionResult> Login(string login, string password)
+    public IActionResult Login(string login, string password)
     {
         var searchAdmin = dbContext.Admins.FirstOrDefault(e => e.Login == login);
-        if(searchAdmin == null || searchAdmin.Password != password)
+        var passwordHasher = new PasswordHasher<Admin>();//Здесь тип Admin а при создании хэша я использую объект AdminCreateModel
+        if(searchAdmin == null 
+           || passwordHasher.VerifyHashedPassword(searchAdmin, searchAdmin.Password, password) != PasswordVerificationResult.Success)
         {
             return BadRequest("Неверный логин или пароль");
         }
 
         //claims это список объектов claim которые хранят информацию о пользователе. Claim хранит пары ключ-значение
-        var claims = new List<Claim> { new Claim(ClaimTypes.Name, login), new Claim(ClaimTypes.Role, "admin") };
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, login),
+            new Claim(ClaimTypes.Role, "admin"),
+            new Claim(ClaimTypes.Sid, searchAdmin.Id.ToString())
+        };
         //объект ClaimsIdentity это грубо говоря "личность". Конструктор принимает claims и тип авторизации в данном случае "cookie"
         var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
         // claimsPrincipal это объект который может хранить несколько ClaimsIdentity
         var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
         //настройка аунтификационных кук
-        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
+        HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
         
-        return RedirectToAction("index", "admin", new { login = login });
+        return RedirectToAction("Account", "admin", new { adminId = searchAdmin.Id });
     }
 
     [HttpPost]
