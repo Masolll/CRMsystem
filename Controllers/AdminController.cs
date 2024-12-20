@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
 using crm.Models.CreateModels;
+using crm.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 
@@ -31,9 +32,11 @@ public class AdminController : Controller
     [Authorize(Roles = "admin")]
     public IActionResult Account(string adminId)
     {
+        var currentAdmin = dbContext.Admins.ToList().FirstOrDefault(e => e.Id.ToString() == adminId);
         if (HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value != adminId)
             return Redirect($"/Admin/Login");
-        return View();
+        var viewModel = new ViewModelAdminAccount(currentAdmin, dbContext.Employees.ToList(), dbContext.Records.ToList());
+        return View(viewModel);
     }
 
     [HttpGet]
@@ -72,7 +75,7 @@ public class AdminController : Controller
         if(searchAdmin == null 
            || passwordHasher.VerifyHashedPassword(searchAdmin, searchAdmin.Password, password) != PasswordVerificationResult.Success)
         {
-            return BadRequest("Неверный логин или пароль");
+            return Redirect($"Admin/Login/");
         }
 
         //claims это список объектов claim которые хранят информацию о пользователе. Claim хранит пары ключ-значение

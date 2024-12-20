@@ -1,3 +1,5 @@
+@model crm.Models.ViewModels.ViewModelAdminAccount
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -36,14 +38,20 @@
 
     <main>
         <aside class="sidebar">
-            <h1>Название организации</h1>
+            <h1>@Model.Admin.NameCompany</h1>
             <div class="profile">
                 <div class="avatar">
                     <img src="https://via.placeholder.com/50" alt="Аватар">
                 </div>
                 <div class="profile-info">
+                    @{
+                        //нужно изменить модели и формы чтобы было везде три отдельных поля Фамилия, Имя, Отчество
+                        // var firstName = Model.Admin.NameAdmin.Split()[0];
+                        // var secondName = Model.Admin.NameAdmin.Split()[1];
+                        // var patronymic = Model.Admin.NameAdmin.Split()[2];
+                    }
+                    <p>@Model.Admin.NameAdmin</p>
                     <p>Фамилия</p>
-                    <p>Имя</p>
                     <p>Отчество</p>
                 </div>
             </div>
@@ -135,15 +143,25 @@
 
             <div id="addRecord" class="add-record" style="display: none;">
                 <h1 class="record-form-title">Поле записи</h1>
-                <form class="record-form">
+                <form class="record-form" method="Post" action="/record/create">
                     <label for="record-name">Название записи:</label>
-                    <input type="text" id="record-name" name="record-name" required>
+                    <input type="text" id="record-name" name="name" required>
 
                     <label for="price">Стоимость:</label>
                     <input type="text" id="price" name="price" placeholder="1000" required>
 
                     <label for="employee">Сотрудник:</label>
-                    <select id="employee" name="employee" multiple required></select>
+                    <select id="employee" name="employeesLogins" multiple required>
+                        @{
+                            var employeesLogins = Model.Admin.EmployeesLogins;
+                            @for (var i = 0; i < employeesLogins.Count; i++)
+                            {
+                                <option value="@employeesLogins[i]">
+                                    ID: @employeesLogins[i] - @Model.AllEmployees.FirstOrDefault(e => e.Login ==employeesLogins[i]).Name
+                                </option>
+                            }
+                        }
+                    </select>
 
                     <label for="address">Адрес:</label>
                     <input type="text" id="address" name="address" required>

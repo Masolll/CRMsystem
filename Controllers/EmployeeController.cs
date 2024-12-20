@@ -30,14 +30,8 @@ public class EmployeeController : Controller
 
     [HttpGet]
     [Authorize(Roles = "employee, admin")]
-    public IActionResult Account(string employeeId)
+    public IActionResult Account(string employeeLogin)
     {
-        Guid employeeGuid;
-        var isTrueEmployee = Guid.TryParse(employeeId, out employeeGuid);
-        
-        if (!isTrueEmployee)
-            return Redirect($"/Employee/Login/");
-        
         var userClaims = HttpContext.User.Claims;
         var role = userClaims.FirstOrDefault(e => e.Type == ClaimTypes.Role).Value;
         var clientId = userClaims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
@@ -45,17 +39,20 @@ public class EmployeeController : Controller
         {
             var admin = dbContext.Admins.FirstOrDefault(e => e.Id.ToString() == clientId);
             
-            if (admin.Employees.Contains(employeeGuid))
+            if (admin.EmployeesLogins.Contains(employeeLogin))
                 return View();
             
             return Redirect("/Employee/login");
         }
-
-        if (dbContext.Employees.FirstOrDefault(e => e.Id == employeeGuid) == null) //значит такого сотрудника вообще нет
-            return Redirect("/Employee/Login/");
-        if(clientId == employeeId) //id текущего пользователя в claim такой же как и переданный в адресе id
-            return View();
-        return Redirect($"/Employee/Login/");
+        else
+        {
+            var currentEmployee = dbContext.Employees.FirstOrDefault(e => e.Id.ToString() == clientId);
+            if (dbContext.Employees.FirstOrDefault(e => e.Login == employeeLogin) == null) //значит такого сотрудника вообще нет
+                return Redirect("/Employee/Login/");
+            if(currentEmployee.Login == employeeLogin) //id текущего пользователя в claim такой же как и переданный в адресе id
+                return View();
+            return Redirect($"/Employee/Login/");
+        }
     }
 
     [HttpGet]
@@ -80,9 +77,9 @@ public class EmployeeController : Controller
         employeeCreateModel.Password = passwordHasher.HashPassword(employeeCreateModel, employeeCreateModel.Password);
         var employee = new Employee(employeeCreateModel);
         dbContext.Employees.Add(employee);
-        admin.Employees.Add(employee.Id);   //добавляю теущему админу нового сотрудника
+        admin.EmployeesLogins.Add(employee.Login);   //добавляю теущему админу нового сотрудника
         dbContext.SaveChanges();
-        return Ok("все супер пупер! лес гоу!");
+        return RedirectToAction("Account", "Admin", new { adminId = adminId });
     }
 
     [HttpPost]
@@ -93,7 +90,7 @@ public class EmployeeController : Controller
         if(searchEmployee == null 
            || passwordHasher.VerifyHashedPassword(searchEmployee, searchEmployee.Password, password) != PasswordVerificationResult.Success)
         {
-            return BadRequest("Неверный логин или пароль");
+            return Redirect($"/Employee/Login/");
         }
 
         //claims это список объектов claim которые хранят информацию о пользователе. Claim хранит пары ключ-значение
@@ -109,7 +106,7 @@ public class EmployeeController : Controller
         //настройка аунтификационных кук
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
         
-        return RedirectToAction("Account", "Employee", new { employeeId = searchEmployee.Id });
+        return RedirectToAction("Account", "Employee", new { employeeLogin = searchEmployee.Login });
     }
 
     [HttpPost]

@@ -13,7 +13,8 @@ public class Admin
     public string Login { get; set; }
     public string Password { get; set; }
     
-    public List<Guid> Employees { get; set; }
+    public List<string> EmployeesLogins { get; set; }
+    public List<Guid> Records { get; set; }
 
     public Admin()
     {
@@ -29,6 +30,7 @@ public class Admin
         Phone = admin.Phone;
         Login = admin.Login;
         Password = admin.Password;
-        Employees = new List<Guid>();
+        EmployeesLogins = new List<string>();
+        Records = new List<Guid>();
     }
 }

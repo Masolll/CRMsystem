@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using crm.Data;
 using crm.Models;
@@ -5,6 +6,7 @@ using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
 using crm.Models.CreateModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace crm.Controllers;
 
@@ -30,24 +32,36 @@ public class RecordController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(RecordCreateModel record)
+    [Authorize(Roles = "admin")]
+    public IActionResult Create(RecordCreateModel recordCreateModel)
     {
-        dbContext.Records.Add(new Record(record));
+        var record = new Record(recordCreateModel);
+        dbContext.Records.Add(record);
+        
+        //добавляю новое мероприятие к текущему админу
+        var adminId = HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
+        var currentAdmin = dbContext.Admins
+            .ToList()
+            .Where(e => e.Id.ToString() == adminId)
+            .FirstOrDefault();
+        currentAdmin.Records.Add(record.Id);
+        
         dbContext.SaveChanges();
-        return Ok("все супер пупер! лес гоу!");
+        return RedirectToAction("Account", "Admin", new { adminId = adminId });
     }
 
     [HttpPut]
     public IActionResult Update(Guid id, string name, int price, string[] employeesLogins, string address, string description)
     {
-        var updateRecord = dbContext.Records.ToList().Where(e => e.Id == id).FirstOrDefault();
-        if (updateRecord == null)
+        var currentRecord = dbContext.Records.ToList().Where(e => e.Id == id).FirstOrDefault();
+        if (currentRecord == null)
             return NotFound("Такой записи не найдено(");
-        updateRecord.Name = name;
-        updateRecord.Price = price;
-        updateRecord.EmployeesLogins = employeesLogins;
-        updateRecord.Address = address;
-        updateRecord.Description = description;
+        currentRecord.Name = name;
+        currentRecord.Price = price;
+        currentRecord.Address = address;
+        currentRecord.Description = description;
+        currentRecord.EmployeesLogins = employeesLogins;
+        
         dbContext.SaveChanges();
         return Ok("Заявка успешно обновлена");
     }
