@@ -1,0 +1,176 @@
+﻿@model crm.Models.ViewModels.EditEmployeeAdminAccountViewModel
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href='/css/admin-record.css'>
+    <link rel="stylesheet" href='/css/style-admin-account.css'>
+    <link rel="stylesheet" href='/css/style-header-footer.css'>
+    <title>Lunara — CRM Система для записи клиентов</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="#" class="navigation-link">Возможности</a>
+                    <a href="#" class="navigation-link">Контакты</a>
+                    <a href="#" class="navigation-link">Запись</a>
+                </nav>
+            </div>
+            <div class="login-container">
+                <a href="/admin/login" class="login">
+                    <img src="https://via.placeholder.com/50" alt="Войти">
+                    <p>Войти</p>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <h1>@Model.Admin.NameCompany</h1>
+            <div class="profile">
+                <div class="avatar">
+                    <img src="https://via.placeholder.com/50" alt="Аватар">
+                </div>
+                <div class="profile-info">
+                    <p>@Model.Admin.Surname</p>
+                    <p>@Model.Admin.Name</p>
+                    <p>@Model.Admin.Patronymic</p>
+                </div>
+            </div>
+            <div class="info">
+                <div class="field">
+                    <label for="user-id">Логин:</label>
+                    <input type="text" id="user-id" value="@Model.Admin.Login" disabled="">
+                </div>
+                <div class="field">
+                    <label for="phone-side">Телефон:</label>
+                    <input type="tel" id="phone-side" value="@Model.Admin.Phone" disabled="">
+                </div>
+                <div class="field">
+                    <label for="email-side">Почта:</label>
+                    <input type="email" id="email-side" value="@Model.Admin.Email" disabled="">
+                </div>
+            </div>
+            <nav class="menu">
+                <button class="menu-button show-employees-list">Список сотрудников</button>
+                <button class="menu-button show-record-list">Список записей</button>
+                <button class="menu-button show-add-employees-form">Добавить сотрудника</button>
+                <a href="/Admin/Account?AdminId=@Model.Admin.Id"><button class="menu-button show-record-form">Создать запись</button></a>
+            </nav>
+            
+        </aside>
+
+        <section class="schedule">
+            <div id="editEmployee" class="edit-employee" >
+                <h1 class="edit-employee-form-title">Редактирование сотрудника</h1>
+                <form class="edit-employee-form">
+                    <label for="edit-employee-name">ФИО:</label>
+                    <input type="text" id="edit-employee-name" name="edit-employee-name" required>
+
+                    <label for="edit-position">Должность:</label>
+                    <input type="text" id="edit-position" name="edit-position" required>
+                    
+                    <label for="edit-phone">Телефон:</label>
+                    <input type="text" id="edit-phone" name="edit-phone" placeholder="1-222-333-44-55" required>
+                    
+                    <label for="edit-email">Почта:</label>
+                    <input type="email" id="edit-email" name="edit-email" placeholder="example@example.com" required>
+
+                    <label for="edit-employee-id">ID:</label>
+                    <input value="@Model.Employee.Login" type="text" id="edit-employee-id" name="edit-employee-id" required>
+                    
+                    <label for="edit-password">Пароль:</label>
+                    <input type="password" id="edit-password" name="edit-password" required>
+                    
+                    <label for="edit-confirm-password">Подтверждение пароля:</label>
+                    <input type="password" id="edit-confirm-password" name="edit-confirm-password" required>
+
+                    <button type="button" class="edit-password-visibility">Показать/Скрыть пароль</button>
+
+                    <button type="submit" class="edit-submit-button">Сохранить изменения</button>
+                    <input id="edit-employee-id-hidden" style="display: none;">
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                </a>
+            </div>
+            <div class="footer-navigation-container">
+                <div class="footer-section">
+                    <p class="footer-heading">Компания</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">О нас</a></li>
+                        <li><a href="#" class="footer-link">Отзывы</a></li>
+                        <li><a href="#" class="footer-link">База знаний</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Возможности</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Онлайн-запись</a></li>
+                        <li><a href="#" class="footer-link">Уведомления</a></li>
+                        <li><a href="#" class="footer-link">Аналитика</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Правовая информация</p>
+                    <ul>
+                        <li><a href="#" class="footer-link">Пользовательское соглашение</a></li>
+                        <li><a href="#" class="footer-link">Конфиденциальность</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <template id="employee-template">
+        <div class="employee-item">
+            <p class="full-name">ФИО сотрудника</p>
+            <div class="job-title">
+                <p>Должность</p>
+            </div>
+            <p class="employee-id">ID</p>
+            <div class="status-icons">
+                <button class="employee-profile">Профиль</button>
+                <button class="copy-data">✔</button>
+                <button class="employee-edit">Редактировать</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="record-template">
+        <div class="record-item">
+            <p class="full-name">Название записи - Стоимость</p>
+            <div class="record-employees">
+                <p><strong>Сотрудники:</strong></p>
+            </div>
+            <p class="record-description">Описание</p>
+            <p class="record-adress">Адрес</p>
+            <div class="status-icons">
+                <button class="record-edit">Редактировать</button>
+                <button class="record-url">URL</button>
+            </div>
+        </div>
+    </template>
+
+    <script type="module" src="/js/main-admin-account.js"></script>
+</body>
+</html>

@@ -8,27 +8,9 @@ const generateUniqueId = (data) => {
     return newId;
 }
 
-const generateRandomPassword = () => {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$@%-_';
-    let password = '';
-    for (let i = 0; i < 12; i++) {
-        const randomIndex = Math.floor(Math.random() * chars.length);
-        password += chars[randomIndex];
-    }
-    return password;
-}
-
-const addEmployee = (employeeList, newEmployee) => {
-    employeeList.push(newEmployee)
-}
-
-const addRecord = (recordList, newRecord) => {
-    recordList.push(newRecord)
-}
-
 const formFieldsReset = () => {
     document.querySelector('.employee-form').reset();
     document.querySelector('.record-form').reset();
 }
 
-export { generateUniqueId, generateRandomPassword, addEmployee, addRecord, formFieldsReset }
+export { generateUniqueId, formFieldsReset }

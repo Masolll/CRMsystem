@@ -7,13 +7,17 @@ namespace crm.Models;
 public class Employee
 {
     public Guid Id { get; private set; }
+    public string Name { get; set; }
+    public string Surname { get; set; }
+    public string Patronymic { get; set; }
+    public string Password { get; set; }
+    
     public string Login { get; private set; }
-    public string? Name { get; set; }
     public string? Position { get; set; }
     public string? Info { get; set; }
     public string? Phone { get; set; }
     public string? Email { get; set; }
-    public string Password { get; set; }
+    
 
     public Employee()
     {
@@ -25,6 +29,8 @@ public class Employee
         Id = Guid.NewGuid();
         Login = employee.Login;
         Name = employee.Name;
+        Surname = employee.Surname;
+        Patronymic = employee.Patronymic;
         Position = employee.Position;
         Info = employee.Info;
         Phone = employee.Phone;

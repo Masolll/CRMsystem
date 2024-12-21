@@ -35,7 +35,7 @@ public class AdminController : Controller
         var currentAdmin = dbContext.Admins.ToList().FirstOrDefault(e => e.Id.ToString() == adminId);
         if (HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value != adminId)
             return Redirect($"/Admin/Login");
-        var viewModel = new ViewModelAdminAccount(currentAdmin, dbContext.Employees.ToList(), dbContext.Records.ToList());
+        var viewModel = new AdminAccountViewModel(currentAdmin, dbContext.Employees.ToList(), dbContext.Records.ToList());
         return View(viewModel);
     }
 
@@ -75,7 +75,7 @@ public class AdminController : Controller
         if(searchAdmin == null 
            || passwordHasher.VerifyHashedPassword(searchAdmin, searchAdmin.Password, password) != PasswordVerificationResult.Success)
         {
-            return Redirect($"Admin/Login/");
+            return Redirect($"/Admin/Login/");
         }
 
         //claims это список объектов claim которые хранят информацию о пользователе. Claim хранит пары ключ-значение

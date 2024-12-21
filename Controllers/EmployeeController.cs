@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
 using crm.Models.CreateModels;
+using crm.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 
 namespace crm.Controllers;
@@ -38,11 +39,10 @@ public class EmployeeController : Controller
         if (role == "admin")//если входит админ то проверяю есть ли у него сотрудник с данным логином, если нет то отклоняю доступ
         {
             var admin = dbContext.Admins.FirstOrDefault(e => e.Id.ToString() == clientId);
-            
             if (admin.EmployeesLogins.Contains(employeeLogin))
                 return View();
             
-            return Redirect("/Employee/login");
+            return Redirect("/Employee/Login/");
         }
         else
         {
@@ -55,6 +55,21 @@ public class EmployeeController : Controller
         }
     }
 
+    [HttpGet]
+    [Authorize(Roles = "admin")]
+    public IActionResult Edit(string adminId, string employeeLogin)
+    {
+        var currentAdmin = dbContext.Admins.ToList().FirstOrDefault(e => e.Id.ToString() == adminId);
+        if (HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value == adminId
+            || currentAdmin.EmployeesLogins.Contains(employeeLogin))
+        {
+            
+            var employee = dbContext.Employees.FirstOrDefault(e => e.Login == employeeLogin);
+            return View(new EditEmployeeAdminAccountViewModel(currentAdmin, employee));
+        }
+        return Redirect($"/Admin/Login");
+    }
+    
     [HttpGet]
     public string DbInfo()
     {
