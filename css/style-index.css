@@ -1,8 +1,7 @@
 body {
     font-family: 'Nunito', sans-serif;
-    color: #FFFFFF;
+    color: #333333;
     background: url('../img/background.png') no-repeat center center fixed;
-    background-color: #ADADAD;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -16,7 +15,7 @@ body {
     position: relative;
     padding-top: 160px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(245, 245, 220, 0.9);
 }
 
 .hero-container {
@@ -25,7 +24,7 @@ body {
 }
 
 .hero-title, .hero-text {
-    color: #000000;
+    color: #1d1d1d;
     margin: 0 0 20px;
     padding: 0;
 }
@@ -43,15 +42,23 @@ body {
 .hero-button {
     padding: 15px 30px;
     font-size: 20px;
+    background: #66BB6A;
     color: #FFFFFF;
-    background-color: #4E3746;
-    border: 3px solid #2c1e27;
-    border-radius: 20px;
+    border: 1px solid #4CAF50;
+    font-weight: bold;
+    border-radius: 15px;
     cursor: pointer;
     margin-bottom: 250px;
     font-family: 'Nunito', sans-serif;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .hero-button:hover {
-    background-color: #5a3e50;
+    background: #95bd97;
+    color: #6B6B6B;
+    border-color: #81aa83;
+}
+
+.hero-button:active {
+    transform: scale(0.98);
 }

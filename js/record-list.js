@@ -14,13 +14,14 @@ const renderRecordList = (recordArray) => {
     recordArray.forEach(record => {
         const recordItem = document.importNode(recordListTemplate, true);
 
-        recordItem.querySelector('.full-name').innerHTML = `${record.name}<br><strong>Стоимость:</strong> ${record.price}`;
+        recordItem.querySelector('.full-name').innerHTML = `${record.name}`;
+        recordItem.querySelector('.price').innerHTML = `<strong>Стоимость:</strong><br>${record.price}`;
         Object.entries(record.employee).forEach(([, name]) => {
             const employeeElement = document.createElement('p');
             employeeElement.textContent = name;
             recordItem.querySelector('.record-employees').appendChild(employeeElement);
         });
-        recordItem.querySelector('.record-description').innerHTML = `<strong>Описание:</strong><br>${record.description}`;
+        recordItem.querySelector('.record-description').innerHTML = `<strong>Описание:</strong><br>${record.description.length > 100 ? record.description.slice(0, 100) + '...' : record.description}`;
         recordItem.querySelector('.record-adress').innerHTML = `<strong>Адрес:</strong><br>${record.address}`;
 
         recordItem.querySelector('.record-edit').addEventListener('click', () => openEditRecordForm(record.id));

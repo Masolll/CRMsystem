@@ -1,8 +1,7 @@
 body {
     font-family: 'Nunito', sans-serif;
-    color: #FFFFFF;
+    color: #333333;
     background: url('../img/background.png') no-repeat center center fixed;
-    background-color: #ADADAD;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -14,27 +13,27 @@ body {
 /* Confirmation */
 .confirmation {
     position: relative;
-    padding: 160px 0;
+    padding: 80px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(245, 245, 220, 0.9);
 }
 
 .confirmation-container {
     position: relative;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #FFFFFF;
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(51, 51, 51, 0.2);
     text-align: center;
     max-width: 600px;
     width: 100%;
 }
 
 .confirmation-title {
-    color: #000000;
+    color: #333333;
     font-size: 32px;
     margin: 10px 0 40px;
 }
@@ -54,14 +53,14 @@ body {
 
 .description-container h3 {
     margin: 0;
-    color: #000000;
+    color: #333333;
     max-width: 450px;
     text-align: left;
 }
 
 .description-container p {
     margin: 10px 0 0;
-    color: #000000;
+    color: #333333;
     max-width: 450px;
     text-align: left;
 }
@@ -71,7 +70,7 @@ body {
     flex-direction: column;
     gap: 20px;
     text-align: left;
-    color: #000000;
+    color: #333333;
     margin-top: 20px;
 }
 
@@ -96,16 +95,16 @@ body {
 
 .field label {
     font-size: 16px;
-    color: #4A4A4A;
+    color: #333333;
 }
 
 .field span {
     font-size: 18px;
-    color: #000000;
+    color: #333333;
     margin-top: 5px;
     padding: 5px 10px;
     background-color: #f9f9f9;
-    border: 1px solid #ADADAD;
+    border: 1px solid #8E8E8E;
     border-radius: 10px;
 }
 
@@ -116,32 +115,45 @@ body {
 }
 
 .edit-form-button,
-.submit-button,
 .confirm-button {
     padding: 10px;
     margin-top: 20px;
     font-size: 18px;
-    color: #FFF;
-    background-color: #4E3746;
-    border: 3px solid #2c1e27;
-    border-radius: 20px;
+    color: #FFFFFF;
+    background-color: #66BB6A;
+    border: 1px solid #4CAF50;
+    font-weight: bold;
+    border-radius: 15px;
     cursor: pointer;
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .edit-form-button {
-    background-color: #7e747a;
-    border: 3px solid #524b50;
+    color: #333333;
+    background-color: #D3D3D3;
+    border: 1px solid #b6b5b5;
 }
 
 .edit-form-button:hover {
-    background-color: #968c92;
+    background: #bebebe;
+    color: #FFFFFF;
+    border-color: #a1a1a1;
 }
 
-.submit-button:hover,
 .confirm-button:hover {
-    background-color: #5a3e50;
+    background: #95bd97;
+    color: #6B6B6B;
+    border-color: #81aa83;
+}
+
+.edit-form-button:active {
+    transform: scale(0.98);
+}
+
+.confirm-button:active {
+    transform: scale(0.98);
 }
 
 
@@ -155,25 +167,34 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     padding: 20px;
-    background-color: #4E3746;
-    color: white;
-    border-radius: 10px;
+    background-color: rgb(250, 240, 227);
+    color: #333333;
+    border-radius: 20px;
     z-index: 999;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px rgba(51, 51, 51, 0.2);
 }
 
 .success-button {
     padding: 10px 20px;
-    background-color: #7e747a;
-    color: white;
+    color: #FFFFFF;
+    background-color: #66BB6A;
+    border: 1px solid #4CAF50;
+    font-weight: bold;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .success-button:hover {
-    background-color: #968c92;
+    background: #95bd97;
+    color: #6B6B6B;
+    border-color: #81aa83;
+}
+
+.success-button:active {
+    transform: scale(0.98);
 }
 
 .no-scroll {

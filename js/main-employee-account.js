@@ -1,4 +1,5 @@
 import './employee-calendar.js';
+import './load-avatar.js'
 import { EMPLOYEE } from './data.js';
 
 window.addEventListener('DOMContentLoaded', () => {

@@ -7,10 +7,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #FFFFFF;
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(51, 51, 51, 0.2);
     text-align: center;
     max-width: 600px;
     width: 100%;
@@ -20,7 +20,7 @@
 .edit-record-form-title,
 .employee-form-title,
 .edit-employee-form-title {
-    color: #000000;
+    color: #333333;
     font-size: 32px;
     margin: 10px 0 20px 0;
 }
@@ -39,7 +39,7 @@
 .employee-form label,
 .edit-employee-form label {
     font-size: 16px;
-    color: #4A4A4A;
+    color: #333333;
     text-align: left;
     box-sizing: border-box;
 }
@@ -57,10 +57,11 @@
 .edit-employee-form textarea,
 .edit-employee-form select {
     font-family: 'Nunito', sans-serif;
+    color: #303030;
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ADADAD;
+    border: 1px solid #8E8E8E;
     border-radius: 10px;
     box-sizing: border-box;
 }
@@ -69,6 +70,7 @@
 .edit-record-form textarea,
 .employee-form textarea,
 .edit-employee-form textarea {
+    color: #303030;
     max-width: 600px;
     min-width: 600px;
     max-height: 270px;
@@ -78,17 +80,27 @@
 .submit-button,
 .edit-submit-button {
     padding: 10px;
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
+    width: 50%;
     font-size: 18px;
     color: #FFFFFF;
-    background-color: #4E3746;
-    border: 3px solid #2c1e27;
-    border-radius: 20px;
+    background-color: #66BB6A;
+    border: 1px solid #4CAF50;
+    font-weight: bold;
+    border-radius: 15px;
     cursor: pointer;
     font-family: 'Nunito', sans-serif;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .submit-button:hover,
 .edit-submit-button:hover {
-    background-color: #5a3e50;
+    background: #95bd97;
+    color: #6B6B6B;
+    border-color: #81aa83;
+}
+
+.submit-button:active,
+.edit-submit-button:active {
+    transform: scale(0.98);
 }

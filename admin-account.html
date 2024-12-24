@@ -26,9 +26,8 @@
                 </nav>
             </div>
             <div class="login-container">
-                <a href="login-admin.html" class="login">
-                    <img src="https://via.placeholder.com/50" alt="Войти">
-                    <p>Войти</p>
+                <a class="account">
+                    <img src="https://via.placeholder.com/50" alt="Аватар">
                 </a>
             </div>
         </div>
@@ -39,7 +38,8 @@
             <h1>Название организации</h1>
             <div class="profile">
                 <div class="avatar">
-                    <img src="https://via.placeholder.com/50" alt="Аватар">
+                    <img src="https://via.placeholder.com/50" alt="Аватар" id="avatar-image">
+                    <input type="file" id="avatar-upload" style="display: none;">
                 </div>
                 <div class="profile-info">
                     <p>Фамилия</p>
@@ -67,6 +67,11 @@
                 <button class="menu-button show-add-employees-form">Добавить сотрудника</button>
                 <button class="menu-button show-record-form">Создать запись</button>
             </nav>
+            <div class="line"></div>
+            <button class="menu-button logout-button">
+                Выйти
+                <img src="./img/logout-icon.png" alt="Выйти" class="logout-icon">
+            </button>
             
         </aside>
 
@@ -134,7 +139,7 @@
             </div>
 
             <div id="addRecord" class="add-record" style="display: none;">
-                <h1 class="record-form-title">Поле записи</h1>
+                <h1 class="record-form-title">Создать запись</h1>
                 <form class="record-form">
                     <label for="record-name">Название записи:</label>
                     <input type="text" id="record-name" name="record-name" required>
@@ -151,7 +156,7 @@
                     <label for="description">Описание:</label>
                     <textarea id="description" name="description" rows="6" placeholder="Ведите описание записи"></textarea>
 
-                    <button type="submit" class="submit-button">Создать запись</button>
+                    <button type="submit" class="submit-button">Создать</button>
                 </form>
             </div>
 
@@ -172,14 +177,6 @@
 
                     <label for="edit-employee-id">ID:</label>
                     <input type="text" id="edit-employee-id" name="edit-employee-id" required>
-                    
-                    <label for="edit-password">Пароль:</label>
-                    <input type="password" id="edit-password" name="edit-password" required>
-                    
-                    <label for="edit-confirm-password">Подтверждение пароля:</label>
-                    <input type="password" id="edit-confirm-password" name="edit-confirm-password" required>
-
-                    <button type="button" class="edit-password-visibility">Показать/Скрыть пароль</button>
 
                     <button type="submit" class="edit-submit-button">Сохранить изменения</button>
                     <input id="edit-employee-id-hidden" style="display: none;">
@@ -257,7 +254,9 @@
             <p class="employee-id">ID</p>
             <div class="status-icons">
                 <button class="employee-profile">Профиль</button>
-                <button class="copy-data">✔</button>
+                <button class="copy-data">
+                    <img src="./img/copy-employee-data-icon.svg" alt="Копировать">
+                </button>
                 <button class="employee-edit">Редактировать</button>
             </div>
         </div>
@@ -265,7 +264,8 @@
 
     <template id="record-template">
         <div class="record-item">
-            <p class="full-name">Название записи - Стоимость</p>
+            <p class="full-name">Название записи</p>
+            <p class="price">Стоимость</p>
             <div class="record-employees">
                 <p><strong>Сотрудники:</strong></p>
             </div>

@@ -1,6 +1,6 @@
 /* Header */
 .header-container {
-    background-color: #4A4A4A;
+    background-color: #333333;
     display: flex;
     align-items: center;
 }
@@ -20,35 +20,66 @@
 .login-container .login {
     color: #FFFFFF;
     text-decoration: none;
+    transition: color 0.5s ease;
 }
 
 .navigation-link:hover {
-    text-decoration: underline;
+    color: #8FA58F;
 }
 
 .login-container {
     margin-left: auto;
+    margin-right: 60px;
 }
 
-.login {
-    display: flex;
-    gap: 10px;
-    margin: 10px 60px 10px 10px;
-    align-items: center;
-    line-height: 1;
+.login-button,
+.register-button {
+    font-family: 'Nunito', sans-serif;
+    background: #66BB6A;
+    color: #FFFFFF;
+    border: 1px solid #4CAF50;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
-.login img {
+.register-button:hover {
+    background: #95bd97;
+    color: #6B6B6B;
+    border-color: #81aa83;
+}
+
+.register-button:active {
+    transform: scale(0.98);
+}
+
+.login-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.login-button:hover {
+    color: #8FA58F;
+}
+
+.account img {
     display: block;
-    width: 35px;
-    height: auto;
+    border-radius: 10%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
 }
 
 
 
 /* Footer */
 .footer-container {
-    background-color: #4A4A4A;
+    background-color: #333333;
     display: flex;
     align-items: flex-start;
     width: 100%;
@@ -62,7 +93,7 @@
 }
 
 .footer-heading {
-    color: #ffffff;
+    color: #FFFFFF;
     margin: 0;
     margin-top: 25px;
 }
@@ -81,8 +112,9 @@
 .footer-section a {
     color: #FFFFFF;
     text-decoration: none;
+    transition: color 0.5s ease;
 }
 
 .footer-section a:hover {
-    text-decoration: underline;
+    color: #8FA58F;
 }

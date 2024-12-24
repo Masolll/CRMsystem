@@ -25,9 +25,8 @@
                 </nav>
             </div>
             <div class="login-container">
-                <a href="login-admin.html" class="login">
-                    <img src="https://via.placeholder.com/50" alt="Войти">
-                    <p>Войти</p>
+                <a class="account">
+                    <img src="https://via.placeholder.com/50" alt="Аватар">
                 </a>
             </div>
         </div>
@@ -37,7 +36,8 @@
         <aside class="sidebar">
             <div class="profile">
                 <div class="avatar">
-                    <img src="https://via.placeholder.com/50" alt="Аватар">
+                    <img src="https://via.placeholder.com/50" alt="Аватар" id="avatar-image">
+                    <input type="file" id="avatar-upload" style="display: none;">
                 </div>
                 <div class="profile-info">
                     <p>Фамилия</p>
@@ -69,6 +69,11 @@
                 
                 <button id="todayButton" class="today-button">Сегодняшняя дата</button>
             </div>
+            <div class="line"></div>
+            <button class="menu-button logout-button">
+                Выйти
+                <img src="./img/logout-icon.png" alt="Выйти" class="logout-icon">
+            </button>
         </aside>
 
         <section class="schedule">
