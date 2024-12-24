@@ -12,9 +12,8 @@ public class Employee
     public string Patronymic { get; set; }
     public string Password { get; set; }
     
-    public string Login { get; private set; }
+    public string Login { get; set; }
     public string? Position { get; set; }
-    public string? Info { get; set; }
     public string? Phone { get; set; }
     public string? Email { get; set; }
     
@@ -32,7 +31,6 @@ public class Employee
         Surname = employee.Surname;
         Patronymic = employee.Patronymic;
         Position = employee.Position;
-        Info = employee.Info;
         Phone = employee.Phone;
         Email = employee.Email;
         Password = employee.Password;

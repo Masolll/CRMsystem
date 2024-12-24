@@ -1,5 +1,35 @@
-import { EMPLOYEE } from './data.js';
-import { showEmployeeList } from './employee-list.js';
+var editEmployeeButtons = document.querySelectorAll('.employee-edit');
+editEmployeeButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        let employeeLogin = event.target.getAttribute('data-employee-login');//получаю логин сотрудника на которого нажали
+        generateEditEmployeeForm(employeeLogin)//генерирую страницу редактирования сотрудника
+        showEditEmployeeForm()//отображаю страницу редактирования сотрудника
+    });
+})
+
+const showEditEmployeeForm = () => {
+    document.getElementById('employees').style.display = 'none';
+    document.getElementById('records').style.display = 'none';
+    document.getElementById('addEmployee').style.display = 'none';
+    document.getElementById('addRecord').style.display = 'none';
+    document.getElementById('editEmployee').style.display = 'block';
+    document.getElementById('editRecord').style.display = 'none';
+}
+
+const generateEditEmployeeForm = async (employeeLogin) => {
+    var employees = await getEmployeesFromDb();
+    let currentEmployee = employees.filter(employee => employee.Login === employeeLogin)[0];
+    document.getElementById('edit-employee-name').value = currentEmployee.Name;
+    document.getElementById('edit-employee-surname').value = currentEmployee.Surname;
+    document.getElementById('edit-employee-patronymic').value = currentEmployee.Patronymic;
+    document.getElementById('edit-position').value = currentEmployee.Position;
+    document.getElementById('edit-phone').value = currentEmployee.Phone;
+    document.getElementById('edit-email').value = currentEmployee.Email;
+    document.getElementById('edit-employee-id').value = currentEmployee.Login;
+    // document.getElementById('edit-password').value = currentEmployee.Password;
+    // document.getElementById('edit-confirm-password').value = currentEmployee.Password;
+    // document.querySelector('.edit-password-visibility').addEventListener('click', () => togglePasswordsVisibility());
+};
 
 const togglePasswordsVisibility = () => {
     const passwordField = document.getElementById('edit-password');
@@ -13,65 +43,20 @@ const togglePasswordsVisibility = () => {
     }
 }
 
-const showEditEmployeeForm = () => {
-    document.getElementById('employees').style.display = 'none';
-    document.getElementById('records').style.display = 'none';
-    document.getElementById('addEmployee').style.display = 'none';
-    document.getElementById('addRecord').style.display = 'none';
-    document.getElementById('editEmployee').style.display = 'block';
-    document.getElementById('editRecord').style.display = 'none';
+let getEmployeesFromDb = () => {
+    // Отправка GET-запроса
+    return fetch('/employee/dbInfo')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
 }
 
-//находит по id сотрудника и заполняет поля формы Редактирование сотрудника и отображет их
-// const openEditEmployeeForm = (employeeId) => {
-//     document.getElementById('edit-employee-id-hidden').value = employeeId;
-//     const employee = EMPLOYEE.find(e => e.id === employeeId);
-//     if (!employee) {
-//         console.error('Сотрудник не найден');
-//         return;
-//     }
-//
-//     document.getElementById('edit-employee-name').value = employee.name;
-//     document.getElementById('edit-position').value = employee.position;
-//     document.getElementById('edit-phone').value = employee.phone;
-//     document.getElementById('edit-email').value = employee.email;
-//     document.getElementById('edit-employee-id').value = employee.id;
-//     document.getElementById('edit-password').value = employee.password;
-//     document.getElementById('edit-confirm-password').value = employee.password;
-//     document.querySelector('.edit-password-visibility').addEventListener('click', () => togglePasswordsVisibility());
-//
-//     showEditEmployeeForm();
-// };
+export {getEmployeesFromDb}
 
-// const handleEditEmployeeSubmit = () => {
-//     const employeeId = document.getElementById('edit-employee-id-hidden').value;
-//     const employee = EMPLOYEE.find(e => e.id === employeeId);
-//     if (!employee) {
-//         console.error('Сотрудник не найден');
-//         return;
-//     }
-//
-//     const password = document.getElementById('edit-password').value;
-//     const confirmPassword = document.getElementById('edit-confirm-password').value;
-//     if (password !== confirmPassword) {
-//         alert('Пароли не совпадают');
-//         return;
-//     }
-//
-//     employee.name = document.getElementById('edit-employee-name').value;
-//     employee.position = document.getElementById('edit-position').value;
-//     employee.phone = document.getElementById('edit-phone').value;
-//     employee.email = document.getElementById('edit-email').value;
-//     employee.id = document.getElementById('edit-employee-id').value;
-//     employee.password = password;
-//
-//     showEmployeeList();
-//     alert('Данные сотрудника обновлены!');
-// };
-//
-// document.querySelector('.edit-employee-form').addEventListener('submit', (evt) => {
-//     evt.preventDefault();
-//     handleEditEmployeeSubmit();
-// });
 
-// export { openEditEmployeeForm };

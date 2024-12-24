@@ -50,20 +50,23 @@ public class RecordController : Controller
         return RedirectToAction("Account", "Admin", new { adminId = adminId });
     }
 
-    [HttpPut]
-    public IActionResult Update(Guid id, string name, int price, string[] employeesLogins, string address, string description)
+    [HttpPost]
+    [Authorize(Roles = "admin")]
+    public IActionResult Update(Record record)
     {
-        var currentRecord = dbContext.Records.ToList().Where(e => e.Id == id).FirstOrDefault();
+        //нужно проверить что админ обновляет свою запись а не чужую
+        var adminId = HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
+        var currentRecord = dbContext.Records.ToList().Where(e => e.Id == record.Id).FirstOrDefault();
         if (currentRecord == null)
-            return NotFound("Такой записи не найдено(");
-        currentRecord.Name = name;
-        currentRecord.Price = price;
-        currentRecord.Address = address;
-        currentRecord.Description = description;
-        currentRecord.EmployeesLogins = employeesLogins;
+            return NotFound($"Записи с id {record.Id} не найдено");
+        currentRecord.Name = record.Name;
+        currentRecord.Price = record.Price;
+        currentRecord.Address = record.Address;
+        currentRecord.Description = record.Description;
+        currentRecord.EmployeesLogins = record.EmployeesLogins;
         
         dbContext.SaveChanges();
-        return Ok("Заявка успешно обновлена");
+        return RedirectToAction("Account", "Admin", new {adminId = adminId});
     }
 
     [HttpDelete]

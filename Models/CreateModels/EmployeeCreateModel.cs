@@ -9,7 +9,6 @@ public class EmployeeCreateModel
     public string Patronymic { get; set; }
     
     public string? Position { get; set; }
-    public string? Info { get; set; }
     public string? Phone { get; set; }
     public string? Email { get; set; }
     
@@ -18,14 +17,13 @@ public class EmployeeCreateModel
     {
     }
     
-    public EmployeeCreateModel(string login, string name, string surname, string patronymic, string? position, string? info, string? phone, string? email, string password)
+    public EmployeeCreateModel(string login, string name, string surname, string patronymic, string? position, string? phone, string? email, string password)
     {
         Surname = surname;
         Patronymic = patronymic;
         Login = login;
         Name = name;
         Position = position;
-        Info = info;
         Phone = phone;
         Email = email;
         Password = password;

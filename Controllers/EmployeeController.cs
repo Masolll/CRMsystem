@@ -54,21 +54,6 @@ public class EmployeeController : Controller
             return Redirect($"/Employee/Login/");
         }
     }
-
-    [HttpGet]
-    [Authorize(Roles = "admin")]
-    public IActionResult Edit(string adminId, string employeeLogin)
-    {
-        var currentAdmin = dbContext.Admins.ToList().FirstOrDefault(e => e.Id.ToString() == adminId);
-        if (HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value == adminId
-            || currentAdmin.EmployeesLogins.Contains(employeeLogin))
-        {
-            
-            var employee = dbContext.Employees.FirstOrDefault(e => e.Login == employeeLogin);
-            return View(new EditEmployeeAdminAccountViewModel(currentAdmin, employee));
-        }
-        return Redirect($"/Admin/Login");
-    }
     
     [HttpGet]
     public string DbInfo()
@@ -129,5 +114,22 @@ public class EmployeeController : Controller
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return Redirect("/");
+    }
+    
+    [HttpPost]
+    [Authorize(Roles = "admin")]
+    public IActionResult Update(EmployeeCreateModel employee)
+    {
+        var adminId = HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
+        var targetEmployee = dbContext.Employees.FirstOrDefault(e => e.Login == employee.Login);
+        targetEmployee.Name = employee.Name;
+        targetEmployee.Surname = employee.Surname;
+        targetEmployee.Patronymic = employee.Patronymic;
+        targetEmployee.Login = employee.Login;
+        targetEmployee.Phone = employee.Phone;
+        targetEmployee.Email = employee.Email;
+        targetEmployee.Position = employee.Position;
+        dbContext.SaveChanges();
+        return RedirectToAction("Account", "Admin", new { adminId = adminId });
     }
 }
