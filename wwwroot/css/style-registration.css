@@ -1,8 +1,7 @@
 body {
     font-family: 'Nunito', sans-serif;
-    color: #FFFFFF;
-    background: url('../img/background.png') no-repeat center center fixed;
-    background-color: #ADADAD;
+    color: #333333;
+    background: url('../img/account-background.png') no-repeat center center fixed;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -14,27 +13,28 @@ body {
 /* Registration */
 .registration {
     position: relative;
-    padding: 160px 0;
+    padding: 80px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(245, 245, 245, 0.9);
 }
 
 .registration-container {
     position: relative;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #FFFFFF;
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border: 1px solid rgba(142, 142, 142, 0.7);
+    box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
     text-align: center;
     max-width: 600px;
     width: 100%;
 }
 
 .registration-title {
-    color: #000000;
+    color: #343434;
     font-size: 32px;
     margin: 10px 0 20px 0;
 }
@@ -47,34 +47,44 @@ body {
 
 .registration-form label {
     font-size: 16px;
-    color: #4A4A4A;
+    color: #343434;
     text-align: left;
     box-sizing: border-box;
 }
 
 .registration-form input {
     width: 100%;
+    color: #343434;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ADADAD;
+    border: 1px solid #8E8E8E;
     border-radius: 10px;
     box-sizing: border-box;
 }
 
 .submit-button {
     padding: 10px;
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
+    width: 70%;
     font-size: 18px;
+    background: #4CAF50;
     color: #FFFFFF;
-    background-color: #4E3746;
-    border: 3px solid #2c1e27;
-    border-radius: 20px;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    border-radius: 15px;
     cursor: pointer;
     font-family: 'Nunito', sans-serif;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .submit-button:hover {
-    background-color: #5a3e50;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.submit-button:active {
+    transform: scale(0.98);
 }
 
 .links {
@@ -84,14 +94,15 @@ body {
 
 .login-employee-link,
 .login-admin-link {
-    color: #4E3746;
+    color: #2b502d;
     text-decoration: none;
     font-size: 16px;
     display: block;
     margin-top: 10px;
+    transition: color 0.5s ease;
 }
 
 .login-employee-link:hover,
 .login-admin-link:hover {
-    text-decoration: underline;
+    color: #0c1f0c;
 }

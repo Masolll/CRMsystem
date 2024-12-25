@@ -1,4 +1,4 @@
-import {getEmployeesFromDb} from "./edit-employee.js"
+import {getRecordsFromDb, getEmployeesFromDb} from "../util.js";
 
 var editRecordButtons = document.querySelectorAll('.record-edit');
 editRecordButtons.forEach((element) => {
@@ -9,19 +9,7 @@ editRecordButtons.forEach((element) => {
     })
 })
 
-let getRecordsFromDb = () => {
-    // Отправка GET-запроса
-    return fetch('/record/dbInfo')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
-}
+
 const generateEditRecordForm = async (recordId) => {
     let records = await getRecordsFromDb();
     let currentRecord = records.filter(e => e.Id === recordId)[0];

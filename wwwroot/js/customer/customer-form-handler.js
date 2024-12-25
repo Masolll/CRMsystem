@@ -1,4 +1,3 @@
-import { EMPLOYEE, RECORDS } from './data.js';
 import { renderTimeColumn, timeInputEvent } from './time-picker.js';
 
 const form = document.querySelector('.sign-form');

@@ -1,4 +1,4 @@
-import { formFieldsReset } from './util.js';
+import { formFieldsReset } from '/js/util.js';
 
 //скрытие всех блоков кроме создания записи
 const showRecordForm = () => {

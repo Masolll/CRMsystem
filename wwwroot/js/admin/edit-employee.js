@@ -1,3 +1,5 @@
+import {getEmployeesFromDb} from "../util.js";
+
 var editEmployeeButtons = document.querySelectorAll('.employee-edit');
 editEmployeeButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
@@ -43,20 +45,6 @@ const togglePasswordsVisibility = () => {
     }
 }
 
-let getEmployeesFromDb = () => {
-    // Отправка GET-запроса
-    return fetch('/employee/dbInfo')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
-}
 
-export {getEmployeesFromDb}
 
 

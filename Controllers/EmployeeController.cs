@@ -35,24 +35,25 @@ public class EmployeeController : Controller
     {
         var userClaims = HttpContext.User.Claims;
         var role = userClaims.FirstOrDefault(e => e.Type == ClaimTypes.Role).Value;
-        var clientId = userClaims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
+        var clientId = userClaims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;//id того кто входит, то есть админа или сотрудника
+        
         if (role == "admin")//если входит админ то проверяю есть ли у него сотрудник с данным логином, если нет то отклоняю доступ
         {
             var admin = dbContext.Admins.FirstOrDefault(e => e.Id.ToString() == clientId);
             if (admin.EmployeesLogins.Contains(employeeLogin))
-                return View();
-            
+            {
+                var employee = dbContext.Employees.FirstOrDefault(e => e.Login == employeeLogin);
+                return View(employee);
+            }
             return Redirect("/Employee/Login/");
         }
-        else
-        {
-            var currentEmployee = dbContext.Employees.FirstOrDefault(e => e.Id.ToString() == clientId);
-            if (dbContext.Employees.FirstOrDefault(e => e.Login == employeeLogin) == null) //значит такого сотрудника вообще нет
-                return Redirect("/Employee/Login/");
-            if(currentEmployee.Login == employeeLogin) //id текущего пользователя в claim такой же как и переданный в адресе id
-                return View();
+        
+        var currentEmployee = dbContext.Employees.FirstOrDefault(e => e.Id.ToString() == clientId);//сотрудник который входит в аккаунт
+        
+        if(currentEmployee.Login != employeeLogin) //логин текущего пользователя в claim не 
             return Redirect($"/Employee/Login/");
-        }
+        
+        return View(currentEmployee);
     }
     
     [HttpGet]

@@ -1,3 +1,5 @@
+import {getOrdersFromDb, getRecordsFromDb} from "../util.js";
+
 const monthYearElement = document.getElementById('monthYear');
 const calendarDaysElement = document.getElementById('calendarDays');
 const prevMonthButton = document.getElementById('prevMonth');
@@ -11,6 +13,8 @@ const monthNames = [
 
 let currentDate = new Date();
 let selectedDate = new Date(currentDate);
+
+
 
 const renderCalendar = () => {
     calendarDaysElement.innerHTML = '';
@@ -72,15 +76,46 @@ nextMonthButton.addEventListener('click', () => {
     renderCalendar();
 });
 
-const showTimeSlots = () => {
-    const today = new Date();
-    const isSameDay =
-        today.getFullYear() === selectedDate.getFullYear() &&
-        today.getMonth() === selectedDate.getMonth() &&
-        today.getDate() === selectedDate.getDate();
+const showTimeSlots = async () => {
+    document.querySelector('.time-slots').innerHTML = '';
 
-    timeSlotsElement.style.display = isSameDay ? 'block' : 'none';
-
+    let orders = await getOrdersFromDb();//получаю массив всех заказов всех сотрудников
+    let records = await getRecordsFromDb();
+    const loginCurrentEmployee = document.getElementById('user-id').value;
+    let ordersCurrentEmployee = orders.filter(e => e.EmployeeLogin == loginCurrentEmployee);//заказы только текущего сотрудника
+    
+    for(let i = 0; i < ordersCurrentEmployee.length; i++)
+    {
+        let currentOrderDateTime = new Date(ordersCurrentEmployee[i].DateTime);
+        
+        if (selectedDate.getDay() === currentOrderDateTime.getDay() //проверяю соотетствет ли выбранная пользователем дата с датой ордера
+            && selectedDate.getMonth() === currentOrderDateTime.getMonth() 
+            && selectedDate.getFullYear() === currentOrderDateTime.getFullYear()){
+            
+            let startOrderHour = String(currentOrderDateTime.getHours()).padStart(2, '0');//добиваю незначащими нулями до длины 2
+            let endOrderHour = String(currentOrderDateTime.getHours() + 1).padStart(2, '0');//+1 потому что все записи по 1 часу
+            let orderMinute = String(currentOrderDateTime.getMinutes()).padStart(2, '0');
+            let currentRecord = records.filter(e => e.Id == ordersCurrentEmployee[i].RecordId)[0];//запись для ордера на текущей итерации(нужна для отображения названия записи
+            const timeSlot = document.createElement('div');
+            timeSlot.classList = 'slot';
+            timeSlot.innerHTML =
+                `<span class="time">${startOrderHour}:${orderMinute}–${endOrderHour}:${orderMinute}</span>
+                <p class="title">${currentRecord.Name}</p>
+                <div class="client-info">
+                    <p>${ordersCurrentEmployee[i].ClientName}</p>
+                    <p>${ordersCurrentEmployee[i].ClientPhone}</p>
+                    <p>${ordersCurrentEmployee[i].ClientEmail}</p>
+                </div>
+                <p class="comment">${ordersCurrentEmployee[i].ClientComment}</p>
+                <div class="status-icons">
+                    <button class="check">✔</button>
+                    <button class="cancel">✖</button>
+                </div>`;
+            timeSlotsElement.appendChild(timeSlot);
+        }
+        
+    }
+    
     const dateHeaderElement = document.querySelector('.date-header h1');
     const day = String(selectedDate.getDate()).padStart(2, '0');
     const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
@@ -94,5 +129,7 @@ todayButton.addEventListener('click', () => {
     selectedDate = new Date(currentDate);
     renderCalendar();
 });
+
+
 
 renderCalendar();

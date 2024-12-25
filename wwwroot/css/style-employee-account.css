@@ -1,8 +1,7 @@
 body {
     font-family: 'Nunito', sans-serif;
-    color: #000000;
-    background: url('../img/background.png') no-repeat center center fixed;
-    background-color: #ADADAD;
+    color: #343434;
+    background: url('../img/account-background.png') no-repeat center center fixed;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -20,19 +19,28 @@ main {
 .sidebar {
     width: 20%;
     padding: 20px;
-    background: #D9D9D9;
+    background: #F5F5F5;
+    border-right: 1px solid #c2c2c2;
 }
 
 .profile {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid #c2c2c2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .avatar img {
+    display: block;
     width: 100px;
+    height: 100px;
     border-radius: 10%;
     margin-right: 20px;
+    object-fit: cover;
 }
 
 .profile-info {
@@ -43,8 +51,17 @@ main {
 }
 
 .profile-info p {
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
+}
+
+.info {
+    margin: 0;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid #c2c2c2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .field {
@@ -53,47 +70,64 @@ main {
     margin-bottom: 15px;
 }
 
+.field:last-child {
+    margin-bottom: 0;
+}
+
 .field label {
     width: 25%;
+    font-size: 16px;
 }
 
 .field input {
     flex-grow: 1;
+    color: #343434;
+    background: #F5F5F5;
     padding: 5px 10px;
-    border: 1px solid #ADADAD;
-    border-radius: 5px;
+    border: 1px solid #8E8E8E;
+    border-radius: 8px;
     font-size: 14px;
+    transition: border-color 0.3s ease;
 }
 
 .field input:focus {
-    border-color: #b79ac7;
-    box-shadow: 0 0 5px rgba(183, 154, 199, 0.5);
+    border-color: #505050;
+    outline: none;
 }
 
 .month-switcher {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .month-switcher span {
     font-size: 18px;
+    font-weight: bold;
 }
 
 .month-switcher button {
-    background: #b79ac7;
+    background: #4CAF50;
     color: #FFFFFF;
-    border: none;
+    border: 1px solid #388E3C;
+    font-weight: bold;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 5px 12px;
     cursor: pointer;
     font-size: 16px;
     font-family: 'Nunito', sans-serif;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .month-switcher button:hover {
-    background: #9a7bb6;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.month-switcher button:active {
+    transform: scale(0.98);
 }
 
 .calendar-days {
@@ -106,51 +140,109 @@ main {
 
 .calendar-days .day {
     text-align: center;
-    padding: 5px;
-    background-color: #f4f4f4;
+    padding: 6px;
+    background-color: #FFFFFF;
     border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .calendar-days .day.inactive {
-    background-color: #ddd;
-    color: #aaa;
+    background-color: #CCCCCC;
+    color: #AAAAAA;
 }
 
 .calendar-days .day:hover {
-    background-color: #b79ac7;
-    color: white;
+    background-color: #8fe692;
+    color: #6B6B6B;
+}
+
+.calendar-days .day.inactive:hover {
+    background-color: #b3b3b3;
+    color: #999999;
 }
 
 .calendar-days .day.selected {
-    background-color: #9a7bb6;
+    background-color: #4CAF50;
     color: #FFFFFF;
 }
 
 .today-button {
-    padding: 5px 10px;
+    padding: 5px 15px;
     font-size: 16px;
+    background: #4CAF50;
     color: #FFFFFF;
-    background: #b79ac7;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    border-radius: 10px;
     cursor: pointer;
     font-family: 'Nunito', sans-serif;
     display: block;
     margin: 20px auto 0 auto;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .today-button:hover {
-    background: #9a7bb6;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
 }
 
+.today-button:active {
+    transform: scale(0.98);
+}
 
+.logout-button {
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    width: 30%;
+    margin: 0 auto;
+    background: #F44336;
+    color: #FFFFFF;
+    border: 1px solid #D32F2F;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 6px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
+}
+
+.logout-button:hover {
+    background: #E57373;
+    color: #585858;
+    border-color: rgb(185, 81, 86);
+}
+
+.logout-button:active {
+    transform: scale(0.98);
+}
+
+.logout-icon {
+    display: block;
+    margin: 0;
+    filter: invert(100%);
+    width: 20px;
+    height: 20px;
+    transition: filter 0.5s ease;
+}
+
+.logout-button:hover .logout-icon {
+    filter: invert(35%);
+}
+
+.line {
+    margin: 20px 0;
+    border-top: 1px solid #c2c2c2;
+}
 
 
 /* Schedule */
 .schedule {
     flex-grow: 1;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(245, 245, 245, 0.9);
     padding: 20px;
     overflow-y: auto;
 }
@@ -163,7 +255,7 @@ main {
 .date-header h1 {
     margin: 0;
     font-size: 24px;
-    font-weight: normal;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
@@ -177,26 +269,29 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 15px;
-    border: 2px solid #b79ac7;
+    color: #343434;
+    padding: 8px 25px;
+    border: 1px solid rgba(142, 142, 142, 0.7);;
     border-radius: 10px;
-    background: #f9f9f9;
+    background: #FFFFFF;
     margin-bottom: 10px;
+    box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
 }
 
 .slot .time {
     flex: 1;
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: #343434;
     text-align: left;
+    margin-right: 20px;
 }
 
 .slot .title {
     flex: 2;
     font-size: 16px;
-    font-weight: bold;
-    color: #555;
+    color: rgba(52, 52, 52, 0.9);
+    margin-right: 20px;
     text-align: left;
 }
 
@@ -205,7 +300,8 @@ main {
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    color: #666;
+    color: rgba(52, 52, 52, 0.9);
+    margin-right: 20px;
 }
 
 .slot .client-info p {
@@ -215,7 +311,7 @@ main {
 .slot .comment {
     flex: 2;
     font-size: 14px;
-    color: #444;
+    color: rgba(52, 52, 52, 0.9);
     margin: 0;
     margin-right: 20px;
     text-align: left;
@@ -224,19 +320,27 @@ main {
 .slot .status-icons {
     flex: 0;
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .status-icons button {
-    background: #b79ac7;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    background: #4CAF50;
+    color: #FFFFFF;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    border-radius: 8px;
     padding: 5px 10px;
     cursor: pointer;
     font-size: 16px;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .status-icons button:hover {
-    background: #9a7bb6;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.status-icons button:active {
+    transform: scale(0.98);
 }

@@ -1,3 +1,5 @@
+@model Employee
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -40,23 +42,23 @@
                     <img src="https://via.placeholder.com/50" alt="Аватар">
                 </div>
                 <div class="profile-info">
-                    <p>Фамилия</p>
-                    <p>Имя</p>
-                    <p>Отчество</p>
+                    <p>@Model.Surname</p>
+                    <p>@Model.Name</p>
+                    <p>@Model.Patronymic</p>
                 </div>
             </div>
             <div class="info">
                 <div class="field">
                     <label for="user-id">ID:</label>
-                    <input type="text" id="user-id" placeholder="Введите ID">
+                    <input type="text" id="user-id" placeholder="Введите ID" value="@Model.Login" disabled="">
                 </div>
                 <div class="field">
                     <label for="phone">Телефон:</label>
-                    <input type="tel" id="phone" placeholder="х-ххх-ххх-хх-хх">
+                    <input type="tel" id="phone" placeholder="х-ххх-ххх-хх-хх" value="@Model.Phone" disabled="">
                 </div>
                 <div class="field">
                     <label for="email">Почта:</label>
-                    <input type="email" id="email" placeholder="Введите почту">
+                    <input type="email" id="email" placeholder="Введите почту" value="@Model.Email" disabled="">
                 </div>
             </div>
             <div class="calendar">
@@ -76,35 +78,35 @@
                 <h1>05.11.24</h1>
             </div>
             <div class="time-slots">
-                <div class="slot">
-                    <span class="time">08:00–09:00</span>
-                    <p class="title">Название записи</p>
-                    <div class="client-info">
-                        <p>Иванов Иван Иванович</p>
-                        <p>+1-222-333-44-55</p>
-                        <p>example@example.com</p>
-                    </div>
-                    <p class="comment">Комментарий клиента...Комментарий клиента...Комментарий клиента...</p>
-                    <div class="status-icons">
-                        <button class="check">✔</button>
-                        <button class="cancel">✖</button>
-                    </div>
-                </div>
-
-                <div class="slot">
-                    <span class="time">09:00–10:00</span>
-                    <p class="title">Название записи</p>
-                    <div class="client-info">
-                        <p>Иванов Иван Иванович</p>
-                        <p>+1-222-333-44-55</p>
-                        <p>example@example.com</p>
-                    </div>
-                    <p class="comment">Комментарий клиента...Комментарий клиента...Комментарий клиента...</p>
-                    <div class="status-icons">
-                        <button class="check">✔</button>
-                        <button class="cancel">✖</button>
-                    </div>
-                </div>
+                @* <div class="slot"> *@
+                @*     <span class="time">08:00–09:00</span> *@
+                @*     <p class="title">Название записи</p> *@
+                @*     <div class="client-info"> *@
+                @*         <p>Иванов Иван Иванович</p> *@
+                @*         <p>+1-222-333-44-55</p> *@
+                @*         <p>example@example.com</p> *@
+                @*     </div> *@
+                @*     <p class="comment">Комментарий клиента...Комментарий клиента...Комментарий клиента...</p> *@
+                @*     <div class="status-icons"> *@
+                @*         <button class="check">✔</button> *@
+                @*         <button class="cancel">✖</button> *@
+                @*     </div> *@
+                @* </div> *@
+                @* *@
+                @* <div class="slot"> *@
+                @*     <span class="time">09:00–10:00</span> *@
+                @*     <p class="title">Название записи</p> *@
+                @*     <div class="client-info"> *@
+                @*         <p>Иванов Иван Иванович</p> *@
+                @*         <p>+1-222-333-44-55</p> *@
+                @*         <p>example@example.com</p> *@
+                @*     </div> *@
+                @*     <p class="comment">Комментарий клиента...Комментарий клиента...Комментарий клиента...</p> *@
+                @*     <div class="status-icons"> *@
+                @*         <button class="check">✔</button> *@
+                @*         <button class="cancel">✖</button> *@
+                @*     </div> *@
+                @* </div> *@
             </div>
         </section>
     </main>
@@ -144,6 +146,6 @@
         </div>
     </footer>
     
-    <script type="module" src="/js/main-employee-account.js"></script>
+    <script type="module" src="/js/employee/employee-calendar.js"></script>
 </body>
 </html>

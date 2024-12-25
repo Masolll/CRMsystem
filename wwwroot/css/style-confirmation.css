@@ -1,8 +1,7 @@
 body {
     font-family: 'Nunito', sans-serif;
-    color: #FFFFFF;
-    background: url('../img/background.png') no-repeat center center fixed;
-    background-color: #ADADAD;
+    color: #343434;
+    background: url('../img/account-background.png') no-repeat center center fixed;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -14,27 +13,28 @@ body {
 /* Confirmation */
 .confirmation {
     position: relative;
-    padding: 160px 0;
+    padding: 80px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(245, 245, 245, 0.9);
 }
 
 .confirmation-container {
     position: relative;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #FFFFFF;
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border: 1px solid rgba(142, 142, 142, 0.7);
+    box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
     text-align: center;
     max-width: 600px;
     width: 100%;
 }
 
 .confirmation-title {
-    color: #000000;
+    color: #343434;
     font-size: 32px;
     margin: 10px 0 40px;
 }
@@ -54,14 +54,14 @@ body {
 
 .description-container h3 {
     margin: 0;
-    color: #000000;
+    color: #343434;
     max-width: 450px;
     text-align: left;
 }
 
 .description-container p {
     margin: 10px 0 0;
-    color: #000000;
+    color: #343434;
     max-width: 450px;
     text-align: left;
 }
@@ -71,7 +71,7 @@ body {
     flex-direction: column;
     gap: 20px;
     text-align: left;
-    color: #000000;
+    color: #343434;
     margin-top: 20px;
 }
 
@@ -96,17 +96,17 @@ body {
 
 .field label {
     font-size: 16px;
-    color: #4A4A4A;
+    color: #343434;
 }
 
 .field span {
     font-size: 18px;
-    color: #000000;
+    color: #343434;
     margin-top: 5px;
     padding: 5px 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ADADAD;
-    border-radius: 10px;
+    background-color: #F5F5F5;
+    border: 1px solid #8E8E8E;
+    border-radius: 8px;
 }
 
 .actions {
@@ -116,32 +116,42 @@ body {
 }
 
 .edit-form-button,
-.submit-button,
 .confirm-button {
     padding: 10px;
     margin-top: 20px;
     font-size: 18px;
-    color: #FFF;
-    background-color: #4E3746;
-    border: 3px solid #2c1e27;
-    border-radius: 20px;
+    background: #4CAF50;
+    color: #FFFFFF;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    border-radius: 15px;
     cursor: pointer;
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .edit-form-button {
-    background-color: #7e747a;
-    border: 3px solid #524b50;
+    color: #343434;
+    background-color: #D3D3D3;
+    border: 1px solid #b6b5b5;
 }
 
 .edit-form-button:hover {
-    background-color: #968c92;
+    background: #bebebe;
+    color: #FFFFFF;
+    border-color: #a1a1a1;
 }
 
-.submit-button:hover,
 .confirm-button:hover {
-    background-color: #5a3e50;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.edit-form-button:active,
+.confirm-button:active {
+    transform: scale(0.98);
 }
 
 
@@ -155,25 +165,35 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     padding: 20px;
-    background-color: #4E3746;
-    color: white;
-    border-radius: 10px;
+    background-color: #F5F5F5;
+    border: 1px solid rgba(142, 142, 142, 0.7);
+    box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
+    color: #343434;
+    border-radius: 20px;
     z-index: 999;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .success-button {
     padding: 10px 20px;
-    background-color: #7e747a;
-    color: white;
+    background: #4CAF50;
+    color: #FFFFFF;
+    border: 1px solid #388E3C;
+    font-weight: bold;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .success-button:hover {
-    background-color: #968c92;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.success-button:active {
+    transform: scale(0.98);
 }
 
 .no-scroll {

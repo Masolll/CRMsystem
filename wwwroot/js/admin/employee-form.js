@@ -1,4 +1,4 @@
-import {formFieldsReset } from "./util.js";
+import {formFieldsReset } from "/js/util.js";
 
 const showAddEmployeeForm = () => {
     document.getElementById('employees').style.display = 'none';
