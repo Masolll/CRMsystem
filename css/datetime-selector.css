@@ -23,7 +23,7 @@
     border: 1px solid #8E8E8E;
     border-radius: 10px;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: #FFFFFF;
 }
 
 .month-switcher {
@@ -35,14 +35,14 @@
 .month-switcher span {
     font-size: 18px;
     font-weight: bold;
-    color: #333333;
+    color: #343434;
 }
 
 .month-switcher button {
-    background: #66BB6A;
+    background: #4CAF50;
     color: #FFFFFF;
+    border: 1px solid #388E3C;
     font-weight: bold;
-    border: none;
     border-radius: 5px;
     padding: 5px 12px;
     cursor: pointer;
@@ -52,8 +52,9 @@
 }
 
 .month-switcher button:hover {
-    background: #95bd97;
-    color: #6B6B6B;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
 }
 
 .month-switcher button:active {
@@ -80,7 +81,7 @@ button.disabled {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    color: #333333;
+    color: #343434;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -90,7 +91,7 @@ button.disabled {
 }
 
 .calendar-days .day:hover {
-    background-color: #b7e2ad;
+    background-color: #8fe692;
     color: #6B6B6B;
 }
 
@@ -100,28 +101,29 @@ button.disabled {
 }
 
 .calendar-days .day.selected {
-    background-color: #66BB6A;
+    background-color: #4CAF50;
     color: #FFFFFF;
 }
 
 .today-button {
     padding: 5px 15px;
     font-size: 16px;
-    background: #66BB6A;
+    background: #4CAF50;
     color: #FFFFFF;
+    border: 1px solid #388E3C;
     font-weight: bold;
-    border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-family: 'Nunito', sans-serif;
     display: block;
     margin: 20px auto 0 auto;
-    transition: transform 0.2s ease, background 0.5s ease, color 0.5s ease;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .today-button:hover {
-    background: #95bd97;
-    color: #6B6B6B;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
 }
 
 .today-button:active {
@@ -144,7 +146,7 @@ button.disabled {
     width: 100%;
     background: #FFFFFF;
     border: 1px solid #8E8E8E;
-    box-shadow: 0 0 8px rgba(51, 51, 51, 0.2);
+    box-shadow: 0 0 8px rgba(52, 52, 52, 0.2);
     z-index: 10;
     max-height: 310px;
     overflow-y: auto;
@@ -172,11 +174,11 @@ button.disabled {
     margin-bottom: 8px;
     font-size: 14px;
     border-radius: 10px;
-    transition: transform 0.3s ease, background 0.5s ease, color 0.5s ease;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .time-dropdown button:hover {
-    background: #66BB6A;
+    background: #4CAF50;
     color: #FFFFFF;
     transform: scale(1.05);
 }

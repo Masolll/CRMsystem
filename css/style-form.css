@@ -1,7 +1,7 @@
 body {
     font-family: 'Nunito', sans-serif;
-    color: #333333;
-    background: url('../img/background.png') no-repeat center center fixed;
+    color: #343434;
+    background: url('../img/account-background.png') no-repeat center center fixed;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(245, 245, 220, 0.9);
+    background: rgba(245, 245, 245, 0.9);
 }
 
 .sign-container {
@@ -26,14 +26,15 @@ body {
     background-color: #FFFFFF;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 0 8px rgba(51, 51, 51, 0.2);
+    border: 1px solid rgba(142, 142, 142, 0.7);
+    box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
     text-align: center;
     max-width: 600px;
     width: 100%;
 }
 
 .sign-title {
-    color: #333333;
+    color: #343434;
     font-size: 32px;
     margin: 10px 0 20px 0;
 }
@@ -46,7 +47,7 @@ body {
 
 .sign-form label {
     font-size: 16px;
-    color: #333333;
+    color: #343434;
     text-align: left;
     box-sizing: border-box;
 }
@@ -62,10 +63,18 @@ body {
     border-radius: 10px;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.sign-form input:focus,
+.sign-form textarea:focus,
+.sign-form select:focus {
+    border-color: #505050;
+    outline: none;
 }
 
 .sign-form textarea {
-    color: #303030;
+    color: #343434;
     max-width: 600px;
     min-width: 600px;
     max-height: 270px;
@@ -77,9 +86,9 @@ body {
     margin: 20px auto 0 auto;
     width: 50%;
     font-size: 18px;
+    background: #4CAF50;
     color: #FFFFFF;
-    background-color: #66BB6A;
-    border: 1px solid #4CAF50;
+    border: 1px solid #388E3C;
     font-weight: bold;
     border-radius: 15px;
     cursor: pointer;
@@ -88,8 +97,8 @@ body {
 }
 
 .submit-button:hover {
-    background: #95bd97;
-    color: #6B6B6B;
+    background: #80c184;
+    color: #585858;
     border-color: #81aa83;
 }
 
