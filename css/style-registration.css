@@ -1,7 +1,8 @@
 body {
     font-family: 'Nunito', sans-serif;
-    color: #333333;
-    background: url('../img/account-background.png') no-repeat center center fixed;
+    color: #343434;
+    background: linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.9)), url('../img/account-background.png') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -17,7 +18,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(245, 245, 245, 0.9);
 }
 
 .registration-container {
@@ -105,4 +105,37 @@ body {
 .login-employee-link:hover,
 .login-admin-link:hover {
     color: #0c1f0c;
+}
+
+
+
+
+
+
+@media (max-width: 740px) {
+    .registration-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 615px) {
+    .registration-container {
+        width: 75%;
+    }
+}
+
+@media (max-width: 384px) {
+    .registration-container {
+        width: 70%;
+    }
+
+    .submit-button {
+        width: 80%;
+    }
+}
+
+@media (max-width: 344px) {
+    .submit-button {
+        width: 90%;
+    }
 }
