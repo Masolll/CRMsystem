@@ -1,3 +1,5 @@
+import {renderTimeColumn} from "./time-picker.js"
+
 const monthYearElement = document.getElementById('monthYear');
 const calendarDaysElement = document.getElementById('calendarDays');
 const prevMonthButton = document.getElementById('prevMonth');
@@ -91,9 +93,14 @@ todayButton.addEventListener('click', () => {
     renderCalendar();
 });
 
+//обработчик на каждый день календаря
 calendarDaysElement.addEventListener('click', (evt) => {
     const target = evt.target;
     if (target.classList.contains('day') && !target.classList.contains('inactive')) {
+        
+        //обновляю список времени
+        renderTimeColumn(document.getElementById('employee').value);
+        
         const day = target.textContent;
         const month = selectedDate.getMonth() + 1;
         const year = selectedDate.getFullYear();
@@ -113,3 +120,5 @@ todayButton.addEventListener('click', () => {
 });
 
 renderCalendar();
+
+export {selectedDate};

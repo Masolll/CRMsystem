@@ -1,4 +1,5 @@
 import { renderTimeColumn, timeInputEvent } from './time-picker.js';
+import {getEmployeesFromDb, getRecordsFromDb} from "../util.js";
 
 const form = document.querySelector('.sign-form');
 const timeInput = document.getElementById('custom-time');
@@ -7,8 +8,8 @@ const confirmationContainer = document.querySelector('.confirmation-container');
 const successMessage = document.querySelector('.success-message');
 const editButton = document.querySelector('.edit-form-button');
 
-renderTimeColumn();
-timeInputEvent();
+renderTimeColumn("");//по умолчанию сотрудник не выбран поэтому логин равен пустой строке
+timeInputEvent();//красит кнопку в зеленый цвет при нажатии или наведении
 
 const showErrorMessage = () => {
     const errorMessage = document.createElement("div");
@@ -22,6 +23,32 @@ const showErrorMessage = () => {
     }, 3000);
 }
 
+const renderForm = async () => {
+    const records = await getRecordsFromDb();
+    const employees = await getEmployeesFromDb();
+    const params = new URLSearchParams(window.location.search);
+    const recordId = params.get("recordId");
+    const currentRecord = records.find(e => e.Id == recordId);
+    const currentEmployees = employees.filter(e => currentRecord.EmployeesLogins.includes(e.Login));
+    document.getElementById('sign-name').value = currentRecord.Name;
+    const employeesList = document.getElementById('employee');
+    
+    //заполняю список сотрудников
+    currentEmployees.forEach((employee) => {
+        let option = document.createElement('option');
+        option.value = employee.Login;
+        option.classList.add("employee-item");
+        option.textContent = `${employee.Surname} ${employee.Name} ${employee.Patronymic}`;
+        employeesList.appendChild(option);
+    })
+    
+    //после клика на сотрудника обновляю список времени, так как у разных сотрудников доступны разные временные слоты
+    const employeesListItems = document.querySelectorAll('.employee-item');
+    employeesListItems.forEach( e => e.addEventListener('click', () => {
+        renderTimeColumn(employeesList.value);
+    }));
+}
+renderForm();
 const handleFormSubmit = (evt) => {
     evt.preventDefault();
 

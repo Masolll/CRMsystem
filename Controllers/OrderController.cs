@@ -6,6 +6,7 @@ using crm.Models;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
+using crm.Models.ViewModels;
 
 namespace crm.Controllers;
 
@@ -19,15 +20,14 @@ public class OrderController : Controller
     }
     
     [HttpGet]
-    public IActionResult Form()
+    public IActionResult Form(Guid recordId)
     {
-        return View();
-    }
-
-    [HttpGet]
-    public IActionResult Confirmation()
-    {
-        return View();
+        var currentRecord = dbContext.Records.FirstOrDefault(e => e.Id == recordId);
+        
+        if (currentRecord == null)
+            return NotFound("Такой страницы не существует :(");
+        
+        return View(recordId);
     }
 
     [HttpGet]

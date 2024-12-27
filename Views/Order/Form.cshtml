@@ -1,3 +1,5 @@
+@model Guid
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -44,8 +46,8 @@
                     <input type="text" id="sign-name" name="sign-name" disabled required>
 
                     <label for="employee">Сотрудник:</label>
-                    <select id="employee" name="employee" required>
-                        <option value="" disabled selected>Выберите сотрудника</option>
+                    <select id="employee" name="EmployeeLogin">
+                        <option class="employee-item" value="" disabled selected>Выберите сотрудника</option>
                     </select>
 
                     <div class="date-time-picker-container">
@@ -65,14 +67,14 @@
                         <div class="time-picker-section">
                             <label for="custom-time">Выберите время:</label>
                             <div class="custom-time-picker">
-                                <input type="text" id="custom-time" name="custom-time" placeholder="Выберите время" autocomplete="off" required>
+                                <input type="text" id="custom-time" name="custom-time" placeholder="Выберите время" autocomplete="off" required readonly="">
                                 <div class="time-dropdown">
                                     <div class="time-column"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <label for="surname">Фамилия:</label>
                     <input type="text" id="surname" name="surname" placeholder="Иванов" required>
 
@@ -92,6 +94,7 @@
                     <textarea id="comment" name="comment" rows="6" placeholder="Введите ваш комментарий"></textarea>
 
                     <button type="submit" class="submit-button">Записаться</button>
+
                 </form>
             </div>
 
@@ -176,6 +179,6 @@
         </div>
     </footer>
 
-    <script type="module" src="/js/main-customer-form.js"></script>
+    <script type="module" src="/js/customer/main-customer-form.js"></script>
 </body>
 </html>
