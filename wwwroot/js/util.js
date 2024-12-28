@@ -45,4 +45,13 @@ const getRecordsFromDb = () => {
         });
 }
 
+const logout = async () => {
+    await fetch('/employee/logout', {
+        method: 'DELETE'
+    })
+    window.location.href="/admin/registration";
+}
+
+document.querySelector('.logout-button').addEventListener('click', logout);
+
 export { formFieldsReset, getOrdersFromDb, getEmployeesFromDb, getRecordsFromDb }

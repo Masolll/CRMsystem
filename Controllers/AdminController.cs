@@ -95,7 +95,7 @@ public class AdminController : Controller
         return RedirectToAction("Account", "admin", new { adminId = searchAdmin.Id });
     }
 
-    [HttpPost]
+    [HttpDelete]
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

@@ -110,7 +110,7 @@ public class EmployeeController : Controller
         return RedirectToAction("Account", "Employee", new { employeeLogin = searchEmployee.Login });
     }
 
-    [HttpPost]
+    [HttpDelete]
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
