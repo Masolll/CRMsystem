@@ -104,7 +104,7 @@ calendarDaysElement.addEventListener('click', (evt) => {
         const day = target.textContent;
         const month = selectedDate.getMonth() + 1;
         const year = selectedDate.getFullYear();
-        const formattedDate = `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}`;
+        const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         hiddenDateInput.value = formattedDate;
     }
 });

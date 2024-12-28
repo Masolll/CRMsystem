@@ -22,14 +22,12 @@ const renderTimeColumn = async (employeeLogin) => {
         
         for(let i = 0; i < ordersSelectEmployee.length; i++){
             let currentOrderDateTime = new Date(ordersSelectEmployee[i].DateTime);
-            console.log(i);
             if (selectedDate.getDay() === currentOrderDateTime.getDay() //проверяю соотетствет ли выбранная пользователем дата с датой ордера
                 && selectedDate.getMonth() === currentOrderDateTime.getMonth()//если соответствует значит есть какой-то ордер на эту дату, 
                 && selectedDate.getFullYear() === currentOrderDateTime.getFullYear()){//а значит и время этого ордера нужно убрать из доступного времени для записи
                 
                 //исключаю время ордера из списка доступного времени
                 times = times.filter(e => e != (currentOrderDateTime.getHours().toString().padStart(2, '0') + ':00'));
-                alert(`Исключил время ${currentOrderDateTime.getHours()}`)
             }
         }
     }
