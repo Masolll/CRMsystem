@@ -27,7 +27,7 @@ renderTimeColumn("");//по умолчанию сотрудник не выбр�
 timeInputEvent();//красит кнопку в зеленый цвет при нажатии или наведении
 
 const renderForm = async () => {
-    document.getElementById('sign-name').value = currentRecord.Name;
+    document.getElementById('sign-name').value = `${currentRecord.Name} - ${currentRecord.Price}р.`;
     const employeesList = document.getElementById('employee');
     
     //заполняю список сотрудников
