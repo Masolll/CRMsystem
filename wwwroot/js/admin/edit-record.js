@@ -1,4 +1,4 @@
-import {getRecordsFromDb, getEmployeesFromDb} from "../util.js";
+import {getRecordsFromDb, getEmployeesFromDb, getAdminsFromDb} from "../util.js";
 
 var editRecordButtons = document.querySelectorAll('.record-edit');
 editRecordButtons.forEach((element) => {
@@ -13,6 +13,10 @@ editRecordButtons.forEach((element) => {
 const generateEditRecordForm = async (recordId) => {
     let records = await getRecordsFromDb();
     let currentRecord = records.filter(e => e.Id === recordId)[0];
+    const admins = await getAdminsFromDb();
+    const params = new URLSearchParams(window.location.search);
+    const currentAdminId = params.get("adminId");
+    const currentAdmin = admins.filter(e => e.Id === currentAdminId)[0];
     
     document.getElementById('edit-record-name').value = currentRecord.Name;
     document.getElementById('edit-price').value = currentRecord.Price;
@@ -25,14 +29,16 @@ const generateEditRecordForm = async (recordId) => {
     const employeesSelectList = document.getElementById('edit-employee');
     employeesSelectList.innerHTML = '';
     employees.forEach((employee) => {
-        const option = document.createElement('option');
-        option.value = employee.Login;
-        option.textContent = `${employee.Login} - ${employee.Surname} ${employee.Name} ${employee.Patronymic}`;
-        
-        if(currentRecord.EmployeesLogins.includes(employee.Login)){ //если сотрудник на текущей итерации уже содержится в записи то делаю его "выбранным"
-            option.selected = true;
+        if(currentAdmin.EmployeesLogins.includes(employee.Login)){//Если текущий админ содержит сотрудника то отображаю его, иначе это чужой сотрудник и отображать его нельзя
+            const option = document.createElement('option');
+            option.value = employee.Login;
+            option.textContent = `${employee.Login} - ${employee.Surname} ${employee.Name} ${employee.Patronymic}`;
+
+            if(currentRecord.EmployeesLogins.includes(employee.Login)){ //если сотрудник на текущей итерации уже содержится в записи то делаю его "выбранным"
+                option.selected = true;
+            }
+            employeesSelectList.appendChild(option);
         }
-        employeesSelectList.appendChild(option);
     })
 }
 

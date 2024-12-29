@@ -45,7 +45,6 @@ const renderCalendar = () => {
             day === selectedDate.getDate()
         ) {
             dayElement.classList.add('selected');
-            showTimeSlots();
         }
         dayElement.addEventListener('click', () => {
             selectedDate = new Date(year, month, day);
@@ -82,15 +81,22 @@ const showTimeSlots = async () => {
     let orders = await getOrdersFromDb();//получаю массив всех заказов всех сотрудников
     let records = await getRecordsFromDb();
     const loginCurrentEmployee = document.getElementById('user-id').value;
-    let ordersCurrentEmployee = orders.filter(e => e.EmployeeLogin == loginCurrentEmployee);//заказы только текущего сотрудника
+    let ordersCurrentEmployee = orders
+        .filter(e => e.EmployeeLogin == loginCurrentEmployee)
+        .sort((a, b) => {
+            return new Date(a.DateTime) - new Date(b.DateTime);
+        });//заказы только текущего сотрудника
+    
     
     for(let i = 0; i < ordersCurrentEmployee.length; i++)
     {
         let currentOrderDateTime = new Date(ordersCurrentEmployee[i].DateTime);
         
-        if (selectedDate.getDay() === currentOrderDateTime.getDay() //проверяю соотетствет ли выбранная пользователем дата с датой ордера
+        
+        if (selectedDate.getDate() === currentOrderDateTime.getDate() //проверяю соотетствет ли выбранная пользователем дата с датой ордера
             && selectedDate.getMonth() === currentOrderDateTime.getMonth() 
             && selectedDate.getFullYear() === currentOrderDateTime.getFullYear()){
+            
             
             let startOrderHour = String(currentOrderDateTime.getHours()).padStart(2, '0');//добиваю незначащими нулями до длины 2
             let endOrderHour = String(currentOrderDateTime.getHours() + 1).padStart(2, '0');//+1 потому что все записи по 1 часу

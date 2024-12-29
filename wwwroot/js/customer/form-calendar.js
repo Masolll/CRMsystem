@@ -13,6 +13,13 @@ const monthNames = [
 
 let currentDate = new Date();
 let selectedDate = new Date(currentDate);
+//записываю в скрытое поле с выбранной дату дату сегодняшнего дня
+const day = currentDate.getDate();
+const month = selectedDate.getMonth() + 1;
+const year = selectedDate.getFullYear();
+const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+hiddenDateInput.value = formattedDate;
+
 
 const renderCalendar = () => {
     calendarDaysElement.innerHTML = '';

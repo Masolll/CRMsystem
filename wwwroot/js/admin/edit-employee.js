@@ -21,6 +21,7 @@ const showEditEmployeeForm = () => {
 const generateEditEmployeeForm = async (employeeLogin) => {
     var employees = await getEmployeesFromDb();
     let currentEmployee = employees.filter(employee => employee.Login === employeeLogin)[0];
+    document.getElementById('edit-employee-id-hidden').value = currentEmployee.Id;
     document.getElementById('edit-employee-name').value = currentEmployee.Name;
     document.getElementById('edit-employee-surname').value = currentEmployee.Surname;
     document.getElementById('edit-employee-patronymic').value = currentEmployee.Patronymic;

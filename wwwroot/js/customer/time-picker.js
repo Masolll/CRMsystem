@@ -18,6 +18,8 @@ const renderTimeColumn = async (employeeLogin) => {
     
     if(employeeLogin !== ""){//логин "" стоит по умолчанию для случая когда пользователь еще не выбрал сотрудника
         const orders = await getOrdersFromDb();
+        const params = new URLSearchParams(window.location.search);
+        const recordId = params.get("recordId");
         const ordersSelectEmployee = orders.filter(e => e.EmployeeLogin === employeeLogin);
         
         for(let i = 0; i < ordersSelectEmployee.length; i++){

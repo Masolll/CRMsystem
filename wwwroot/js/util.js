@@ -45,6 +45,20 @@ const getRecordsFromDb = () => {
         });
 }
 
+const getAdminsFromDb = () => {
+    // Отправка GET-запроса
+    return fetch('/admin/dbInfo')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
 
 
-export { formFieldsReset, getOrdersFromDb, getEmployeesFromDb, getRecordsFromDb }
+
+export { formFieldsReset, getOrdersFromDb, getEmployeesFromDb, getRecordsFromDb, getAdminsFromDb }

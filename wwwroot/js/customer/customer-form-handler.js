@@ -52,16 +52,19 @@ renderForm();
 const handleFormSubmit = (evt) => {
     evt.preventDefault();
     
+    const loginSelectedEmployee = document.getElementById('employee').value;
+    const phoneSelectedEmployee = employees.filter(e => e.Login === loginSelectedEmployee)[0].Phone;
+    
     signContainer.style.display = 'none';
     confirmationContainer.style.display = 'block';
     window.scrollTo(0, 0);
-    //чтобы получить цену записи нужно currentRecord.Price это если решим добавить поле с ценой
+    
     document.querySelector(".confirmation-title").textContent = currentRecord.Name;
     document.querySelector(".description-container p").textContent = currentRecord.Description;
     document.getElementById("employee-name-confirmation").textContent = `${getSelectEmployee().Surname} ${getSelectEmployee().Name} ${getSelectEmployee().Patronymic}`;
     document.getElementById("date-time-confirmation").textContent = `${document.getElementById('selectedDate').value} ${document.getElementById('custom-time').value}`;
     document.getElementById("address-confirmation").textContent = currentRecord.Address;
-    document.getElementById("phone-confirmation").textContent = document.getElementById('phone').value;
+    document.getElementById("phone-confirmation").textContent = phoneSelectedEmployee;//нужно номер мастера а не клиента
     document.getElementById("comment-confirmation").textContent = document.getElementById("comment").value || 'Не добавлен';
 };
 

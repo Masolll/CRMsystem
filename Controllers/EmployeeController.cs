@@ -119,10 +119,15 @@ public class EmployeeController : Controller
     
     [HttpPost]
     [Authorize(Roles = "admin")]
-    public IActionResult Update(EmployeeCreateModel employee)
+    public IActionResult Update(EmployeeCreateModel employee, Guid id)
     {
         var adminId = HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
-        var targetEmployee = dbContext.Employees.FirstOrDefault(e => e.Login == employee.Login);
+        var targetEmployee = dbContext.Employees.FirstOrDefault(e => e.Id == id);
+        //так как я обновляю ниже логин сотрудника то его нужно обновить еще в списке у админа
+        var currentAdmin = dbContext.Admins.FirstOrDefault(e => e.Id.ToString() == adminId);
+        currentAdmin.EmployeesLogins = currentAdmin.EmployeesLogins.Where(e => e != targetEmployee.Login).ToList();
+        currentAdmin.EmployeesLogins.Add(employee.Login);
+        
         targetEmployee.Name = employee.Name;
         targetEmployee.Surname = employee.Surname;
         targetEmployee.Patronymic = employee.Patronymic;
