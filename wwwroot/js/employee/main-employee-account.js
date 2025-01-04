@@ -5,7 +5,7 @@ const logout = async () => {
     await fetch('/employee/logout', {
         method: 'DELETE'
     })
-    window.location.href="/admin/registration";
+    window.location.href="/home/index";
 }
 
 document.querySelector('.logout-button').addEventListener('click', logout);

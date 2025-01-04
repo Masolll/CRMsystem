@@ -74,8 +74,8 @@ public class EmployeeController : Controller
     {
         var adminId = HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;  //извлекаю id из контейнера claims то есть id админа который зашел в систему
         var admin = dbContext.Admins.FirstOrDefault(e => e.Id.ToString() == adminId);  
-        var passwordHasher = new PasswordHasher<EmployeeCreateModel>();
-        employeeCreateModel.Password = passwordHasher.HashPassword(employeeCreateModel, employeeCreateModel.Password);
+        // var passwordHasher = new PasswordHasher<EmployeeCreateModel>();
+        // employeeCreateModel.Password = passwordHasher.HashPassword(employeeCreateModel, employeeCreateModel.Password);
         var employee = new Employee(employeeCreateModel);
         dbContext.Employees.Add(employee);
         admin.EmployeesLogins.Add(employee.Login);   //добавляю теущему админу нового сотрудника
@@ -88,10 +88,10 @@ public class EmployeeController : Controller
     {
         var passwordHasher = new PasswordHasher<Employee>();
         var searchEmployee = dbContext.Employees.FirstOrDefault(e => e.Login == login);
-        if(searchEmployee == null 
-           || passwordHasher.VerifyHashedPassword(searchEmployee, searchEmployee.Password, password) != PasswordVerificationResult.Success)
+        if(searchEmployee == null || searchEmployee.Password != password)
+        //    || passwordHasher.VerifyHashedPassword(searchEmployee, searchEmployee.Password, password) != PasswordVerificationResult.Success)
         {
-            return Redirect($"/Employee/Login/");
+            return Redirect($"/Employee/Login");
         }
 
         //claims это список объектов claim которые хранят информацию о пользователе. Claim хранит пары ключ-значение

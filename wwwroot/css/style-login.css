@@ -1,7 +1,8 @@
 body {
     font-family: 'Nunito', sans-serif;
-    color: #333333;
-    background: url('../img/account-background.png') no-repeat center center fixed;
+    color: #343434;
+    background: linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.9)), url('../img/account-background.png') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -17,7 +18,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(245, 245, 245, 0.9);
 }
 
 .login-box {
@@ -53,6 +53,7 @@ body {
 }
 
 .form-input {
+    font-family: 'Nunito', sans-serif;
     box-sizing: border-box;
     color: #343434;
     width: 100%;
@@ -60,6 +61,12 @@ body {
     font-size: 16px;
     border: 1px solid #8E8E8E;
     border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #505050;
 }
 
 .form-button {
@@ -106,4 +113,34 @@ body {
 .login-employee-link:hover,
 .login-admin-link:hover {
     color: #0c1f0c;
+}
+
+
+
+
+
+
+@media (max-width: 1280px) {
+    .login-section {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 740px) {
+    .login-box {
+        width: 80%;
+    }
+}
+
+@media (max-width: 615px) {
+    .login-box {
+        width: 75%;
+    }
+}
+
+@media (max-width: 384px) {
+    .login-box {
+        width: 70%;
+    }
+
 }

@@ -2,6 +2,7 @@ body {
     font-family: 'Nunito', sans-serif;
     color: #343434;
     background: url('../img/account-background.png') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -73,6 +74,7 @@ main {
 
 .field {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
@@ -84,10 +86,11 @@ main {
 .field label {
     width: 25%;
     font-size: 16px;
+    text-align: left;
 }
 
 .field input {
-    flex-grow: 1;
+    width: 75%;
     color: #343434;
     background: #F5F5F5;
     padding: 5px 10px;
@@ -180,6 +183,139 @@ main {
 
 
 
+
+
+
+@media (max-width: 1746px) {
+    .field label {
+        width: 100px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .sidebar {
+        width: 18%;
+    }
+
+    .profile {
+        flex-direction: column;
+    }
+
+    .avatar img {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .profile-info {
+        align-items: center;
+    }
+
+    .field {
+        flex-direction: column;
+    }
+
+    .field input {
+        width: 95%;
+    }
+
+    .field label {
+        margin-bottom: 4px;
+        align-self: flex-start;
+    }
+
+    .logout-button {
+        width: 40%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .logout-button {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .logout-button {
+        width: 60%;
+    }
+}
+
+@media (max-width: 853px) {
+    .logout-button {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .sidebar {
+        padding: 0;
+        padding-bottom: 20px;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #c2c2c2;
+    }
+
+    .sidebar h1 {
+        margin-top: 20px;
+    }
+
+    .profile-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .profile, .info {
+        margin: 10px;
+    }
+
+    .profile {
+        flex-direction: row;
+        width: 40%;
+        justify-content: space-evenly;
+    }
+
+    .avatar img {
+        margin: 0 20px 0 0;
+    }
+
+    .info {
+        width: 60%;
+    }
+
+    .profile-info {
+        align-items: start;
+    }
+
+    .field {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 640px) {
+    .field input {
+        width: 80%;
+    }
+
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile, .info {
+        width: 80%;
+        margin: 10px auto;
+    }
+}
+
+
+
+
+
+
 /* Schedule */
 .schedule {
     flex-grow: 1;
@@ -258,7 +394,7 @@ main {
 .employee-list,
 .record-list {
     width: 100%;
-    max-width: 150vh;
+    max-width: 151vh;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -266,7 +402,7 @@ main {
 .employee-item,
 .record-item {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
     color: #343434;
     padding: 8px 25px;
@@ -281,24 +417,26 @@ main {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    word-wrap: break-word;  /* Позволяет разрывать длинные слова */
+    overflow-wrap: break-word;  /* Совместимость с различными браузерами */
 }
 
 .employee-item .full-name {
     flex: 2;
+    margin: 20px 30px 20px 0;
     font-size: 18px;
     font-weight: bold;
     color: #343434;
     text-align: left;
-    margin-right: 30px;
 }
 
 .employee-item .job-title {
     flex: 2;
+    margin: 20px 30px 20px 0;
     display: flex;
     flex-direction: column;
     font-size: 16px;
     color: rgba(52, 52, 52, 0.9);
-    margin-right: 30px;
 }
 
 .employee-item .job-title p {
@@ -307,11 +445,10 @@ main {
 
 .employee-item .employee-id {
     flex: 2;
+    margin: 20px 30px 20px 0;
     font-size: 16px;
     color: rgba(52, 52, 52, 0.9);
-    margin: 0;
     text-align: left;
-    margin-right: 30px;
 }
 
 .employee-item .status-icons
@@ -323,28 +460,28 @@ main {
 
 .record-item .full-name {
     flex: 2;
+    margin: 10px 50px 10px 0;
     font-size: 18px;
     font-weight: bold;
     color: #343434;
     text-align: left;
-    margin-right: 50px;
 }
 
 .record-item .price {
     flex: 1;
+    margin: 10px 20px 10px 0;
     font-size: 18px;
     color: rgba(52, 52, 52, 0.9);
     text-align: left;
-    margin-right: 20px;
 }
 
 .record-item .record-employees {
     flex: 2;
+    margin: 10px 20px 10px 0;
     display: flex;
     flex-direction: column;
     font-size: 16px;
     color: rgba(52, 52, 52, 0.9);
-    margin-right: 20px;
 }
 
 .record-item .record-employees p {
@@ -353,24 +490,23 @@ main {
 
 .record-item .record-description {
     flex: 2;
+    margin: 10px 20px 10px 0;
     font-size: 16px;
     color: rgba(52, 52, 52, 0.9);
-    margin: 0;
     text-align: left;
-    margin-right: 20px;
 }
 
 .record-item .record-adress {
     flex: 2;
+    margin: 10px 20px 10px 0;
     font-size: 16px;
     color: rgba(52, 52, 52, 0.9);
-    margin: 0;
     text-align: left;
-    margin-right: 20px;
 }
 
 .status-icons button {
     font-family: 'Nunito', sans-serif;
+    margin: 10px 0 10px 0;
     background: #4CAF50;
     color: #FFFFFF;
     border: 1px solid #388E3C;
@@ -441,4 +577,92 @@ main {
     display: block;
     width: 25px;
     height: 25px;
+}
+
+
+
+
+
+
+@media (max-width: 7680px) {
+    .employee-list,
+    .record-list {
+        max-width: 158vh;
+    }
+}
+
+@media (max-width: 2880px) {
+    .employee-list,
+    .record-list {
+        max-width: 154vh;
+    }
+}
+
+@media (max-width: 2560px) {
+    .employee-list,
+    .record-list {
+        max-width: 153vh;
+    }
+}
+
+@media (max-width: 2400px) {
+    .employee-list,
+    .record-list {
+        max-width: 152vh;
+    }
+}
+
+@media (max-width: 1920px) {
+    .employee-list,
+    .record-list {
+        max-width: 150vh;
+    }
+}
+
+@media (max-width: 1600px) {
+    .employee-list,
+    .record-list {
+        max-width: 149vh;
+    }
+}
+
+@media (max-width: 1440px) {
+    .record-item {
+        flex-direction: column;
+    }
+
+    .employee-list,
+    .record-list {
+        max-width: 151vh;
+    }
+}
+
+@media (max-width: 1200px) {
+    .employee-list,
+    .record-list {
+        max-width: 148vh;
+    }
+
+    .employee-item {
+        flex-direction: column;
+    }
+
+    .employee-item .full-name {
+        margin: 10px 30px 10px 0;
+    }
+    
+    .employee-item .job-title {
+        margin: 10px 30px 10px 0;
+    }
+    
+    .employee-item .employee-id {
+        margin: 10px 30px 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .employee-list,
+    .record-list {
+        max-width: 100%;
+    }
 }

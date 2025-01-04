@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.png" type="image/png">
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href='/css/datetime-selector.css'>
     <link rel="stylesheet" href='/css/style-form.css'>
@@ -18,7 +19,8 @@
         <div class="header-container">
             <div class="logo-container">
                 <a href="/" class="logo">
-                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
+                    <h1>Lunara</h1>
                 </a>
             </div>
             <div class="navigation-container">
@@ -29,10 +31,8 @@
                 </nav>
             </div>
             <div class="login-container">
-                <a href="/admin/login" class="login">
-                    <img src="https://via.placeholder.com/50" alt="Войти">
-                    <p>Войти</p>
-                </a>
+                <button class="login-button" onclick="window.location.href='/admin/login'">Войти</button>
+                <button class="register-button" onclick="window.location.href='/admin/registration'">Зарегистрироваться</button>
             </div>
         </div>
     </header>
@@ -42,11 +42,11 @@
             <div class="sign-container">
                 <h1 class="sign-title">Запись</h1>
                 <form class="sign-form">
-                    <label for="sign-name">Наименование записи:</label>
+                    <label for="sign-name">Наименование:</label>
                     <input type="text" id="sign-name" name="sign-name" disabled required>
 
                     <label for="employee">Сотрудник:</label>
-                    <select id="employee" name="EmployeeLogin">
+                    <select id="employee" name="EmployeeLogin" required>
                         <option class="employee-item" value="" disabled selected>Выберите сотрудника</option>
                     </select>
 
@@ -76,22 +76,26 @@
                     </div>
 
                     <label for="surname">Фамилия:</label>
-                    <input type="text" id="surname" name="surname" placeholder="Иванов" required>
+                    <input type="text" id="surname" name="surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    title="Фамилия должна начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванов или Ivanov)" required>
 
                     <label for="name">Имя:</label>
-                    <input type="text" id="name" name="name" placeholder="Иван" required>
+                    <input type="text" id="name" name="name" placeholder="Иван" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
+                    title="Имя должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иван или Ivan)" required>
 
                     <label for="patronymic">Отчество:</label>
-                    <input type="text" id="patronymic" name="patronymic" placeholder="Иванович">
+                    <input type="text" id="patronymic" name="patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    title="Отчество должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванович или Ivanovich)" required>
 
                     <label for="email">Почта:</label>
                     <input type="email" id="email" name="email" placeholder="example@company.com" required>
 
                     <label for="phone">Телефон:</label>
-                    <input type="tel" id="phone" name="phone" placeholder="1-222-333-44-55" required>
+                    <input type="tel" id="phone" name="phone" placeholder="1-222-333-44-55" pattern="^(\+7|8)\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}$" 
+                    title="Телефонный номер должен начинаться с +7 или 8 и содержать 11 цифр" required>
 
                     <label for="comment">Комментарий:</label>
-                    <textarea id="comment" name="comment" rows="6" placeholder="Введите ваш комментарий"></textarea>
+                    <textarea id="comment" name="comment" rows="6" placeholder="Ваш комментарий"></textarea>
 
                     <button type="submit" class="submit-button">Записаться</button>
 
@@ -144,41 +148,6 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="logo-container">
-                <a href="/" class="logo">
-                    <img src="https://via.placeholder.com/50" alt="Логотип">
-                </a>
-            </div>
-            <div class="footer-navigation-container">
-                <div class="footer-section">
-                    <p class="footer-heading">Компания</p>
-                    <ul>
-                        <li><a href="#" class="footer-link">О нас</a></li>
-                        <li><a href="#" class="footer-link">Отзывы</a></li>
-                        <li><a href="#" class="footer-link">База знаний</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <p class="footer-heading">Возможности</p>
-                    <ul>
-                        <li><a href="#" class="footer-link">Онлайн-запись</a></li>
-                        <li><a href="#" class="footer-link">Уведомления</a></li>
-                        <li><a href="#" class="footer-link">Аналитика</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <p class="footer-heading">Правовая информация</p>
-                    <ul>
-                        <li><a href="#" class="footer-link">Пользовательское соглашение</a></li>
-                        <li><a href="#" class="footer-link">Конфиденциальность</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script type="module" src="/js/customer/main-customer-form.js"></script>
+    <script type="module" src="../js/customer/main-customer-form.js"></script>
 </body>
 </html>

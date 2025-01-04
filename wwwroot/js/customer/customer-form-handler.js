@@ -54,6 +54,15 @@ const handleFormSubmit = (evt) => {
     
     const loginSelectedEmployee = document.getElementById('employee').value;
     const phoneSelectedEmployee = employees.filter(e => e.Login === loginSelectedEmployee)[0].Phone;
+
+    const selectedDate = document.getElementById('selectedDate').value;
+    const selectedTime = document.getElementById('custom-time').value;
+    
+    if (!selectedDate || !selectedTime) {
+        alert('Пожалуйста, выберите дату и время.');
+        document.getElementById('custom-time').focus();
+        return;
+    }
     
     signContainer.style.display = 'none';
     confirmationContainer.style.display = 'block';

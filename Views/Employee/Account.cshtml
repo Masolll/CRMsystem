@@ -5,10 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.png" type="image/png">
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href='/css/style-employee-account.css'>
     <link rel="stylesheet" href='/css/style-header-footer.css'>
-    <title>Lunara — CRM Система для записи клиентов</title>
+    <title>Lunara — CRM система для записи клиентов</title>
 </head>
 
 <body>
@@ -16,7 +17,8 @@
         <div class="header-container">
             <div class="logo-container">
                 <a href="/" class="logo">
-                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
+                    <h1>Lunara</h1>
                 </a>
             </div>
             <div class="navigation-container">
@@ -27,9 +29,8 @@
                 </nav>
             </div>
             <div class="login-container">
-                <a href="/admin/login" class="login">
-                    <img src="https://via.placeholder.com/50" alt="Войти">
-                    <p>Войти</p>
+                <a class="account">
+                    <img src="https://via.placeholder.com/50" alt="Аватар">
                 </a>
             </div>
         </div>
@@ -37,30 +38,33 @@
 
     <main>
         <aside class="sidebar">
-            <div class="profile">
-                <div class="avatar">
-                    <img src="https://via.placeholder.com/50" alt="Аватар">
+            <div class="profile-container">
+                <div class="profile">
+                    <div class="avatar">
+                        <img src="https://via.placeholder.com/50" alt="Аватар">
+                    </div>
+                    <div class="profile-info">
+                        <p>@Model.Surname</p>
+                        <p>@Model.Name</p>
+                        <p>@Model.Patronymic</p>
+                    </div>
                 </div>
-                <div class="profile-info">
-                    <p>@Model.Surname</p>
-                    <p>@Model.Name</p>
-                    <p>@Model.Patronymic</p>
+                <div class="info">
+                    <div class="field">
+                        <label for="user-id">ID:</label>
+                        <input type="text" id="user-id" placeholder="Введите ID" value="@Model.Login" disabled="">
+                    </div>
+                    <div class="field">
+                        <label for="phone">Телефон:</label>
+                        <input type="tel" id="phone" placeholder="х-ххх-ххх-хх-хх" value="@Model.Phone" disabled="">
+                    </div>
+                    <div class="field">
+                        <label for="email">Почта:</label>
+                        <input type="email" id="email" placeholder="Введите почту" value="@Model.Email" disabled="">
+                    </div>
                 </div>
             </div>
-            <div class="info">
-                <div class="field">
-                    <label for="user-id">ID:</label>
-                    <input type="text" id="user-id" placeholder="Введите ID" value="@Model.Login" disabled="">
-                </div>
-                <div class="field">
-                    <label for="phone">Телефон:</label>
-                    <input type="tel" id="phone" placeholder="х-ххх-ххх-хх-хх" value="@Model.Phone" disabled="">
-                </div>
-                <div class="field">
-                    <label for="email">Почта:</label>
-                    <input type="email" id="email" placeholder="Введите почту" value="@Model.Email" disabled="">
-                </div>
-            </div>
+            <div class="line"></div>
             <div class="calendar">
                 <div class="month-switcher">
                     <button id="prevMonth">&lt;</button>
@@ -92,7 +96,7 @@
         <div class="footer-container">
             <div class="logo-container">
                 <a href="/" class="logo">
-                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
                 </a>
             </div>
             <div class="footer-navigation-container">
@@ -123,6 +127,6 @@
         </div>
     </footer>
     
-<script type="module" src="/js/employee/main-employee-account.js"></script>
+<script type="module" src="../js/employee/main-employee-account.js"></script>
 </body>
 </html>

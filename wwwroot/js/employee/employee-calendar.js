@@ -103,9 +103,9 @@ const showTimeSlots = async () => {
             let orderMinute = String(currentOrderDateTime.getMinutes()).padStart(2, '0');
             let currentRecord = records.filter(e => e.Id == ordersCurrentEmployee[i].RecordId)[0];//запись для ордера на текущей итерации(нужна для отображения названия записи
             const timeSlot = document.createElement('div');
-            timeSlot.classList = 'slot';
+            timeSlot.classList.add('slot');
             timeSlot.innerHTML =
-                `<span class="time">${startOrderHour}:${orderMinute}–${endOrderHour}:${orderMinute}</span>
+                `<span class="time">${startOrderHour}:${orderMinute} – ${endOrderHour}:${orderMinute}</span>
                 <p class="title">${currentRecord.Name}</p>
                 <div class="client-info">
                     <p>${ordersCurrentEmployee[i].ClientName}</p>
@@ -115,11 +115,16 @@ const showTimeSlots = async () => {
                 <p class="comment">${ordersCurrentEmployee[i].ClientComment}</p>
                 <div class="status-icons">
                     <button class="check">✔</button>
-                    <button class="cancel">✖</button>
                 </div>`;
+            
+            const checkButton = timeSlot.querySelector('.check');
+            checkButton.addEventListener('click', () => {
+                timeSlot.classList.add('finished');
+                checkButton.disabled = true;
+            });
+            
             timeSlotsElement.appendChild(timeSlot);
         }
-        
     }
     
     const dateHeaderElement = document.querySelector('.date-header h1');

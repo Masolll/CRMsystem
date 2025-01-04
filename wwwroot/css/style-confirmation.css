@@ -1,7 +1,8 @@
 body {
     font-family: 'Nunito', sans-serif;
     color: #343434;
-    background: url('../img/account-background.png') no-repeat center center fixed;
+    background: linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.9)), url('../img/account-background.png') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -198,4 +199,56 @@ body {
 
 .no-scroll {
     overflow: hidden;
+}
+
+
+
+
+
+
+@media (max-width: 740px) {
+    .confirmation-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 615px) {
+    .confirmation-container {
+        width: 75%;
+    }
+}
+
+@media (max-width: 480px) {
+    .success-message {
+        width: 60%;
+    }
+}
+
+@media (max-width: 384px) {
+    .confirmation-container {
+        width: 70%;
+    }
+}
+
+@media (max-width: 360px) {
+    .confirmation-container {
+        width: 80%;
+        padding: 25px;
+    }
+    
+    .sign-form textarea {
+        max-width: 287px;
+        min-width: 287px;
+    }
+}
+
+@media (max-width: 344px) {
+    .confirmation-container {
+        padding: 25px;
+    }
+
+    .sign-form textarea {
+        max-width: 276px;
+        min-width: 276px;
+    }
 }

@@ -2,6 +2,7 @@ body {
     font-family: 'Nunito', sans-serif;
     color: #343434;
     background: url('../img/account-background.png') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -66,6 +67,7 @@ main {
 
 .field {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
@@ -77,10 +79,11 @@ main {
 .field label {
     width: 25%;
     font-size: 16px;
+    text-align: left;
 }
 
 .field input {
-    flex-grow: 1;
+    width: 75%;
     color: #343434;
     background: #F5F5F5;
     padding: 5px 10px;
@@ -239,6 +242,154 @@ main {
 }
 
 
+
+
+
+
+@media (max-width: 1746px) {
+    .field label {
+        width: 100px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .sidebar {
+        width: 25%;
+    }
+
+    .profile {
+        flex-direction: column;
+    }
+
+    .avatar img {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .profile-info {
+        align-items: center;
+    }
+
+    .field {
+        flex-direction: column;
+    }
+
+    .field input {
+        width: 95%;
+    }
+
+    .field label {
+        margin-bottom: 4px;
+        align-self: flex-start;
+    }
+
+    .logout-button {
+        width: 40%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .logout-button {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 30%;
+    }
+
+    .logout-button {
+        width: 50%;
+    }
+}
+
+@media (max-width: 853px) {
+    .logout-button {
+        width: 60%;
+    }
+}
+
+@media (max-width: 820px) {
+    .sidebar {
+        width: 35%;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .sidebar {
+        padding: 0;
+        padding-bottom: 20px;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #c2c2c2;
+    }
+
+    .sidebar h1 {
+        margin-top: 20px;
+    }
+
+    .profile-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .profile, .info {
+        margin: 10px;
+    }
+
+    .profile {
+        flex-direction: row;
+        width: 40%;
+        justify-content: space-evenly;
+    }
+
+    .avatar img {
+        margin: 0 20px 0 0;
+    }
+
+    .info {
+        width: 60%;
+    }
+
+    .profile-info {
+        align-items: start;
+    }
+
+    .field {
+        flex-direction: row;
+    }
+
+    .calendar {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .field input {
+        width: 80%;
+    }
+
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile, .info {
+        width: 80%;
+        margin: 10px auto;
+    }
+}
+
+
+
+
+
+
 /* Schedule */
 .schedule {
     flex-grow: 1;
@@ -267,7 +418,7 @@ main {
 
 .slot {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
     color: #343434;
     padding: 8px 25px;
@@ -276,32 +427,62 @@ main {
     background: #FFFFFF;
     margin-bottom: 10px;
     box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
+    transition: background 0.5s, color 0.5s, border-color 0.5s, box-shadow 0.5s;
+}
+
+.slot .time,
+.slot .title,
+.slot .client-info,
+.slot .comment,
+.slot button {
+    transition: color 0.5s, opacity 0.5s, background 0.5s, border-color 0.5s;
+}
+
+.slot.finished {
+    background: #fafafa;
+    color: #a0a0a0;
+    border-color: rgba(142, 142, 142, 0.2);
+    box-shadow: none;
+}
+
+.slot.finished .time,
+.slot.finished .title,
+.slot.finished .client-info,
+.slot.finished .comment {
+    color: #a0a0a0;
+}
+
+.slot.finished button {
+    opacity: 0.3;
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
 }
 
 .slot .time {
     flex: 1;
+    margin: 10px 20px 10px 0;
     font-size: 18px;
     font-weight: bold;
     color: #343434;
     text-align: left;
-    margin-right: 20px;
 }
 
 .slot .title {
     flex: 2;
+    margin: 10px 20px 10px 0;
     font-size: 16px;
     color: rgba(52, 52, 52, 0.9);
-    margin-right: 20px;
     text-align: left;
 }
 
 .slot .client-info {
     flex: 2;
+    margin: 10px 20px 10px 0;
     display: flex;
     flex-direction: column;
     font-size: 16px;
     color: rgba(52, 52, 52, 0.9);
-    margin-right: 20px;
 }
 
 .slot .client-info p {
@@ -310,10 +491,9 @@ main {
 
 .slot .comment {
     flex: 2;
+    margin: 10px 20px 10px 0;
     font-size: 14px;
     color: rgba(52, 52, 52, 0.9);
-    margin: 0;
-    margin-right: 20px;
     text-align: left;
 }
 
@@ -325,6 +505,7 @@ main {
 
 .status-icons button {
     background: #4CAF50;
+    margin: 10px 0 10px 0;
     color: #FFFFFF;
     border: 1px solid #388E3C;
     font-weight: bold;
@@ -343,4 +524,80 @@ main {
 
 .status-icons button:active {
     transform: scale(0.98);
+}
+
+
+
+
+
+
+@media (max-width: 7680px) {
+    .slot {
+        max-width: 158vh;
+    }
+}
+
+@media (max-width: 2880px) {
+    .slot {
+        max-width: 154vh;
+    }
+}
+
+@media (max-width: 2560px) {
+    .slot {
+        max-width: 153vh;
+    }
+}
+
+@media (max-width: 2400px) {
+    .slot {
+        max-width: 152vh;
+    }
+}
+
+@media (max-width: 1920px) {
+    .slot {
+        max-width: 150vh;
+    }
+}
+
+@media (max-width: 1600px) {
+    .slot {
+        max-width: 149vh;
+    }
+}
+
+@media (max-width: 1440px) {
+    .slot {
+        max-width: 151vh;
+    }
+}
+
+@media (max-width: 1200px) {
+    .slot {
+        max-width: 148vh;
+        flex-direction: column;
+    }
+
+    .slot .time {
+        margin: 10px 30px 10px 0;
+    }
+
+    .slot .title {
+        margin: 10px 30px 10px 0;
+    }
+    
+    .slot .client-info {
+        margin: 10px 30px 10px 0;
+    }
+    
+    .slot .comment {
+        margin: 10px 30px 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .slot {
+        max-width: 100%;
+    }
 }

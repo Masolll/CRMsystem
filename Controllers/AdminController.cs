@@ -75,7 +75,7 @@ public class AdminController : Controller
         if(searchAdmin == null 
            || passwordHasher.VerifyHashedPassword(searchAdmin, searchAdmin.Password, password) != PasswordVerificationResult.Success)
         {
-            return Redirect($"/Admin/Login/");
+            return Redirect($"/Admin/Login");
         }
 
         //claims это список объектов claim которые хранят информацию о пользователе. Claim хранит пары ключ-значение

@@ -5,11 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.png" type="image/png">
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href='/css/admin-record.css'>
     <link rel="stylesheet" href='/css/style-admin-account.css'>
     <link rel="stylesheet" href='/css/style-header-footer.css'>
-    <title>Lunara — CRM Система для записи клиентов</title>
+    <title>Lunara — CRM система для записи клиентов</title>
 </head>
 
 <body>
@@ -17,7 +18,8 @@
         <div class="header-container">
             <div class="logo-container">
                 <a href="/" class="logo">
-                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
+                    <h1>Lunara</h1>
                 </a>
             </div>
             <div class="navigation-container">
@@ -28,9 +30,8 @@
                 </nav>
             </div>
             <div class="login-container">
-                <a href="/admin/login" class="login">
-                    <img src="https://via.placeholder.com/50" alt="Войти">
-                    <p>Войти</p>
+                <a class="account">
+                    <img src="https://via.placeholder.com/50" alt="Аватар">
                 </a>
             </div>
         </div>
@@ -39,36 +40,39 @@
     <main>
         <aside class="sidebar">
             <h1>@Model.Admin.NameCompany</h1>
-            <div class="profile">
-                <div class="avatar">
-                    <img src="https://via.placeholder.com/50" alt="Аватар">
+            <div class="profile-container">
+                <div class="profile">
+                    <div class="avatar">
+                        <img src="https://via.placeholder.com/50" alt="Аватар">
+                    </div>
+                    <div class="profile-info">
+                        @{
+                            //нужно изменить модели и формы чтобы было везде три отдельных поля Фамилия, Имя, Отчество
+                            // var firstName = Model.Admin.NameAdmin.Split()[0];
+                            // var secondName = Model.Admin.NameAdmin.Split()[1];
+                            // var patronymic = Model.Admin.NameAdmin.Split()[2];
+                        }
+                        <p>@Model.Admin.Surname</p>
+                        <p>@Model.Admin.Name</p>
+                        <p>@Model.Admin.Patronymic</p>
+                    </div>
                 </div>
-                <div class="profile-info">
-                    @{
-                        //нужно изменить модели и формы чтобы было везде три отдельных поля Фамилия, Имя, Отчество
-                        // var firstName = Model.Admin.NameAdmin.Split()[0];
-                        // var secondName = Model.Admin.NameAdmin.Split()[1];
-                        // var patronymic = Model.Admin.NameAdmin.Split()[2];
-                    }
-                    <p>@Model.Admin.Surname</p>
-                    <p>@Model.Admin.Name</p>
-                    <p>@Model.Admin.Patronymic</p>
+                <div class="info">
+                    <div class="field">
+                        <label for="user-id">Логин:</label>
+                        <input type="text" id="user-id" value="@Model.Admin.Login" disabled="">
+                    </div>
+                    <div class="field">
+                        <label for="phone-side">Телефон:</label>
+                        <input type="tel" id="phone-side" value="@Model.Admin.Phone" disabled="">
+                    </div>
+                    <div class="field">
+                        <label for="email-side">Почта:</label>
+                        <input type="email" id="email-side" value="@Model.Admin.Email" disabled="">
+                    </div>
                 </div>
             </div>
-            <div class="info">
-                <div class="field">
-                    <label for="user-id">Логин:</label>
-                    <input type="text" id="user-id" value="@Model.Admin.Login" disabled="">
-                </div>
-                <div class="field">
-                    <label for="phone-side">Телефон:</label>
-                    <input type="tel" id="phone-side" value="@Model.Admin.Phone" disabled="">
-                </div>
-                <div class="field">
-                    <label for="email-side">Почта:</label>
-                    <input type="email" id="email-side" value="@Model.Admin.Email" disabled="">
-                </div>
-            </div>
+            <div class="line"></div>
             <nav class="menu">
                 <button class="menu-button show-employees-list">Список сотрудников</button>
                 <button class="menu-button show-record-list">Список записей</button>
@@ -80,7 +84,6 @@
                 Выйти
                 <img src="/img/logout-icon.png" alt="Выйти" class="logout-icon">
             </button>
-            
         </aside>
 
         <section class="schedule">
@@ -102,20 +105,22 @@
                         {
                             var employee = Model.AllEmployees.FirstOrDefault(e => e.Login == employeesLogins[i]);
                             <div class="employee-item">
-                                <p class="full-name">@employee.Surname @employee.Name @employee.Patronymic</p><br/>
+                                <p class="full-name">@employee.Surname @employee.Name @employee.Patronymic</p>
                                 <div class="job-title">
                                     <p>@employee.Position</p>
                                 </div>
                                 <p class="employee-id">ID: @employee.Login</p>
+                                <input type="hidden" class="employee-password" value="@employee.Password" />
                                 <div class="status-icons">
                                     <a href="/employee/account?employeeLogin=@employee.Login"><button class="employee-profile">Профиль</button></a>
-                                    <button class="copy-data">✔</button>
+                                    <button class="copy-data">
+                                        <img src="../img/copy-employee-data-icon.svg" alt="Копировать">
+                                    </button>
                                     <button class="employee-edit" data-employee-login="@employee.Login">Редактировать</button>
                                 </div>
                             </div>
                         }
                     }
-                    
                 </div>
             </div>
             
@@ -138,18 +143,33 @@
                         @for (var i = 0; i < recordsCurrentAdmin.Count; i++)
                         {
                             <div class="record-item">
-                                <p class="full-name">@recordsCurrentAdmin[i].Name Стоимость: @recordsCurrentAdmin[i].Price</p>
+                                <p class="full-name">@recordsCurrentAdmin[i].Name</p>
+                                <p class="price"><b>Стоимость:</b><br> @recordsCurrentAdmin[i].Price</p>
                                 <div class="record-employees">
-                                    <p>
-                                        <b>Сотрудники:</b><br/>
-                                        @for (var j = 0; j < recordsCurrentAdmin[i].EmployeesLogins.Length; j++)
+                                    <p><b>Сотрудники:</b><br>
+                                    @for (var j = 0; j < recordsCurrentAdmin[i].EmployeesLogins.Length; j++)
+                                    {
+                                        var employeeLogin = recordsCurrentAdmin[i].EmployeesLogins[j];
+                                        var employee = Model.AllEmployees.FirstOrDefault(e => e.Login == employeeLogin);
+                                        if (employee != null)
                                         {
-                                            @recordsCurrentAdmin[i].EmployeesLogins[j]<br/>
+                                            <span>@employee.Surname @employee.Name @employee.Patronymic</span><br>
                                         }
+                                    }
                                     </p>
                                 </div>
-                                <p class="record-description"><b>Описание:</b> @recordsCurrentAdmin[i].Description</p>
-                                <p class="record-adress"><b>Адрес:</b> @recordsCurrentAdmin[i].Address</p>
+                                <p class="record-description">
+                                    <b>Описание:</b><br>
+                                    @if (recordsCurrentAdmin[i].Description.Length > 100)
+                                    {
+                                        @Html.Raw(recordsCurrentAdmin[i].Description.Substring(0, 100) + "...")
+                                    }
+                                    else
+                                    {
+                                        @recordsCurrentAdmin[i].Description
+                                    }
+                                </p>
+                                <p class="record-adress"><b>Адрес:</b><br> @recordsCurrentAdmin[i].Address</p>
                                 <div class="status-icons">
                                     <button class="record-edit" data-record-id="@recordsCurrentAdmin[i].Id">Редактировать</button>
                                     <a href="/order/form?recordId=@recordsCurrentAdmin[i].Id"><button class="record-url">URL</button></a>
@@ -157,7 +177,6 @@
                             </div>
                         }
                     }
-                    
                 </div>
             </div>
             
@@ -165,47 +184,59 @@
                 <h1 class="employee-form-title">Добавить сотрудника</h1>
                 <form class="employee-form" method="post" action="/employee/create">
                     <label for="employee-name">Фамилия:</label>
-                    <input type="text" id="employee-name" name="Surname" required>
+                    <input type="text" id="employee-name" name="Surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    title="Фамилия должна начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванов или Ivanov)" required>
                     
                      <label for="employee-name">Имя:</label>
-                    <input type="text" id="employee-name" name="Name" required> 
+                    <input type="text" id="employee-name" name="Name" placeholder="Иван" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
+                    title="Имя должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иван или Ivan)" required> 
                     
                      <label for="employee-name">Отчество:</label>
-                    <input type="text" id="employee-name" name="Patronymic" required> 
+                    <input type="text" id="employee-name" name="Patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    title="Отчество должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванович или Ivanovich)" required> 
                     
-
                     <label for="position">Должность:</label>
                     <input type="text" id="position" name="position" required>
                     
                     <label for="phone">Телефон:</label>
-                    <input type="text" id="phone" name="phone" placeholder="1-222-333-44-55" required>
+                    <input type="text" id="phone" name="phone" placeholder="1-222-333-44-55" pattern="^(\+7|8)\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}$" 
+                    title="Телефонный номер должен начинаться с +7 или 8 и содержать 11 цифр" required>
                     
                     <label for="email">Почта:</label>
-                    <input type="email" id="email" name="email" placeholder="example@example.com" required>
+                    <input type="email" id="email" name="email" placeholder="example@company.com" required>
 
                     <label for="employee-id">ID:</label>
-                     <input type="text" id="employee-id" name="login" required> @*Было name="employee-id" *@
+                    <input type="text" id="employee-id" name="login" minlength="4" maxlength="25" pattern="^[a-zA-Z0-9_\-]{4,25}$"
+                    title="ID должен содержать только цифры, буквы латиницы, _ и -" required> @*Было name="employee-id" *@
                     
                     <label for="password">Пароль:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" minlength="4" maxlength="30" pattern="^[a-zA-Z0-9_\-#$%&*+]{4,30}$"
+                    title="Пароль должен содержать только буквы латиницы и специальные символы" required>
                     
                     <label for="confirm-password">Подтверждение пароля:</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
-
-                    <button type="button" class="password-visibility">Показать/Скрыть пароль</button>
+                    <div class="confirm-password-container">
+                        <input type="password" id="confirm-password" name="confirm-password" minlength="4" maxlength="30" pattern="^[a-zA-Z0-9_\-#$%&*+]{4,30}$"
+                    title="Пароль должен содержать только буквы латиницы и специальные символы" required>
+                        <button type="button" class="password-visibility">
+                            <img src="../img/password-icon.png" alt="Показать/Скрыть пароль">
+                        </button>
+                    </div>
+                    
+                    <div id="password-error">Пароли не совпадают</div>
 
                     <button type="submit" class="submit-button">Добавить</button>
                 </form>
             </div>
 
             <div id="addRecord" class="add-record" style="display: none;">
-                <h1 class="record-form-title">Поле записи</h1>
+                <h1 class="record-form-title">Создать запись</h1>
                 <form class="record-form" method="Post" action="/record/create">
-                    <label for="record-name">Название записи:</label>
+                    <label for="record-name">Название:</label>
                     <input type="text" id="record-name" name="name" required>
 
                     <label for="price">Стоимость:</label>
-                    <input type="text" id="price" name="price" placeholder="1000" required>
+                    <input type="text" id="price" name="price" placeholder="1000" pattern="^\d+$"
+                    title="Цена должна быть целым числом" required>
 
                     <label for="employee">Сотрудник:</label>
                     <select id="employee" name="employeesLogins" multiple required>
@@ -213,9 +244,13 @@
                             var employeesLogins = Model.Admin.EmployeesLogins;
                             @for (var i = 0; i < employeesLogins.Count; i++)
                             {
-                                <option value="@employeesLogins[i]">
-                                    ID: @employeesLogins[i] - @Model.AllEmployees.FirstOrDefault(e => e.Login ==employeesLogins[i]).Name
-                                </option>
+                                var employee = Model.AllEmployees.FirstOrDefault(e => e.Login == employeesLogins[i]);
+                                if (employee != null)
+                                {
+                                    <option value="@employeesLogins[i]">
+                                        ID: @employeesLogins[i] - @employee.Surname @employee.Name @employee.Patronymic
+                                    </option>
+                                }
                             }
                         }
                     </select>
@@ -224,9 +259,9 @@
                     <input type="text" id="address" name="address" required>
 
                     <label for="description">Описание:</label>
-                    <textarea id="description" name="description" rows="6" placeholder="Ведите описание записи"></textarea>
+                    <textarea id="description" name="description" rows="6" placeholder="Описание записи" required></textarea>
 
-                    <button type="submit" class="submit-button">Создать запись</button>
+                    <button type="submit" class="submit-button">Создать</button>
                 </form>
             </div>
 
@@ -234,33 +269,30 @@
                 <h1 class="edit-employee-form-title">Редактирование сотрудника</h1>
                 <form class="edit-employee-form" method="Post" action="/employee/update">
                     <label for="edit-employee-name">Фамилия:</label>
-                    <input type="text" id="edit-employee-surname" name="surname" required>
+                    <input type="text" id="edit-employee-surname" name="surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    title="Фамилия должна начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванов или Ivanov)" required>
                     
                     <label for="edit-employee-name">Имя:</label>
-                    <input type="text" id="edit-employee-name" name="name" required>
+                    <input type="text" id="edit-employee-name" name="name" placeholder="Иван" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
+                    title="Имя должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иван или Ivan)" required>
                     
                     <label for="edit-employee-name">Отчество:</label>
-                    <input type="text" id="edit-employee-patronymic" name="patronymic" required>
+                    <input type="text" id="edit-employee-patronymic" name="patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    title="Отчество должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванович или Ivanovich)" required>
 
                     <label for="edit-position">Должность:</label>
                     <input type="text" id="edit-position" name="position" required>
                     
                     <label for="edit-phone">Телефон:</label>
-                    <input type="text" id="edit-phone" name="phone" placeholder="1-222-333-44-55" required>
+                    <input type="text" id="edit-phone" name="phone" placeholder="1-222-333-44-55" pattern="^(\+7|8)\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}$" 
+                    title="Телефонный номер должен начинаться с +7 или 8 и содержать 11 цифр" required>
                     
                     <label for="edit-email">Почта:</label>
-                    <input type="email" id="edit-email" name="email" placeholder="example@example.com" required>
+                    <input type="email" id="edit-email" name="email" placeholder="example@company.com" required>
 
                     <label for="edit-employee-id">ID:</label>
-                    <input type="text" id="edit-employee-id" name="login" required>
-                    
-                    @* <label for="edit-password">Пароль:</label> *@
-                    @* <input type="password" id="edit-password" name="edit-password" required> *@
-                    @* *@
-                    @* <label for="edit-confirm-password">Подтверждение пароля:</label> *@
-                    @* <input type="password" id="edit-confirm-password" name="edit-confirm-password" required> *@
-
-                    @* <button type="button" class="edit-password-visibility">Показать/Скрыть пароль</button> *@
+                    <input type="text" id="edit-employee-id" name="login" minlength="4" maxlength="25" pattern="^[a-zA-Z0-9_\-]{4,25}$"
+                    title="ID должен содержать только цифры, буквы латиницы, _ и -" required>
 
                     <button type="submit" class="edit-submit-button">Сохранить изменения</button>
                     <input id="edit-employee-id-hidden" style="display: none;" name="Id">
@@ -274,7 +306,8 @@
                     <input type="text" id="edit-record-name" name="Name" required>
             
                     <label for="edit-price">Стоимость:</label>
-                    <input type="text" id="edit-price" name="Price" placeholder="1000" required>
+                    <input type="text" id="edit-price" name="Price" placeholder="1000" pattern="^\d+$"
+                    title="Цена должна быть целым числом" required>
             
                     <label for="edit-employee">Сотрудники:</label>
                     <select id="edit-employee" name="EmployeesLogins" multiple required>
@@ -285,7 +318,7 @@
                     <input type="text" id="edit-address" name="Address" required>
             
                     <label for="edit-description">Описание:</label>
-                    <textarea id="edit-description" name="Description" rows="6" placeholder="Введите описание записи"></textarea>
+                    <textarea id="edit-description" name="Description" rows="6" placeholder="Описание записи" required></textarea>
             
                     <button type="submit" class="edit-submit-button">Сохранить изменения</button>
                     <input id="edit-record-id-hidden"  style="display: none;" name="Id"> 
@@ -298,7 +331,7 @@
         <div class="footer-container">
             <div class="logo-container">
                 <a href="/" class="logo">
-                    <img src="https://via.placeholder.com/50" alt="Логотип">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
                 </a>
             </div>
             <div class="footer-navigation-container">
@@ -338,7 +371,9 @@
             <p class="employee-id">ID</p>
             <div class="status-icons">
                 <button class="employee-profile">Профиль</button>
-                <button class="copy-data">✔</button>
+                <button class="copy-data">
+                    <img src="./img/copy-employee-data-icon.svg" alt="Копировать">
+                </button>
                 <button class="employee-edit">Редактировать</button>
             </div>
         </div>
@@ -346,7 +381,8 @@
 
     <template id="record-template">
         <div class="record-item">
-            <p class="full-name">Название записи - Стоимость</p>
+            <p class="full-name">Название записи</p>
+            <p class="price">Стоимость</p>
             <div class="record-employees">
                 <p><strong>Сотрудники:</strong></p>
             </div>
@@ -359,6 +395,6 @@
         </div>
     </template>
 
-    <script type="module" src="/js/admin/main-admin-account.js"></script>
+    <script type="module" src="../js/admin/main-admin-account.js"></script>
 </body>
 </html>
