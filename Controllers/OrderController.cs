@@ -48,4 +48,15 @@ public class OrderController : Controller
         dbContext.SaveChanges();
         return Ok("Заявка успешно создана!");
     }
+
+    [HttpPost]
+    public IActionResult Finish(Guid orderId)
+    {
+        var searchedOrder = dbContext.Orders.FirstOrDefault(e => e.Id == orderId);
+        if (searchedOrder == null)
+            return NotFound("Ордера с таким id не найдено");
+        searchedOrder.Finished = true;
+        dbContext.SaveChanges();
+        return Ok("Статус оредера изменен на 'Завершен'!");
+    }
 }

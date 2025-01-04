@@ -12,6 +12,7 @@ public class Order
     public string ClientEmail { get; set; }
     public string ClientPhone { get; set; }
     public string ClientComment { get; set; }
+    public bool Finished { get; set; }
 
     public Order()
     {
@@ -28,5 +29,6 @@ public class Order
         ClientEmail = order.ClientEmail;
         ClientPhone = order.ClientPhone;
         ClientComment = order.ClientComment;
+        Finished = false;
     }
 }
