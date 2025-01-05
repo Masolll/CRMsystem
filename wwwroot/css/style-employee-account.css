@@ -40,7 +40,7 @@ main {
     width: 100px;
     height: 100px;
     border-radius: 10%;
-    margin-right: 20px;
+    margin-right: 10px;
     object-fit: cover;
 }
 
@@ -49,6 +49,15 @@ main {
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
+}
+
+.profile-info input {
+    width: 100%;
+    color: #343434;
+    background: #FFFFFF;
+    padding: 5px 10px;
+    border: none;
+    font-size: 16px;
 }
 
 .profile-info p {
@@ -396,6 +405,7 @@ main {
     background: rgba(245, 245, 245, 0.9);
     padding: 20px;
     overflow-y: auto;
+    width: 80%;
 }
 
 .date-header {
@@ -476,6 +486,14 @@ main {
     text-align: left;
 }
 
+.title, .client-info p, .comment {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .slot .client-info {
     flex: 2;
     margin: 10px 20px 10px 0;
@@ -526,6 +544,10 @@ main {
     transform: scale(0.98);
 }
 
+button.disabled {
+    cursor: not-allowed;
+}
+
 
 
 
@@ -547,17 +569,29 @@ main {
     .slot {
         max-width: 153vh;
     }
+    
+    .profile-info input {
+        width: 140%;
+    }
 }
 
 @media (max-width: 2400px) {
     .slot {
         max-width: 152vh;
     }
+
+    .profile-info input {
+        width: 120%;
+    }
 }
 
 @media (max-width: 1920px) {
     .slot {
         max-width: 150vh;
+    }
+    
+    .profile-info input {
+        width: 100%;
     }
 }
 

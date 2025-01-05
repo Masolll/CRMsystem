@@ -23,14 +23,14 @@
             </div>
             <div class="navigation-container">
                 <nav class="navigation">
-                    <a href="#" class="navigation-link">Возможности</a>
-                    <a href="#" class="navigation-link">Контакты</a>
-                    <a href="#" class="navigation-link">Запись</a>
+                    <a href="/home/index#features" class="navigation-link">Возможности</a>
+                    <a href="https://t.me/rezoo000" class="navigation-link">Контакты</a>
+                    <a href="/home/index#record-features" class="navigation-link">Запись</a>
                 </nav>
             </div>
             <div class="login-container">
                 <a class="account">
-                    <img src="https://via.placeholder.com/50" alt="Аватар">
+                    <img src="/img/avatar.png" width="25" height="25" alt="Аватар">
                 </a>
             </div>
         </div>
@@ -41,12 +41,13 @@
             <div class="profile-container">
                 <div class="profile">
                     <div class="avatar">
-                        <img src="https://via.placeholder.com/50" alt="Аватар">
+                        <img src="/img/avatar.png" width="50" height="50" alt="Аватар" id="avatar-image">
+                        <input type="file" id="avatar-upload" style="display: none;">
                     </div>
                     <div class="profile-info">
-                        <p>@Model.Surname</p>
-                        <p>@Model.Name</p>
-                        <p>@Model.Patronymic</p>
+                        <input type="text" value="@Model.Surname" disabled="">
+                        <input type="text" value="@Model.Name" disabled="">
+                        <input type="text" value="@Model.Patronymic" disabled="">
                     </div>
                 </div>
                 <div class="info">
@@ -103,30 +104,27 @@
                 <div class="footer-section">
                     <p class="footer-heading">Компания</p>
                     <ul>
-                        <li><a href="#" class="footer-link">О нас</a></li>
-                        <li><a href="#" class="footer-link">Отзывы</a></li>
-                        <li><a href="#" class="footer-link">База знаний</a></li>
+                        <li><a href="https://t.me/rezoo000" class="footer-link">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <p class="footer-heading">Возможности</p>
                     <ul>
-                        <li><a href="#" class="footer-link">Онлайн-запись</a></li>
-                        <li><a href="#" class="footer-link">Уведомления</a></li>
-                        <li><a href="#" class="footer-link">Аналитика</a></li>
+                        <li><a href="/home/index#features" class="footer-link">Администрирование</a></li>
+                        <li><a href="/home/index#employee-features" class="footer-link">Ведение расписания</a></li>
+                        <li><a href="/home/index#record-features" class="footer-link">Запись на услуги</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <p class="footer-heading">Правовая информация</p>
                     <ul>
-                        <li><a href="#" class="footer-link">Пользовательское соглашение</a></li>
-                        <li><a href="#" class="footer-link">Конфиденциальность</a></li>
+                        <li><a href="../pdf/UserAgreement.pdf" class="footer-link" target="_blank">Пользовательское соглашение</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
     
-<script type="module" src="../js/employee/main-employee-account.js"></script>
+    <script type="module" src="/js/employee/main-employee-account.js"></script>
 </body>
 </html>

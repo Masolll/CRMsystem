@@ -4,6 +4,7 @@ import './employee-form.js';
 import './record-form.js';
 import './edit-employee.js';
 import './edit-record.js';
+import './load-avatar-admin.js';
 
 //выход из аккаунта
 const logout = async () => {

@@ -1,4 +1,5 @@
 ﻿import './employee-calendar.js';
+import './load-avatar-employee.js';
 
 //выход из аккаунта
 const logout = async () => {

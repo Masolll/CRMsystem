@@ -7,6 +7,7 @@ body {
     padding: 0;
     font-size: 18px;
     font-weight: 400;
+    overflow-wrap: break-word;
 }
 
 
@@ -79,6 +80,7 @@ body {
     min-width: 600px;
     max-height: 270px;
     min-height: 45px;
+    overflow-wrap: break-word;
 }
 
 .submit-button {
@@ -118,6 +120,19 @@ body {
     border-radius: 5px;
     text-align: center;
     z-index: 999;
+}
+
+#datetime-error {
+    color: red;
+    font-size: 16px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#datetime-error.show {
+    display: block;
+    opacity: 1;
 }
 
 

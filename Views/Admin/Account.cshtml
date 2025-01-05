@@ -24,14 +24,14 @@
             </div>
             <div class="navigation-container">
                 <nav class="navigation">
-                    <a href="#" class="navigation-link">Возможности</a>
-                    <a href="#" class="navigation-link">Контакты</a>
-                    <a href="#" class="navigation-link">Запись</a>
+                    <a href="/home/index#features" class="navigation-link">Возможности</a>
+                    <a href="https://t.me/rezoo000" class="navigation-link">Контакты</a>
+                    <a href="/home/index#record-features" class="navigation-link">Запись</a>
                 </nav>
             </div>
             <div class="login-container">
                 <a class="account">
-                    <img src="https://via.placeholder.com/50" alt="Аватар">
+                    <img src="/img/avatar.png" width="25" height="25" alt="Аватар">
                 </a>
             </div>
         </div>
@@ -43,7 +43,8 @@
             <div class="profile-container">
                 <div class="profile">
                     <div class="avatar">
-                        <img src="https://via.placeholder.com/50" alt="Аватар">
+                        <img src="/img/avatar.png" width="50" height="50" alt="Аватар" id="avatar-image">
+                        <input type="file" id="avatar-upload" style="display: none;">
                     </div>
                     <div class="profile-info">
                         @{
@@ -52,9 +53,9 @@
                             // var secondName = Model.Admin.NameAdmin.Split()[1];
                             // var patronymic = Model.Admin.NameAdmin.Split()[2];
                         }
-                        <p>@Model.Admin.Surname</p>
-                        <p>@Model.Admin.Name</p>
-                        <p>@Model.Admin.Patronymic</p>
+                        <input type="text" value="@Model.Admin.Surname" disabled="">
+                        <input type="text" value="@Model.Admin.Name" disabled="">
+                        <input type="text" value="@Model.Admin.Patronymic" disabled="">
                     </div>
                 </div>
                 <div class="info">
@@ -184,7 +185,7 @@
                 <h1 class="employee-form-title">Добавить сотрудника</h1>
                 <form class="employee-form" method="post" action="/employee/create">
                     <label for="employee-name">Фамилия:</label>
-                    <input type="text" id="employee-name" name="Surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    <input type="text" id="employee-name" name="Surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
                     title="Фамилия должна начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванов или Ivanov)" required>
                     
                      <label for="employee-name">Имя:</label>
@@ -192,7 +193,7 @@
                     title="Имя должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иван или Ivan)" required> 
                     
                      <label for="employee-name">Отчество:</label>
-                    <input type="text" id="employee-name" name="Patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    <input type="text" id="employee-name" name="Patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
                     title="Отчество должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванович или Ivanovich)" required> 
                     
                     <label for="position">Должность:</label>
@@ -269,7 +270,7 @@
                 <h1 class="edit-employee-form-title">Редактирование сотрудника</h1>
                 <form class="edit-employee-form" method="Post" action="/employee/update">
                     <label for="edit-employee-name">Фамилия:</label>
-                    <input type="text" id="edit-employee-surname" name="surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    <input type="text" id="edit-employee-surname" name="surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
                     title="Фамилия должна начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванов или Ivanov)" required>
                     
                     <label for="edit-employee-name">Имя:</label>
@@ -277,7 +278,7 @@
                     title="Имя должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иван или Ivan)" required>
                     
                     <label for="edit-employee-name">Отчество:</label>
-                    <input type="text" id="edit-employee-patronymic" name="patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    <input type="text" id="edit-employee-patronymic" name="patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
                     title="Отчество должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванович или Ivanovich)" required>
 
                     <label for="edit-position">Должность:</label>
@@ -338,24 +339,21 @@
                 <div class="footer-section">
                     <p class="footer-heading">Компания</p>
                     <ul>
-                        <li><a href="#" class="footer-link">О нас</a></li>
-                        <li><a href="#" class="footer-link">Отзывы</a></li>
-                        <li><a href="#" class="footer-link">База знаний</a></li>
+                        <li><a href="https://t.me/rezoo000" class="footer-link">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <p class="footer-heading">Возможности</p>
                     <ul>
-                        <li><a href="#" class="footer-link">Онлайн-запись</a></li>
-                        <li><a href="#" class="footer-link">Уведомления</a></li>
-                        <li><a href="#" class="footer-link">Аналитика</a></li>
+                        <li><a href="/home/index#features" class="footer-link">Администрирование</a></li>
+                        <li><a href="/home/index#employee-features" class="footer-link">Ведение расписания</a></li>
+                        <li><a href="/home/index#record-features" class="footer-link">Запись на услуги</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <p class="footer-heading">Правовая информация</p>
                     <ul>
-                        <li><a href="#" class="footer-link">Пользовательское соглашение</a></li>
-                        <li><a href="#" class="footer-link">Конфиденциальность</a></li>
+                        <li><a href="../pdf/UserAgreement.pdf" class="footer-link" target="_blank">Пользовательское соглашение</a></li>
                     </ul>
                 </div>
             </div>
@@ -395,6 +393,6 @@
         </div>
     </template>
 
-    <script type="module" src="../js/admin/main-admin-account.js"></script>
+    <script type="module" src="/js/admin/main-admin-account.js"></script>
 </body>
 </html>

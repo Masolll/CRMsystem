@@ -18,7 +18,6 @@ const day = currentDate.getDate();
 const month = selectedDate.getMonth() + 1;
 const year = selectedDate.getFullYear();
 const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-hiddenDateInput.value = formattedDate;
 
 
 const renderCalendar = () => {
@@ -45,13 +44,6 @@ const renderCalendar = () => {
         const dayElement = document.createElement('div');
         dayElement.textContent = day;
         dayElement.className = 'day';
-        if (
-            currentDate.getFullYear() === selectedDate.getFullYear() &&
-            currentDate.getMonth() === selectedDate.getMonth() &&
-            day === selectedDate.getDate()
-        ) {
-            dayElement.classList.add('selected');
-        }
         if (month === selectedDate.getMonth() && day < currentDay) {
             dayElement.classList.add('inactive');
         }

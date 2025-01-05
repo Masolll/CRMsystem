@@ -42,6 +42,15 @@ main {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.profile-info input {
+    width: 100%;
+    color: #343434;
+    background: #FFFFFF;
+    padding: 5px 10px;
+    border: none;
+    font-size: 16px;
+}
+
 .avatar img {
     display: block;
     width: 100px;
@@ -439,6 +448,14 @@ main {
     color: rgba(52, 52, 52, 0.9);
 }
 
+.job-title p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .employee-item .job-title p {
     margin: 0;
 }
@@ -465,6 +482,14 @@ main {
     font-weight: bold;
     color: #343434;
     text-align: left;
+}
+
+.full-name, .record-description, .record-adress {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .record-item .price {
@@ -603,6 +628,10 @@ main {
     .record-list {
         max-width: 153vh;
     }
+    
+    .profile-info input {
+        width: 140%;
+    }
 }
 
 @media (max-width: 2400px) {
@@ -610,12 +639,20 @@ main {
     .record-list {
         max-width: 152vh;
     }
+    
+    .profile-info input {
+        width: 120%;
+    }
 }
 
 @media (max-width: 1920px) {
     .employee-list,
     .record-list {
         max-width: 150vh;
+    }
+    
+    .profile-info input {
+        width: 100%;
     }
 }
 

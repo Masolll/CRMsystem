@@ -57,10 +57,22 @@ const handleFormSubmit = (evt) => {
 
     const selectedDate = document.getElementById('selectedDate').value;
     const selectedTime = document.getElementById('custom-time').value;
+    const errorMessage = document.getElementById('datetime-error');
+    
+    errorMessage.classList.remove('show');
     
     if (!selectedDate || !selectedTime) {
-        alert('Пожалуйста, выберите дату и время.');
-        document.getElementById('custom-time').focus();
+        document.getElementById('custom-time').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+
+        errorMessage.classList.add('show');
+
+        setTimeout(() => {
+            document.getElementById('custom-time').focus();
+        }, 500);
+        
         return;
     }
     
@@ -95,6 +107,7 @@ const handleSuccessButtonClick = async () => {
     })
     if(!response.ok){
         alert('при отправке формы произошла ошибка!')
+        return;
     }
     successMessage.style.display = 'block';
     document.body.classList.add('no-scroll');

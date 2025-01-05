@@ -117,10 +117,21 @@ const showTimeSlots = async () => {
                     <button class="check">✔</button>
                 </div>`;
             
-            const checkButton = timeSlot.querySelector('.check');
-            checkButton.addEventListener('click', () => {
+            if (ordersCurrentEmployee[i].Finished) {
                 timeSlot.classList.add('finished');
-                checkButton.disabled = true;
+                timeSlot.querySelector('.check').classList.add('disabled');
+            }
+        
+            const checkButton = timeSlot.querySelector('.check');
+            checkButton.addEventListener('click', async () => {
+                timeSlot.classList.add('finished');
+                const response = await fetch(`/Order/Finish?orderId=${ordersCurrentEmployee[i].Id}`, {
+                    method: 'POST'
+                })
+                if(!response.ok){
+                    alert('при отправке формы произошла ошибка!')
+                }
+                checkButton.classList.add('disabled');
             });
             
             timeSlotsElement.appendChild(timeSlot);

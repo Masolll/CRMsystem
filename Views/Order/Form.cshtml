@@ -25,9 +25,9 @@
             </div>
             <div class="navigation-container">
                 <nav class="navigation">
-                    <a href="#" class="navigation-link">Возможности</a>
-                    <a href="#" class="navigation-link">Контакты</a>
-                    <a href="#" class="navigation-link">Запись</a>
+                    <a href="/home/index#features" class="navigation-link">Возможности</a>
+                    <a href="https://t.me/rezoo000" class="navigation-link">Контакты</a>
+                    <a href="/home/index#record-features" class="navigation-link">Запись</a>
                 </nav>
             </div>
             <div class="login-container">
@@ -75,8 +75,10 @@
                         </div>
                     </div>
 
+                    <div id="datetime-error">Заполните дату и время</div>
+
                     <label for="surname">Фамилия:</label>
-                    <input type="text" id="surname" name="surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    <input type="text" id="surname" name="surname" placeholder="Иванов" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
                     title="Фамилия должна начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванов или Ivanov)" required>
 
                     <label for="name">Имя:</label>
@@ -84,7 +86,7 @@
                     title="Имя должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иван или Ivan)" required>
 
                     <label for="patronymic">Отчество:</label>
-                    <input type="text" id="patronymic" name="patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$" 
+                    <input type="text" id="patronymic" name="patronymic" placeholder="Иванович" pattern="^([А-Я]{1}[а-яё]{1,30}|[A-Z]{1}[a-z]{1,30})$" 
                     title="Отчество должно начинаться с заглавной буквы и содержать только буквы кириллицы или латиницы (например: Иванович или Ivanovich)" required>
 
                     <label for="email">Почта:</label>
@@ -95,7 +97,9 @@
                     title="Телефонный номер должен начинаться с +7 или 8 и содержать 11 цифр" required>
 
                     <label for="comment">Комментарий:</label>
-                    <textarea id="comment" name="comment" rows="6" placeholder="Ваш комментарий"></textarea>
+                    <div class="textarea-div">
+                        <textarea id="comment" name="comment" rows="6" placeholder="Ваш комментарий"></textarea>
+                    </div>
 
                     <button type="submit" class="submit-button">Записаться</button>
 
@@ -105,7 +109,7 @@
             <div class="confirmation-container" style="display: none;">
                 <h1 class="confirmation-title">Название записи</h1>
                 <div class="description-container">
-                    <img src="https://via.placeholder.com/50" alt="Фото сотрудника">
+                    <img src="../img/service-icon.png" alt="Фото услуги">
                     <div>
                         <h3>Описание</h3>
                         <p>Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...Более подробное описание...</p>
@@ -113,7 +117,7 @@
                 </div>
                 <div class="confirmation-content">
                     <div class="employee-info">
-                        <div class="field">
+                        <div class="field name-field">
                             <label for="employee-name-confirmation">Сотрудник:</label>
                             <span id="employee-name-confirmation">Иванов Иван Иванович</span>
                         </div>
@@ -122,7 +126,7 @@
                             <span id="date-time-confirmation">12.12.2024 15:30</span>
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field address-field">
                         <label for="address-confirmation">Адрес:</label>
                         <span id="address-confirmation">г. Екатеринбург, д. такой-то...</span>
                     </div>
@@ -130,7 +134,7 @@
                         <label for="phone-confirmation">Контактный телефон:</label>
                         <span id="phone-confirmation">x-xxx-xxx-xx-xx</span>
                     </div>
-                    <div class="field">
+                    <div class="field comment-field">
                         <label for="comment-confirmation">Комментарий:</label>
                         <span id="comment-confirmation">Комментарий клиента</span>
                     </div>
