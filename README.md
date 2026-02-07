@@ -1,11 +1,7 @@
 ﻿# CRM System
 
----
-
 ## ✨ Overview
 This is a CRM (Customer Relationship Management) system developed as a university project. The system allows managing employees, orders, and records.
-
----
 
 ## 💡 Key Features
 - Register as a company owner and create employee accounts
@@ -18,16 +14,12 @@ This is a CRM (Customer Relationship Management) system developed as a universit
 
 - Clients can view service details, available employees, and their free time for booking
 
----
-
 ## 🏗️ Technology Stack
 
 - **Framework:** ASP.NET Core MVC
 - **ORM:** Entity Framework Core
 - **Database:** MySQL
 - **Languages:** C#, JavaScript, CSS, HTML
-
----
 
 ## 🚀 Quick Start
 1. Install .NET SDK and MySQL.
@@ -40,8 +32,6 @@ This is a CRM (Customer Relationship Management) system developed as a universit
     dotnet run
     ```
 4. Go to http://localhost:5000
-
----
 
 ## 🙌 Authors
 - Frontend developed by [rez0nex](https://github.com/rez0nex)
