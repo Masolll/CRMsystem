@@ -1,12 +1,10 @@
-
-using System.ComponentModel.DataAnnotations.Schema;
 using crm.Models.CreateModels;
 
 namespace crm.Models;
 
 public class Record
 {
-    public Guid Id { get; set; }//asp net core требует обязателно сеттер для свойств бд, поэтому без него никак
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public int Price { get; set; }
     public string Address { get; set; }

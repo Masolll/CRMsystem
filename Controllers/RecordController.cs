@@ -22,7 +22,6 @@ public class RecordController : Controller
     [HttpGet]
     public string DbInfo()
     {
-        //options нужно для изменения кодировки unicode(для понимания кириллицы), в данном случае диапазон равен всем знакам unicode
         var options = new JsonSerializerOptions
         {
             Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
@@ -38,7 +37,6 @@ public class RecordController : Controller
         var record = new Record(recordCreateModel);
         dbContext.Records.Add(record);
         
-        //добавляю новое мероприятие к текущему админу
         var adminId = HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
         var currentAdmin = dbContext.Admins
             .ToList()
@@ -54,7 +52,6 @@ public class RecordController : Controller
     [Authorize(Roles = "admin")]
     public IActionResult Update(Record record)
     {
-        //нужно проверить что админ обновляет свою запись а не чужую
         var adminId = HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Sid).Value;
         var currentRecord = dbContext.Records.ToList().Where(e => e.Id == record.Id).FirstOrDefault();
         if (currentRecord == null)

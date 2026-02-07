@@ -13,9 +13,7 @@ public class EmployeeCreateModel
     public string? Email { get; set; }
     
 
-    public EmployeeCreateModel()
-    {
-    }
+    public EmployeeCreateModel(){}
     
     public EmployeeCreateModel(string login, string name, string surname, string patronymic, string? position, string? phone, string? email, string password)
     {

@@ -1,5 +1,3 @@
-
-
 using crm.Models.CreateModels;
 
 namespace crm.Models;

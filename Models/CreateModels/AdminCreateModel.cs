@@ -13,10 +13,8 @@ public class AdminCreateModel
     public string? Email { get; set; }
     public string? Phone { get; set; }
     
-
-    public AdminCreateModel()
-    {
-    }
+    public AdminCreateModel(){}
+    
     public AdminCreateModel(string? nameCompany, string? inn, string name, string surname, string patronymic, string? email, string? phone, 
         string login, string password)
     {

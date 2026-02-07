@@ -2,10 +2,6 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using crm.Models;
 using crm.Data;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
 
 namespace crm.Controllers;
 

@@ -1,12 +1,10 @@
 using crm.Models.CreateModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using crm.Data;
 using crm.Models;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
-using crm.Models.ViewModels;
 
 namespace crm.Controllers;
 

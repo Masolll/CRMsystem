@@ -10,12 +10,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Admin> Admins { get; set; }
     public DbSet<Order> Orders { get; set; }
 
-    public ApplicationDbContext() => Database.EnsureCreated();
-    
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
-        optionsBuilder.UseMySql("server=localhost;user=root;password=firstvds123;database=crm;", 
-            new MySqlServerVersion(new Version(8, 0, 40)));
+        Database.EnsureCreated();
     }
-    
 }

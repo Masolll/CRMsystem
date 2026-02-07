@@ -10,9 +10,7 @@ public class RecordCreateModel
     public string Address { get; set; }
     public string Description { get; set; }
     
-    public RecordCreateModel()
-    {
-    }
+    public RecordCreateModel(){}
     
     public RecordCreateModel(string name, int price, string[] employeesLogins, string address, string description)
     {

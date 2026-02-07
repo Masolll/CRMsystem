@@ -48,7 +48,6 @@ public class AdminController : Controller
     [HttpGet]
     public string DbInfo()
     {
-        //options нужно для изменения кодировки unicode(для понимания кириллицы), в данном случае диапазон равен всем знакам unicode
         var options = new JsonSerializerOptions
         {
             Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
@@ -71,25 +70,21 @@ public class AdminController : Controller
     public IActionResult Login(string login, string password)
     {
         var searchAdmin = dbContext.Admins.FirstOrDefault(e => e.Login == login);
-        var passwordHasher = new PasswordHasher<Admin>();//Здесь тип Admin а при создании хэша я использую объект AdminCreateModel
+        var passwordHasher = new PasswordHasher<Admin>();
         if(searchAdmin == null 
            || passwordHasher.VerifyHashedPassword(searchAdmin, searchAdmin.Password, password) != PasswordVerificationResult.Success)
         {
             return Redirect($"/Admin/Login");
         }
-
-        //claims это список объектов claim которые хранят информацию о пользователе. Claim хранит пары ключ-значение
+        
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, login),
             new Claim(ClaimTypes.Role, "admin"),
             new Claim(ClaimTypes.Sid, searchAdmin.Id.ToString())
         };
-        //объект ClaimsIdentity это грубо говоря "личность". Конструктор принимает claims и тип авторизации в данном случае "cookie"
         var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
-        // claimsPrincipal это объект который может хранить несколько ClaimsIdentity
         var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-        //настройка аунтификационных кук
         HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
         
         return RedirectToAction("Account", "admin", new { adminId = searchAdmin.Id });

@@ -25,7 +25,7 @@
             <div class="navigation-container">
                 <nav class="navigation">
                     <a href="/home/index#features" class="navigation-link">Возможности</a>
-                    <a href="https://t.me/rezoo000" class="navigation-link">Контакты</a>
+                    <a href="https://github.com/Masolll" class="navigation-link">Контакты</a>
                     <a href="/home/index#record-features" class="navigation-link">Запись</a>
                 </nav>
             </div>
@@ -47,12 +47,6 @@
                         <input type="file" id="avatar-upload" style="display: none;">
                     </div>
                     <div class="profile-info">
-                        @{
-                            //нужно изменить модели и формы чтобы было везде три отдельных поля Фамилия, Имя, Отчество
-                            // var firstName = Model.Admin.NameAdmin.Split()[0];
-                            // var secondName = Model.Admin.NameAdmin.Split()[1];
-                            // var patronymic = Model.Admin.NameAdmin.Split()[2];
-                        }
                         <input type="text" value="@Model.Admin.Surname" disabled="">
                         <input type="text" value="@Model.Admin.Name" disabled="">
                         <input type="text" value="@Model.Admin.Patronymic" disabled="">
@@ -99,7 +93,6 @@
                 </div>
                 
                 <div id="employeeList" class="employee-list">
-                    <!-- Сотрудники будут динамически добавляться сюда -->
                     @{
                         var employeesLogins = Model.Admin.EmployeesLogins;
                         @for (var i = 0; i < employeesLogins.Count; i++)
@@ -129,16 +122,13 @@
                 <div class="list-header">
                     <h1>Список записей</h1>
                 </div>
-            
-                <!-- Поиск записей -->
+                
                 <div class="search-container">
                     <input type="text" id="searchInputRecord" placeholder="Поиск записей">
                     <button class="clear-record-search-button">Очистить</button>
                 </div>
-            
-                <!-- Список записей -->
+                
                 <div id="recordList" class="record-list">
-                    <!-- Записи будут динамически добавляться сюда -->
                     @{
                         var recordsCurrentAdmin = Model.AllRecords.Where(e => Model.Admin.Records.Contains(e.Id)).ToList();
                         @for (var i = 0; i < recordsCurrentAdmin.Count; i++)
@@ -339,7 +329,7 @@
                 <div class="footer-section">
                     <p class="footer-heading">Компания</p>
                     <ul>
-                        <li><a href="https://t.me/rezoo000" class="footer-link">Контакты</a></li>
+                        <li><a href="https://github.com/Masolll" class="footer-link">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
