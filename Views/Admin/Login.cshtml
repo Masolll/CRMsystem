@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href='/css/style-login.css'>
+    <link rel="stylesheet" href='/css/style-header-footer.css'>
+    <title>Lunara — Вход</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
+                    <h1>Lunara</h1>
+                </a>
+            </div>
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="/home/index#features" class="navigation-link">Возможности</a>
+                    <a href="https://github.com/Masolll" class="navigation-link">Контакты</a>
+                    <a href="/home/index#record-features" class="navigation-link">Запись</a>
+                </nav>
+            </div>
+            <div class="login-container">
+                <button class="login-button" onclick="window.location.href='/employee/login'">Войти</button>
+                <button class="register-button" onclick="window.location.href='/admin/registration'">Зарегистрироваться</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="login-section">
+            <div class="login-box">
+                <h1 class="login-title">Вход</h1>
+                <form class="login-form-admin" method="post" action="/admin/login">
+                    <label for="login" class="form-label">Логин</label>
+                    <input type="text" id="login" name="login" class="form-input" required>
+
+                    <label for="password" class="form-label">Пароль</label>
+                    <input type="password" name="password" id="password" class="form-input" required>
+
+                    <button type="submit" class="form-button">Войти как администратор</button>
+                </form>
+                <div class="links">
+                    <a href="/admin/registration" class="registration-link">Создать аккаунт организации</a>
+                    <a href="/employee/login" class="login-employee-link">Войти как сотрудник</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="./js/login-form-admin.js"></script>
+</body>
+</html>

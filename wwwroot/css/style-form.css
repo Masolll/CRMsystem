@@ -1,0 +1,235 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #343434;
+    background: linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.9)), url('../img/account-background.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+
+
+/* Form */
+.sign {
+    position: relative;
+    padding: 80px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-container {
+    position: relative;
+    z-index: 1;
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(142, 142, 142, 0.7);
+    box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.sign-title {
+    color: #343434;
+    font-size: 32px;
+    margin: 10px 0 20px 0;
+}
+
+.sign-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sign-form label {
+    font-size: 16px;
+    color: #343434;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.sign-form input,
+.sign-form textarea,
+.sign-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #303030;
+    border: 1px solid #8E8E8E;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.sign-form input:focus,
+.sign-form textarea:focus,
+.sign-form select:focus {
+    border-color: #505050;
+    outline: none;
+}
+
+.sign-form textarea {
+    color: #343434;
+    max-width: 600px;
+    min-width: 600px;
+    max-height: 270px;
+    min-height: 45px;
+    overflow-wrap: break-word;
+}
+
+.submit-button {
+    padding: 10px;
+    margin: 20px auto 0 auto;
+    width: 50%;
+    font-size: 18px;
+    background: #4CAF50;
+    color: #FFFFFF;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
+}
+
+.submit-button:hover {
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+.error-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 999;
+}
+
+#datetime-error {
+    color: red;
+    font-size: 16px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#datetime-error.show {
+    display: block;
+    opacity: 1;
+}
+
+
+
+
+
+
+@media (max-width: 740px) {
+    .sign-container {
+        width: 80%;
+    }
+
+    .sign-form textarea {
+        max-width: 508px;
+        min-width: 508px;
+    }
+}
+
+@media (max-width: 615px) {
+    .sign-container {
+        width: 75%;
+    }
+
+    .custom-time-picker {
+        width: 100%;
+    }
+
+    .sign-form textarea {
+        max-width: 357px;
+        min-width: 357px;
+    }
+
+    .date-time-picker-container {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 430px) {
+    .sign-form textarea {
+        max-width: 322px;
+        min-width: 322px;
+    }
+}
+
+@media (max-width: 414px) {
+    .sign-form textarea {
+        max-width: 310px;
+        min-width: 310px;
+    }
+}
+
+@media (max-width: 390px) {
+    .sign-form textarea {
+        max-width: 292px;
+        min-width: 292px;
+    }
+}
+
+@media (max-width: 384px) {
+    .sign-container {
+        width: 70%;
+    }
+
+    .sign-form textarea {
+        max-width: 265px;
+        min-width: 265px;
+    }
+}
+
+@media (max-width: 375px) {
+    .sign-container {
+        width: 72%;
+    }
+    
+    .sign-form textarea {
+        max-width: 262px;
+        min-width: 262px;
+    }
+}
+
+@media (max-width: 360px) {
+    .sign-container {
+        width: 80%;
+        padding: 25px;
+    }
+    
+    .sign-form textarea {
+        max-width: 287px;
+        min-width: 287px;
+    }
+}
+
+@media (max-width: 344px) {
+    .sign-form textarea {
+        max-width: 276px;
+        min-width: 276px;
+    }
+}

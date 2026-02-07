@@ -1,0 +1,705 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #343434;
+    background: url('../img/account-background.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+
+/* Sidebar */
+main {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    background: #F5F5F5;
+    border-right: 1px solid #c2c2c2;
+}
+
+.sidebar h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid #c2c2c2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info input {
+    width: 100%;
+    color: #343434;
+    background: #FFFFFF;
+    padding: 5px 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.avatar img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.profile-info p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.info {
+    margin: 0;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid #c2c2c2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+.field label {
+    width: 25%;
+    font-size: 16px;
+    text-align: left;
+}
+
+.field input {
+    width: 75%;
+    color: #343434;
+    background: #F5F5F5;
+    padding: 5px 10px;
+    border: 1px solid #8E8E8E;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.field input:focus {
+    border-color: #505050;
+    outline: none;
+}
+
+.menu {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: auto;
+}
+
+.menu-button {
+    font-family: 'Nunito', sans-serif;
+    width: 90%;
+    margin: 0 auto;
+    background: #4CAF50;
+    color: #FFFFFF;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
+}
+
+.menu-button:hover {
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.menu-button:active {
+    transform: scale(0.98);
+}
+
+.logout-button {
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    width: 30%;
+    margin: 0 auto;
+    background: #F44336;
+    color: #FFFFFF;
+    border: 1px solid #D32F2F;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 6px 0;
+}
+
+.logout-button:hover {
+    background: #E57373;
+    color: #585858;
+    border-color: rgb(185, 81, 86);
+}
+
+.logout-button:active {
+    transform: scale(0.98);
+}
+
+.logout-icon {
+    display: block;
+    margin: 0;
+    filter: invert(100%);
+    width: 20px;
+    height: 20px;
+    transition: filter 0.5s ease;
+}
+
+.logout-button:hover .logout-icon {
+    filter: invert(35%);
+}
+
+.line {
+    margin: 20px 0;
+    border-top: 1px solid #c2c2c2;
+}
+
+
+
+
+
+
+@media (max-width: 1746px) {
+    .field label {
+        width: 100px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .sidebar {
+        width: 18%;
+    }
+
+    .profile {
+        flex-direction: column;
+    }
+
+    .avatar img {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .profile-info {
+        align-items: center;
+    }
+
+    .field {
+        flex-direction: column;
+    }
+
+    .field input {
+        width: 95%;
+    }
+
+    .field label {
+        margin-bottom: 4px;
+        align-self: flex-start;
+    }
+
+    .logout-button {
+        width: 40%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .logout-button {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .logout-button {
+        width: 60%;
+    }
+}
+
+@media (max-width: 853px) {
+    .logout-button {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .sidebar {
+        padding: 0;
+        padding-bottom: 20px;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #c2c2c2;
+    }
+
+    .sidebar h1 {
+        margin-top: 20px;
+    }
+
+    .profile-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .profile, .info {
+        margin: 10px;
+    }
+
+    .profile {
+        flex-direction: row;
+        width: 40%;
+        justify-content: space-evenly;
+    }
+
+    .avatar img {
+        margin: 0 20px 0 0;
+    }
+
+    .info {
+        width: 60%;
+    }
+
+    .profile-info {
+        align-items: start;
+    }
+
+    .field {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 640px) {
+    .field input {
+        width: 80%;
+    }
+
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile, .info {
+        width: 80%;
+        margin: 10px auto;
+    }
+}
+
+
+
+
+
+
+/* Schedule */
+.schedule {
+    flex-grow: 1;
+    background: rgba(245, 245, 245, 0.9);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.list-header {
+    display: flex;
+    justify-content: center;
+}
+
+.list-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.clear-employee-search-button,
+.clear-record-search-button {
+    background: #4CAF50;
+    color: #FFFFFF;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
+}
+
+.clear-employee-search-button:hover,
+.clear-record-search-button:hover {
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.clear-employee-search-button:active,
+.clear-record-search-button:active {
+    transform: scale(0.98);
+}
+
+.search-container input {
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #8E8E8E;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+    border-color: #505050;
+}
+
+.no-employees-found,
+.no-records-found {
+    font-size: 18px;
+    margin: 0;
+    color: #F44336;
+    text-align: center;
+    font-weight: bold;
+}
+
+.employee-list,
+.record-list {
+    width: 100%;
+    max-width: 151vh;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.employee-item,
+.record-item {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    color: #343434;
+    padding: 8px 25px;
+    border: 1px solid rgba(142, 142, 142, 0.7);
+    border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
+}
+
+.employee-list,
+.record-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    word-wrap: break-word;  /* Позволяет разрывать длинные слова */
+    overflow-wrap: break-word;  /* Совместимость с различными браузерами */
+}
+
+.employee-item .full-name {
+    flex: 2;
+    margin: 20px 30px 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #343434;
+    text-align: left;
+}
+
+.employee-item .job-title {
+    flex: 2;
+    margin: 20px 30px 20px 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color: rgba(52, 52, 52, 0.9);
+}
+
+.job-title p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.employee-item .job-title p {
+    margin: 0;
+}
+
+.employee-item .employee-id {
+    flex: 2;
+    margin: 20px 30px 20px 0;
+    font-size: 16px;
+    color: rgba(52, 52, 52, 0.9);
+    text-align: left;
+}
+
+.employee-item .status-icons
+.record-item .status-icons {
+    flex: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.record-item .full-name {
+    flex: 2;
+    margin: 10px 50px 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #343434;
+    text-align: left;
+}
+
+.full-name, .record-description, .record-adress {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.record-item .price {
+    flex: 1;
+    margin: 10px 20px 10px 0;
+    font-size: 18px;
+    color: rgba(52, 52, 52, 0.9);
+    text-align: left;
+}
+
+.record-item .record-employees {
+    flex: 2;
+    margin: 10px 20px 10px 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color: rgba(52, 52, 52, 0.9);
+}
+
+.record-item .record-employees p {
+    margin: 0;
+}
+
+.record-item .record-description {
+    flex: 2;
+    margin: 10px 20px 10px 0;
+    font-size: 16px;
+    color: rgba(52, 52, 52, 0.9);
+    text-align: left;
+}
+
+.record-item .record-adress {
+    flex: 2;
+    margin: 10px 20px 10px 0;
+    font-size: 16px;
+    color: rgba(52, 52, 52, 0.9);
+    text-align: left;
+}
+
+.status-icons button {
+    font-family: 'Nunito', sans-serif;
+    margin: 10px 0 10px 0;
+    background: #4CAF50;
+    color: #FFFFFF;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
+}
+
+.status-icons button:hover {
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.status-icons button:active {
+    transform: scale(0.98);
+}
+
+.status-icons button img {
+    transition: transform 0.2s ease, filter 0.5s ease;
+}
+
+.status-icons button:hover img {
+    filter: brightness(0.4);
+}
+
+.status-icons button:active img {
+    transform: scale(0.95);
+}
+
+
+
+/* Password */
+.password-visibility {
+    font-family: 'Nunito', sans-serif;
+    margin: 0 auto 0 0;
+    background-color: #F5F5F5;
+    border: 1px solid #8E8E8E;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.password-visibility:hover {
+    background-color: #cecece;
+    border-color: #858585;
+}
+
+.password-visibility:active {
+    transform: scale(0.98);
+}
+
+.confirm-password-container {
+    display: flex;
+    align-items: center;
+}
+
+.confirm-password-container input {
+    margin-right: 10px;
+}
+
+.password-visibility img {
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+
+
+
+
+
+
+@media (max-width: 7680px) {
+    .employee-list,
+    .record-list {
+        max-width: 158vh;
+    }
+}
+
+@media (max-width: 2880px) {
+    .employee-list,
+    .record-list {
+        max-width: 154vh;
+    }
+}
+
+@media (max-width: 2560px) {
+    .employee-list,
+    .record-list {
+        max-width: 153vh;
+    }
+    
+    .profile-info input {
+        width: 140%;
+    }
+}
+
+@media (max-width: 2400px) {
+    .employee-list,
+    .record-list {
+        max-width: 152vh;
+    }
+    
+    .profile-info input {
+        width: 120%;
+    }
+}
+
+@media (max-width: 1920px) {
+    .employee-list,
+    .record-list {
+        max-width: 150vh;
+    }
+    
+    .profile-info input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1600px) {
+    .employee-list,
+    .record-list {
+        max-width: 149vh;
+    }
+}
+
+@media (max-width: 1440px) {
+    .record-item {
+        flex-direction: column;
+    }
+
+    .employee-list,
+    .record-list {
+        max-width: 151vh;
+    }
+}
+
+@media (max-width: 1200px) {
+    .employee-list,
+    .record-list {
+        max-width: 148vh;
+    }
+
+    .employee-item {
+        flex-direction: column;
+    }
+
+    .employee-item .full-name {
+        margin: 10px 30px 10px 0;
+    }
+    
+    .employee-item .job-title {
+        margin: 10px 30px 10px 0;
+    }
+    
+    .employee-item .employee-id {
+        margin: 10px 30px 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .employee-list,
+    .record-list {
+        max-width: 100%;
+    }
+}

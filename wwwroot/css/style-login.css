@@ -1,0 +1,146 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #343434;
+    background: linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.9)), url('../img/account-background.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+
+/* Login */
+.login-section {
+    position: relative;
+    padding: 160px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    position: relative;
+    z-index: 1;
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(142, 142, 142, 0.7);
+    box-shadow: 0 0 8px rgba(142, 142, 142, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-title {
+    color: #343434;
+    font-size: 32px;
+    margin: 10px 0 20px 0;
+}
+
+.login-form-admin,
+.login-form-employee {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-label {
+    color: #343434;
+    font-size: 16px;
+    text-align: left;
+}
+
+.form-input {
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    color: #343434;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #8E8E8E;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #505050;
+}
+
+.form-button {
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    background: #4CAF50;
+    color: #FFFFFF;
+    border: 1px solid #388E3C;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: transform 0.2s ease, border-color 0.5s ease, background 0.5s ease, color 0.5s ease;
+}
+
+.form-button:hover {
+    background: #80c184;
+    color: #585858;
+    border-color: #81aa83;
+}
+
+.form-button:active {
+    transform: scale(0.98);
+}
+
+.links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.registration-link,
+.login-employee-link,
+.login-admin-link {
+    color: #2b502d;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    margin-top: 10px;
+    transition: color 0.5s ease;
+}
+
+.registration-link:hover,
+.login-employee-link:hover,
+.login-admin-link:hover {
+    color: #0c1f0c;
+}
+
+
+
+
+
+
+@media (max-width: 1280px) {
+    .login-section {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 740px) {
+    .login-box {
+        width: 80%;
+    }
+}
+
+@media (max-width: 615px) {
+    .login-box {
+        width: 75%;
+    }
+}
+
+@media (max-width: 384px) {
+    .login-box {
+        width: 70%;
+    }
+
+}

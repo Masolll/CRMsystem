@@ -1,0 +1,130 @@
+@model Employee
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href='/css/style-employee-account.css'>
+    <link rel="stylesheet" href='/css/style-header-footer.css'>
+    <title>Lunara — CRM система для записи клиентов</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
+                    <h1>Lunara</h1>
+                </a>
+            </div>
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="/home/index#features" class="navigation-link">Возможности</a>
+                    <a href="https://github.com/Masolll" class="navigation-link">Контакты</a>
+                    <a href="/home/index#record-features" class="navigation-link">Запись</a>
+                </nav>
+            </div>
+            <div class="login-container">
+                <a class="account">
+                    <img src="/img/avatar.png" width="25" height="25" alt="Аватар">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <div class="profile-container">
+                <div class="profile">
+                    <div class="avatar">
+                        <img src="/img/avatar.png" width="50" height="50" alt="Аватар" id="avatar-image">
+                        <input type="file" id="avatar-upload" style="display: none;">
+                    </div>
+                    <div class="profile-info">
+                        <input type="text" value="@Model.Surname" disabled="">
+                        <input type="text" value="@Model.Name" disabled="">
+                        <input type="text" value="@Model.Patronymic" disabled="">
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="field">
+                        <label for="user-id">ID:</label>
+                        <input type="text" id="user-id" placeholder="Введите ID" value="@Model.Login" disabled="">
+                    </div>
+                    <div class="field">
+                        <label for="phone">Телефон:</label>
+                        <input type="tel" id="phone" placeholder="х-ххх-ххх-хх-хх" value="@Model.Phone" disabled="">
+                    </div>
+                    <div class="field">
+                        <label for="email">Почта:</label>
+                        <input type="email" id="email" placeholder="Введите почту" value="@Model.Email" disabled="">
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="calendar">
+                <div class="month-switcher">
+                    <button id="prevMonth">&lt;</button>
+                    <span id="monthYear"></span>
+                    <button id="nextMonth">&gt;</button>
+                </div>
+                <div id="calendarDays" class="calendar-days"></div>
+                
+                <button id="todayButton" class="today-button">Сегодняшняя дата</button>
+            </div>
+            <div class="line"></div>
+            <button class="menu-button logout-button">
+                Выйти
+                <img src="/img/logout-icon.png" alt="Выйти" class="logout-icon">
+            </button>
+        </aside>
+
+        <section class="schedule">
+            <div class="date-header">
+                <h1>05.11.24</h1>
+            </div>
+            <div class="time-slots">
+                @* здесь генерируются слоты *@
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
+                </a>
+            </div>
+            <div class="footer-navigation-container">
+                <div class="footer-section">
+                    <p class="footer-heading">Компания</p>
+                    <ul>
+                        <li><a href="https://github.com/Masolll" class="footer-link">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Возможности</p>
+                    <ul>
+                        <li><a href="/home/index#features" class="footer-link">Администрирование</a></li>
+                        <li><a href="/home/index#employee-features" class="footer-link">Ведение расписания</a></li>
+                        <li><a href="/home/index#record-features" class="footer-link">Запись на услуги</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Правовая информация</p>
+                    <ul>
+                        <li><a href="../pdf/UserAgreement.pdf" class="footer-link" target="_blank">Пользовательское соглашение</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script type="module" src="/js/employee/main-employee-account.js"></script>
+</body>
+</html>

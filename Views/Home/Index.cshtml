@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href='/css/style-index.css'>
+    <link rel="stylesheet" href='/css/style-header-footer.css'>
+    <title>Lunara — CRM система для записи клиентов</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
+                    <h1>Lunara</h1>
+                </a>
+            </div>
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="/home/index#features" class="navigation-link">Возможности</a>
+                    <a href="https://github.com/Masolll" class="navigation-link">Контакты</a>
+                    <a href="/home/index#record-features" class="navigation-link">Запись</a>
+                </nav>
+            </div>
+            <div class="login-container">
+                <button class="login-button" onclick="window.location.href='/admin/login'">Войти</button>
+                <button class="register-button" onclick="window.location.href='/admin/registration'">Зарегистрироваться</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero-container">
+                <h1 class="hero-title">CRM система для онлайн-записи клиентов Вашего бизнеса</h1>
+                <p class="hero-text">
+                    Позвольте клиентам удобно записываться на Ваши услуги, автоматизируйте управление расписанием,<br> 
+                    отслеживание записей и взаимодействие с клиентами.
+                </p>
+                <a href="/admin/registration"><button type="button" class="hero-button">Попробовать бесплатно</button></a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="features-container">
+                <div class="feature-item" id="features">
+                    <h1>Возможности для бизнеса</h1>
+                    <p class="feature-text">
+                        Легко контролируйте весь процесс и управляйте сотрудниками и записями. 
+                        Добавляйте новые записи, назначайте сотрудников и отслеживайте их рабочие 
+                        графики. Это даст возможность эффективно распределять задачи, поддерживать порядок и быстро реагировать 
+                        на изменения, что повысит продуктивность и снизит риск ошибок.
+                    </p>
+                    <img src="../img/Admin.png" alt="Admin-feature" class="feature-image">
+                </div>
+                <div class="line"></div>
+                <div class="feature-item" id="employee-features">
+                    <h1>Возможности для сотрудников</h1>
+                    <p class="feature-text">
+                        Управляйте своими записями и отслеживайте статус задач. 
+                        Обновляйте информацию о выполнении задач и следите за своим расписанием в реальном времени. 
+                        Это даст возможность повысить продуктивность, упростить планирование рабочего времени и сосредоточиться на ключевых задачах.
+                    </p>
+                    <img src="../img/Employee.png" alt="Employee-feature" class="feature-image">
+                </div>
+                <div class="line"></div>
+                <div class="feature-item" id="record-features">
+                    <h1>Возможности для клиентов</h1>
+                    <p class="feature-text">
+                        Записывайтесь на услугу через удобную и понятную онлайн-форму. 
+                        Весь процесс — от выбора даты до подтверждения записи — занимает всего несколько минут. 
+                        Это сделает запись на услуги быстрой и комфортной, экономя Ваши усилия и время.
+                    </p>
+                    <img src="../img/Form.png" alt="Form-feature" class="feature-image">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="logo-container">
+                <a href="/" class="logo">
+                    <img src="../img/logo.png" width="50" height="50" alt="Логотип">
+                </a>
+            </div>
+            <div class="footer-navigation-container">
+                <div class="footer-section">
+                    <p class="footer-heading">Компания</p>
+                    <ul>
+                        <li><a href="https://github.com/Masolll" class="footer-link">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Возможности</p>
+                    <ul>
+                        <li><a href="/home/index#features" class="footer-link">Администрирование</a></li>
+                        <li><a href="/home/index#employee-features" class="footer-link">Ведение расписания</a></li>
+                        <li><a href="/home/index#record-features" class="footer-link">Запись на услуги</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-heading">Правовая информация</p>
+                    <ul>
+                        <li><a href="../pdf/UserAgreement.pdf" class="footer-link" target="_blank">Пользовательское соглашение</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
